@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rétrovirus endogènes — L'Évolution</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/retrovirus.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-title">L'<em>Évolution</em> — rétrovirus endogènes</div>
+
+  <div class="topbar-controls">
+    <a class="icon-btn" href="../index.html" aria-label="Retour à l'accueil" title="Retour à l'accueil">←</a>
+    <button class="icon-btn" id="theme-toggle" aria-label="Changer le thème" title="Thème clair / sombre">◐</button>
+  </div>
+</header>
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<main class="slides">
+
+  <section class="slide cover" id="intro">
+    <div class="slide-inner">
+      <div class="cover-eyebrow">Preuve génétique</div>
+
+      <h1>
+        Les rétrovirus<br />
+        <span class="accent">endogènes</span>
+      </h1>
+
+      <p class="cover-tagline">
+        Des traces de virus anciens dans notre ADN.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>C'est quoi un rétrovirus endogène ?</h2>
+
+      <p class="subtitle">
+        Un rétrovirus est un virus capable d'insérer son information génétique dans l'ADN d'une cellule.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Un virus infecte une cellule</h3>
+          <p>
+            Certains virus ne se contentent pas d'entrer dans une cellule : ils peuvent intégrer une copie de leur génome dans l'ADN de cette cellule.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Insertion dans l'ADN</h3>
+          <p>
+            Le fragment viral devient alors une partie du génome de la cellule infectée.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Transmission possible</h3>
+          <p>
+            Si l'insertion touche une cellule reproductrice, elle peut être transmise aux descendants.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Un rétrovirus endogène est donc une ancienne trace virale devenue héréditaire.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Le mécanisme</h2>
+
+      <p class="subtitle">
+        Clique sur chaque étape pour afficher l'explication.
+      </p>
+
+      <div class="erv-schema">
+        <button class="erv-step" data-erv-step="infection">
+          <span class="erv-step-number">1</span>
+          <span class="erv-step-title">Infection</span>
+          <span class="erv-step-icon">🦠</span>
+        </button>
+
+        <div class="erv-arrow">→</div>
+
+        <button class="erv-step" data-erv-step="insertion">
+          <span class="erv-step-number">2</span>
+          <span class="erv-step-title">Insertion</span>
+          <span class="erv-step-icon">🧬</span>
+        </button>
+
+        <div class="erv-arrow">→</div>
+
+        <button class="erv-step" data-erv-step="heritage">
+          <span class="erv-step-number">3</span>
+          <span class="erv-step-title">Héritage</span>
+          <span class="erv-step-icon">👪</span>
+        </button>
+      </div>
+
+      <div class="schema-info" id="erv-info">
+        <strong>👆 Clique sur une étape</strong><br />
+        Le schéma montre comment un ancien virus peut devenir une trace héritée dans l'ADN.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Pourquoi c'est une preuve forte ?</h2>
+
+      <p class="subtitle">
+        Le point important n'est pas seulement que deux espèces aient des fragments viraux. C'est qu'elles les aient aux mêmes endroits.
+      </p>
+
+      <div class="comparison-genome">
+        <div class="genome-card">
+          <h3>Humain</h3>
+          <div class="dna-line">
+            <span></span>
+            <span></span>
+            <span class="virus-marker"></span>
+            <span></span>
+            <span></span>
+            <span class="virus-marker"></span>
+            <span></span>
+          </div>
+          <p>Des insertions virales à certaines positions.</p>
+        </div>
+
+        <div class="genome-card">
+          <h3>Chimpanzé</h3>
+          <div class="dna-line">
+            <span></span>
+            <span></span>
+            <span class="virus-marker"></span>
+            <span></span>
+            <span></span>
+            <span class="virus-marker"></span>
+            <span></span>
+          </div>
+          <p>Les mêmes insertions, aux mêmes positions.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        L'explication la plus simple : ces insertions étaient déjà présentes chez un ancêtre commun, puis elles ont été héritées par les deux lignées.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Les chiffres clés</h2>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <strong>~8%</strong>
+          <p>de notre ADN est d'origine rétrovirale.</p>
+        </div>
+
+        <div class="stat">
+          <strong>~100 000</strong>
+          <p>fragments rétroviraux sont présents dans le génome humain.</p>
+        </div>
+
+        <div class="stat">
+          <strong>Milliers</strong>
+          <p>d'ERV sont partagés aux mêmes positions entre humains et chimpanzés.</p>
+        </div>
+      </div>
+
+      <div class="banner">
+        Plus il y a d'insertions communes aux mêmes positions, plus l'hypothèse de l'ancêtre commun devient forte.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Les explications possibles</h2>
+
+      <div class="row-list">
+        <div class="row">
+          <div class="row-num">A</div>
+          <div class="row-content">
+            <h4>Le hasard</h4>
+            <p>Peu convaincant : il faudrait que de nombreuses insertions indépendantes tombent aux mêmes positions exactes.</p>
+          </div>
+          <div class="row-cross">✗</div>
+        </div>
+
+        <div class="row">
+          <div class="row-num">B</div>
+          <div class="row-content">
+            <h4>Une fonction commune</h4>
+            <p>Certains fragments peuvent avoir une fonction, mais cela n'explique pas pourquoi tant de fragments sont aux mêmes endroits.</p>
+          </div>
+          <div class="row-cross">✗</div>
+        </div>
+
+        <div class="row erv-good-answer">
+          <div class="row-num">C</div>
+          <div class="row-content">
+            <h4>Un ancêtre commun</h4>
+            <p>Cette explication rend compte simplement des insertions partagées aux mêmes positions.</p>
+          </div>
+          <div class="row-check">✓</div>
+        </div>
+      </div>
+
+      <div class="quiz" data-correct="b" data-explanation="Les rétrovirus peuvent s'insérer à énormément de positions possibles. Retrouver les mêmes insertions aux mêmes endroits chez deux espèces s'explique très bien par un héritage depuis un ancêtre commun.">
+        <div class="quiz-question">
+          Pourquoi les ERV partagés sont-ils une preuve forte de l'ancêtre commun ?
+        </div>
+
+        <div class="quiz-options">
+          <button class="quiz-option" data-value="a">Parce qu'ils prouvent que l'humain descend du chimpanzé actuel.</button>
+          <button class="quiz-option" data-value="b">Parce qu'ils sont retrouvés aux mêmes positions dans le génome.</button>
+          <button class="quiz-option" data-value="c">Parce qu'ils n'ont jamais aucune fonction.</button>
+        </div>
+
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="chapter-actions">
+        <a class="action-link" href="humain-singes.html">← Chapitre précédent</a>
+        <a class="action-link" href="../index.html">Retour au sommaire</a>
+        <a class="action-link" href="fossiles.html">Chapitre suivant →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../scripts/site.js" defer></script>
+<script src="../scripts/retrovirus.js" defer></script>
+</body>
+</html>
