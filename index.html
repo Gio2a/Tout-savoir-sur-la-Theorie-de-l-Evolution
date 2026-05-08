@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Évolution — ce que disent vraiment les preuves</title>
+  <meta name="description" content="Une présentation interactive sur la théorie de l'évolution : preuves génétiques, paléontologiques et anatomiques, expliquées simplement." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧬%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-title">L'<em>Évolution</em> — les preuves</div>
+  <div class="topbar-controls">
+    <button class="icon-btn" id="theme-toggle" aria-label="Changer le thème" title="Thème clair / sombre (T)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
+    <button class="icon-btn" id="nav-toggle" aria-label="Menu des chapitres" title="Chapitres (M)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<!-- CHAPTER NAV -->
+<aside class="chapter-nav" id="chapter-nav" aria-label="Sommaire">
+  <h3>Sommaire</h3>
+  <ol>
+    <li data-target="cover"><span class="ch-title">Introduction</span><span class="ch-sub">Une invitation à regarder ensemble</span></li>
+    <li data-target="ch-bases"><span class="ch-title">Avant tout</span><span class="ch-sub">Ce que cette présentation n'est pas</span></li>
+    <li data-target="ch-theorie"><span class="ch-title">« C'est juste une théorie »</span><span class="ch-sub">Le malentendu fondamental</span></li>
+    <li data-target="ch-deja"><span class="ch-title">Ce que tu acceptes déjà</span><span class="ch-sub">L'évolution observée</span></li>
+    <li data-target="ch-mecanisme"><span class="ch-title">Le mécanisme</span><span class="ch-sub">Sélection naturelle, mutations</span></li>
+    <li data-target="ch-micro"><span class="ch-title">Micro vs macro</span><span class="ch-sub">Pas de barrière</span></li>
+    <li data-target="ch-singe"><span class="ch-title">L'humain et le singe</span><span class="ch-sub">Cousins, pas descendants</span></li>
+    <li data-target="ch-erv"><span class="ch-title">Les preuves génétiques</span><span class="ch-sub">Rétrovirus endogènes</span></li>
+    <li data-target="ch-fossiles"><span class="ch-title">Fossiles & datation</span><span class="ch-sub">Une histoire ordonnée</span></li>
+    <li data-target="ch-convergence"><span class="ch-title">Convergence</span><span class="ch-sub">Six disciplines, une conclusion</span></li>
+    <li data-target="ch-final"><span class="ch-title">À retenir</span><span class="ch-sub">Trois choses essentielles</span></li>
+  </ol>
+</aside>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- SLIDES -->
+<main class="slides">
+
+<!-- ============================================
+     COVER
+     ============================================ -->
+<section class="slide cover" id="cover">
+  <div class="slide-inner">
+    <div class="cover-eyebrow">Une invitation à regarder ensemble</div>
+    <h1>L'évolution :<br>ce que disent <span class="accent">vraiment</span><br>les preuves</h1>
+    <p class="cover-tagline">Pas un débat. Une démonstration. Avec des schémas.</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M7 1v18M1 13l6 6 6-6" />
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================
+     SLIDE — TIMELINE
+     ============================================ -->
+<section class="slide" id="timeline">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Une vieille idée, validée récemment</h2>
+    <p class="subtitle">L'humain se pose la question de l'origine du vivant depuis 2 600 ans.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">~600 av. J.-C.</span>
+        <span class="timeline-tag">Antiquité</span>
+        <h4>Anaximandre de Milet</h4>
+        <p>Première intuition évolutionniste connue. Postule que les vivants viennent de la mer et que l'homme descend de poissons primitifs. Aucune explication mécaniste.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">IV<sup>e</sup> s. av. J.-C.</span>
+        <span class="timeline-tag">Fixisme</span>
+        <h4>Aristote</h4>
+        <p>Vision fixiste : les espèces sont éternelles et immuables. Cette idée domine pendant ~2 000 ans, christianisée au Moyen Âge.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">XVIII<sup>e</sup> siècle</span>
+        <span class="timeline-tag">Pré-transformismes</span>
+        <h4>Buffon, Maupertuis, Diderot, E. Darwin</h4>
+        <p>Plusieurs penseurs proposent que les espèces puissent changer. Idées partielles, sans mécanisme solide.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1809</span>
+        <span class="timeline-tag">Transformisme</span>
+        <h4>Jean-Baptiste Lamarck</h4>
+        <p>Première théorie transformiste systématique. L'idée générale est juste, mais les mécanismes proposés ne correspondent pas au cadre moderne.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1858–1859</span>
+        <span class="timeline-tag">Sélection naturelle</span>
+        <h4>Darwin &amp; Wallace</h4>
+        <p>Présentation conjointe de la sélection naturelle, puis <em>L'Origine des espèces</em>. Le bon mécanisme est trouvé. Naissance de la biologie moderne.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1865 → 1900</span>
+        <span class="timeline-tag">Hérédité</span>
+        <h4>Gregor Mendel</h4>
+        <p>Découvre les lois de l'hérédité. Travaux ignorés, redécouverts en 1900. Pièce manquante du puzzle darwinien.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1930–1947</span>
+        <span class="timeline-tag">Théorie synthétique</span>
+        <h4>Génétique + évolution</h4>
+        <p>Dobzhansky, Mayr, Simpson, Huxley intègrent la génétique mendélienne à la sélection naturelle. C'est le « néo-darwinisme ».</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1953 → aujourd'hui</span>
+        <span class="timeline-tag">Biologie moléculaire</span>
+        <h4>Preuve génétique</h4>
+        <p>Découverte de l'ADN, séquençage des génomes. Confirmation massive : ERV, chromosome 2, comparaisons d'ADN.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-BASES — ce que ce n'est pas
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-bases">
+  <div class="slide-inner">
+    <div class="chapter-number">01</div>
+    <h2>Avant tout</h2>
+    <p class="subtitle">Pour qu'on puisse regarder calmement, posons quelques bases.</p>
+  </div>
+</section>
+
+<section class="slide" id="bases">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Ce que cette présentation <em>n'est pas</em></h2>
+    <div class="cards stagger">
+      <div class="card">
+        <h3>Pas une attaque</h3>
+        <p>Beaucoup de croyants acceptent l'évolution sans problème (l'Église catholique depuis 1950). On parle de biologie, pas de Dieu.</p>
+      </div>
+      <div class="card">
+        <h3>Pas un cours magistral</h3>
+        <p>C'est une invitation à regarder les preuves ensemble. Si tu peux les expliquer autrement, on est preneur.</p>
+      </div>
+      <div class="card">
+        <h3>Pas du dogme</h3>
+        <p>Une théorie scientifique peut toujours être réfutée — mais avec des <strong>preuves</strong>, pas avec un texte ou une opinion.</p>
+      </div>
+      <div class="card">
+        <h3>Pas du « hasard »</h3>
+        <p>Personne en biologie ne dit que les choses sont apparues « par hasard ». La sélection naturelle n'est pas du hasard.</p>
+      </div>
+    </div>
+    <div class="banner">Si tu lis cette présentation jusqu'au bout, tu auras vu les principales preuves. C'est tout ce qu'on demande.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-THEORIE — théorie scientifique vs courante
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-theorie">
+  <div class="slide-inner">
+    <div class="chapter-number">02</div>
+    <h2>« C'est juste une théorie »</h2>
+    <p class="subtitle">Le mot a deux sens très différents. C'est de là que vient le malentendu.</p>
+  </div>
+</section>
+
+<section class="slide" id="theorie-vs">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Deux sens du mot <em>théorie</em></h2>
+    <div class="split">
+      <div>
+        <h4>Dans le langage courant</h4>
+        <p class="big-text">Une supposition</p>
+        <p>« J'ai une théorie sur ce qui s'est passé. » → Une intuition personnelle, pas vérifiée. En science, ça s'appelle une <strong>hypothèse</strong>.</p>
+      </div>
+      <div>
+        <h4>En science</h4>
+        <p class="big-text">Un cadre validé</p>
+        <p>Comme la gravitation, la théorie cellulaire, la relativité. Soutenue par des milliers de preuves, qui résiste à tous les tests, qui permet de faire des prédictions vérifiables.</p>
+      </div>
+    </div>
+    <div class="callout">Personne ne dit « la pomme tombe parce que la gravité c'est juste une théorie ».</div>
+  </div>
+</section>
+
+<section class="slide" id="autres-theories">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Toutes ces autres « théories » ne dérangent personne</h2>
+    <p class="subtitle">Curieusement, le mot ne pose problème à personne quand il s'agit de ces sciences-là.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>Théorie de la gravitation</h3>
+        <p>Newton (1687), Einstein (1915). <strong>Si fausse :</strong> les satellites devraient tomber. Mais ton GPS fonctionne.</p>
+      </div>
+      <div class="card">
+        <h3>Théorie atomique</h3>
+        <p>Personne n'a jamais « vu » un atome à l'œil nu. <strong>Si fausse :</strong> ni IRM, ni semi-conducteurs, ni énergie nucléaire.</p>
+      </div>
+      <div class="card">
+        <h3>Théorie cellulaire</h3>
+        <p>Schleiden &amp; Schwann (1838-1839). <strong>Si fausse :</strong> toute la médecine moderne s'effondre.</p>
+      </div>
+      <div class="card">
+        <h3>Théorie microbienne</h3>
+        <p>Pasteur, Koch (1860-1880). <strong>Si fausse :</strong> antibiotiques, vaccins, hygiène — tous inutiles.</p>
+      </div>
+      <div class="card">
+        <h3>Théorie de la relativité</h3>
+        <p>Einstein. <strong>Si fausse :</strong> le GPS donnerait une erreur de ~10 km par jour. Il est précis au mètre.</p>
+      </div>
+      <div class="card">
+        <h3>Tectonique des plaques</h3>
+        <p>Wegener (1912). <strong>Si fausse :</strong> impossible d'expliquer pourquoi l'Afrique et l'Amérique du Sud s'emboîtent.</p>
+      </div>
+    </div>
+
+    <div class="banner">Toutes ces « théories » sont acceptées sans débat. Pourquoi celle de l'évolution serait-elle différente ?</div>
+
+    <!-- QUIZ 1 -->
+    <div class="quiz" data-correct="b" data-explanation="En science, une « théorie » est un cadre explicatif validé par un faisceau de preuves convergentes. C'est même le statut le plus élevé qu'une explication scientifique puisse atteindre.">
+      <div class="quiz-question">En science, qu'est-ce qu'une « théorie » exactement ?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="a">Une supposition non encore vérifiée</button>
+        <button class="quiz-option" data-value="b">Un cadre explicatif validé par de nombreuses preuves</button>
+        <button class="quiz-option" data-value="c">Une opinion partagée par la majorité des scientifiques</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-DEJA — l'évolution déjà acceptée
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-deja">
+  <div class="slide-inner">
+    <div class="chapter-number">03</div>
+    <h2>Tu acceptes probablement <em>déjà</em> l'évolution</h2>
+    <p class="subtitle">Voici 4 phénomènes que personne ne conteste — et qui sont DE l'évolution.</p>
+  </div>
+</section>
+
+<section class="slide" id="deja-accepte">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Quatre cas qui ne se discutent pas</h2>
+    <div class="cards stagger">
+      <div class="card">
+        <h3>🦠 Bactéries résistantes</h3>
+        <p>Quelques bactéries portent déjà la résistance ou l'acquièrent par mutation. L'antibiotique tue les autres : la résistance se généralise. <strong>Évolution observée en hôpital.</strong></p>
+      </div>
+      <div class="card">
+        <h3>🧬 Variants du Covid</h3>
+        <p>Alpha, Delta, Omicron… Le virus a évolué <strong>sous nos yeux</strong> entre 2020 et 2024.</p>
+      </div>
+      <div class="card">
+        <h3>🐕 Élevage et sélection</h3>
+        <p>Tous les chiens viennent du loup. Les vaches laitières actuelles n'existaient pas il y a 200 ans. C'est de la sélection — artificielle, mais le mécanisme est identique.</p>
+      </div>
+      <div class="card">
+        <h3>🐛 Insectes résistants</h3>
+        <p>Aux pesticides. Les agriculteurs doivent en changer régulièrement parce que les insectes s'adaptent.</p>
+      </div>
+    </div>
+    <div class="banner success">Si tu acceptes ces 4 cas, tu acceptes le mécanisme. La suite n'est qu'une question d'échelle de temps.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-MECANISME — sélection naturelle interactive
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-mecanisme">
+  <div class="slide-inner">
+    <div class="chapter-number">04</div>
+    <h2>Comment ça marche ?</h2>
+    <p class="subtitle">Le mécanisme, en trois étapes. Documenté en direct par Peter et Rosemary Grant pendant 40 ans aux Galápagos.</p>
+  </div>
+</section>
+
+<section class="slide" id="selection-interactive">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>La sélection naturelle <em>en direct</em></h2>
+    <p>Clique sur chaque étape pour comprendre.</p>
+
+    <div class="schema-container">
+      <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" aria-label="Schéma interactif de la sélection naturelle">
+        <!-- Stage 1 : variation -->
+        <g class="clickable" data-selection-stage="stage-1">
+          <rect x="20" y="40" width="180" height="160" rx="6" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <text x="110" y="30" text-anchor="middle" font-family="Cormorant Garamond" font-size="18" font-style="italic" fill="var(--gold)">1. Variation</text>
+          <!-- Birds with diff beak sizes -->
+          <circle cx="60" cy="100" r="14" fill="var(--ink-soft)"/>
+          <polygon points="48,100 35,98 35,104" fill="var(--gold)"/>
+          <circle cx="110" cy="120" r="14" fill="var(--ink-soft)"/>
+          <polygon points="98,120 80,118 80,128" fill="var(--gold)"/>
+          <circle cx="160" cy="100" r="14" fill="var(--ink-soft)"/>
+          <polygon points="148,100 142,99 142,103" fill="var(--gold)"/>
+          <circle cx="80" cy="160" r="14" fill="var(--ink-soft)"/>
+          <polygon points="68,160 60,159 60,164" fill="var(--gold)"/>
+          <circle cx="140" cy="160" r="14" fill="var(--ink-soft)"/>
+          <polygon points="128,160 110,158 110,170" fill="var(--gold)"/>
+        </g>
+        <!-- Arrow -->
+        <text x="220" y="125" font-size="28" fill="var(--ink)">→</text>
+
+        <!-- Stage 2 : pression -->
+        <g class="clickable" data-selection-stage="stage-2">
+          <rect x="260" y="40" width="180" height="160" rx="6" fill="var(--bg)" stroke="var(--accent-red)" stroke-width="2"/>
+          <text x="350" y="30" text-anchor="middle" font-family="Cormorant Garamond" font-size="18" font-style="italic" fill="var(--accent-red)">2. Pression</text>
+          <!-- Sun -->
+          <circle cx="350" cy="80" r="14" fill="var(--gold)"/>
+          <!-- Big-beaked survivors -->
+          <circle cx="310" cy="140" r="14" fill="var(--ink-soft)"/>
+          <polygon points="298,140 280,138 280,148" fill="var(--gold)"/>
+          <circle cx="390" cy="140" r="14" fill="var(--ink-soft)"/>
+          <polygon points="378,140 358,138 358,148" fill="var(--gold)"/>
+          <!-- Dead small-beaked -->
+          <circle cx="350" cy="180" r="10" fill="var(--ink-soft)" opacity="0.3"/>
+          <text x="345" y="183" font-size="14" fill="var(--accent-red)">✕</text>
+        </g>
+        <!-- Arrow -->
+        <text x="460" y="125" font-size="28" fill="var(--ink)">→</text>
+
+        <!-- Stage 3 : génération suivante -->
+        <g class="clickable" data-selection-stage="stage-3">
+          <rect x="500" y="40" width="180" height="160" rx="6" fill="var(--bg)" stroke="var(--accent-green)" stroke-width="2"/>
+          <text x="590" y="30" text-anchor="middle" font-family="Cormorant Garamond" font-size="18" font-style="italic" fill="var(--accent-green)">3. Génération</text>
+          <!-- All big-beaked -->
+          <circle cx="540" cy="100" r="14" fill="var(--ink-soft)"/>
+          <polygon points="528,100 510,98 510,108" fill="var(--gold)"/>
+          <circle cx="590" cy="100" r="14" fill="var(--ink-soft)"/>
+          <polygon points="578,100 558,98 558,108" fill="var(--gold)"/>
+          <circle cx="640" cy="100" r="14" fill="var(--ink-soft)"/>
+          <polygon points="628,100 608,98 608,108" fill="var(--gold)"/>
+          <circle cx="560" cy="160" r="14" fill="var(--ink-soft)"/>
+          <polygon points="548,160 528,158 528,168" fill="var(--gold)"/>
+          <circle cx="620" cy="160" r="14" fill="var(--ink-soft)"/>
+          <polygon points="608,160 588,158 588,168" fill="var(--gold)"/>
+        </g>
+      </svg>
+
+      <div class="schema-info" id="selection-info">
+        <strong>👆 Clique sur une étape</strong><br>Le schéma interactif te montre comment fonctionne la sélection naturelle, illustrée par les pinsons des Galápagos.
+      </div>
+      <p class="schema-hint">Adapté du travail de Peter et Rosemary Grant, qui ont documenté ce processus pendant 40 ans.</p>
+    </div>
+
+    <div class="banner">Mutations = aléatoires. Sélection = <strong>NON</strong> aléatoire. C'est un tri par l'environnement.</div>
+  </div>
+</section>
+
+<!-- Mutations explainer -->
+<section class="slide" id="mutations">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Une mutation, c'est quoi ?</h2>
+    <p class="subtitle">Une simple erreur de copie de l'ADN. Le mot revient souvent — autant comprendre ce que c'est vraiment.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>1. L'ADN se copie</h3>
+        <p>Quand une cellule se divise, elle copie son ADN. La copie est presque toujours parfaite.</p>
+      </div>
+      <div class="card">
+        <h3>2. Parfois, une erreur</h3>
+        <p>Très rarement, une lettre est mal copiée. C'est ça, une mutation. Aléatoire et imprévisible.</p>
+      </div>
+      <div class="card accent-green">
+        <h3>3a. Neutre <small style="font-weight:400;color:var(--ink-soft)">— la majorité</small></h3>
+        <p>Aucun effet visible. La très grande majorité des mutations entrent dans cette catégorie.</p>
+      </div>
+      <div class="card">
+        <h3>3b. Bénéfique <small style="font-weight:400;color:var(--ink-soft)">— rare</small></h3>
+        <p>Donne un avantage. C'est ce que la sélection conserve.</p>
+      </div>
+      <div class="card accent-red">
+        <h3>3c. Délétère <small style="font-weight:400;color:var(--ink-soft)">— rare</small></h3>
+        <p>Cause un problème. Souvent éliminée par la sélection.</p>
+      </div>
+    </div>
+
+    <div class="banner">Une mutation, ce n'est ni un super-pouvoir, ni une malédiction. C'est juste de la chimie.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-MICRO — micro vs macro
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-micro">
+  <div class="slide-inner">
+    <div class="chapter-number">05</div>
+    <h2>« Oui mais ça reste<br>des micro-évolutions »</h2>
+    <p class="subtitle">L'argument principal qu'on entend. Regardons-le de près.</p>
+  </div>
+</section>
+
+<section class="slide" id="micro-macro">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Il n'y a <em>pas de barrière</em> entre micro et macro</h2>
+    <p class="subtitle">« Un chat reste un chat » — mais à partir de combien de générations exactement ?</p>
+
+    <p>L'évolution est un <strong>continuum</strong>, pas une dichotomie. De petits changements génétiques s'accumulent progressivement. Certaines lignées persistent avec peu de changements. D'autres divergent et deviennent finalement de nouvelles espèces. C'est toute l'évolution. La seule différence, c'est la quantité de temps écoulé.</p>
+
+    <div class="callout">
+      <strong>Question simple :</strong> montre-moi le mécanisme biologique précis qui empêcherait les mutations de s'accumuler au-delà d'un seuil.
+    </div>
+
+    <p style="font-size:0.85rem;color:var(--ink-soft);font-style:italic;">* La macroévolution ne se réduit pas à une simple accumulation de mutations : spéciation, dérive génétique, isolement reproductif, extinctions et contraintes développementales jouent aussi un rôle majeur.</p>
+
+    <div class="banner warning">Aucune barrière connue entre micro- et macroévolution.</div>
+  </div>
+</section>
+
+<section class="slide" id="speciation">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>La macroévolution est <em>observée</em> elle aussi</h2>
+    <p class="subtitle">« Personne n'a jamais vu une nouvelle espèce apparaître » — c'est faux. Voici 3 cas documentés.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>🌿 Tragopogon miscellus</h3>
+        <p><strong>Documenté depuis 1950.</strong> Nouvelle espèce de plante apparue dans l'État de Washington au 20<sup>e</sup> siècle.</p>
+      </div>
+      <div class="card">
+        <h3>🐟 Cichlidés du lac Victoria</h3>
+        <p><strong>Spéciation explosive.</strong> Plus de 500 nouvelles espèces de poissons en seulement ~15 000 ans.</p>
+      </div>
+      <div class="card">
+        <h3>🪰 Mouches Rhagoletis</h3>
+        <p><strong>Spéciation observée.</strong> Population sur aubépine vs sur pommier — divergent depuis le 19<sup>e</sup> siècle.</p>
+      </div>
+    </div>
+
+    <div class="banner success">De nouvelles espèces apparaissent. Pas dans un manuel. Dans la vraie vie. Documenté scientifiquement.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-SINGE — humain et grands singes
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-singe">
+  <div class="slide-inner">
+    <div class="chapter-number">06</div>
+    <h2>« L'homme descend du singe »</h2>
+    <p class="subtitle">— non, c'est plus subtil. Et il y a une bonne raison.</p>
+  </div>
+</section>
+
+<section class="slide" id="cousin-pas-ancetre">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>« Si on vient du singe, pourquoi y a-t-il encore des singes ? »</h2>
+    <p class="subtitle">Cette question repose sur une confusion. Comparons.</p>
+
+    <div class="split">
+      <div>
+        <h4>Toi et ton cousin</h4>
+        <p class="big-text">Vous partagez<br>des grands-parents</p>
+        <p>Tu descends de tes grands-parents — pas de ton cousin. Vos cousins existent en parallèle de toi.</p>
+      </div>
+      <div>
+        <h4>Humain et chimpanzé</h4>
+        <p class="big-text">On partage<br>un ancêtre commun</p>
+        <p>Nous descendons d'un ancêtre commun — pas du chimpanzé. Les chimpanzés existent en parallèle de nous.</p>
+      </div>
+    </div>
+
+    <div class="banner">On ne descend pas du singe. On partage un ancêtre commun avec les singes actuels. C'est très différent.</div>
+  </div>
+</section>
+
+<!-- Marche du progrès -->
+<section class="slide" id="marche-progres">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Cette image est <em>fausse</em></h2>
+    <p class="subtitle">« La Marche du Progrès » — icône de la culture pop, mais représentation totalement erronée.</p>
+
+    <div class="schema-container">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.4">
+          <!-- Crude silhouettes -->
+          <ellipse cx="80" cy="150" rx="20" ry="40" fill="var(--ink)"/>
+          <circle cx="80" cy="105" r="12" fill="var(--ink)"/>
+          <ellipse cx="180" cy="145" rx="22" ry="45" fill="var(--ink)"/>
+          <circle cx="180" cy="95" r="14" fill="var(--ink)"/>
+          <ellipse cx="290" cy="140" rx="22" ry="50" fill="var(--ink)"/>
+          <circle cx="290" cy="85" r="15" fill="var(--ink)"/>
+          <ellipse cx="410" cy="135" rx="22" ry="55" fill="var(--ink)"/>
+          <circle cx="410" cy="75" r="15" fill="var(--ink)"/>
+          <ellipse cx="540" cy="130" rx="22" ry="60" fill="var(--ink)"/>
+          <circle cx="540" cy="65" r="15" fill="var(--ink)"/>
+          <ellipse cx="650" cy="125" rx="22" ry="65" fill="var(--ink)"/>
+          <circle cx="650" cy="55" r="15" fill="var(--ink)"/>
+        </g>
+        <!-- Big red X -->
+        <line x1="40" y1="20" x2="680" y2="180" stroke="var(--accent-red)" stroke-width="6"/>
+        <line x1="680" y1="20" x2="40" y2="180" stroke="var(--accent-red)" stroke-width="6"/>
+      </svg>
+    </div>
+
+    <div class="row-list">
+      <div class="row">
+        <div class="row-num">1</div>
+        <div class="row-content">
+          <h4>Elle suggère une PROGRESSION linéaire</h4>
+          <p>L'évolution n'a pas de but. L'humain n'est pas le « sommet » — c'est juste UNE espèce parmi des millions.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">2</div>
+        <div class="row-content">
+          <h4>Elle suggère que les espèces ANCIENNES ont disparu</h4>
+          <p>Les chimpanzés, gorilles existent toujours — ils ont évolué EN PARALLÈLE. Ils ne sont pas des « brouillons ».</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">3</div>
+        <div class="row-content">
+          <h4>Elle suggère que l'humain DESCEND du singe actuel</h4>
+          <p>On partage un ancêtre commun. Ton cousin n'est pas ton ancêtre.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner warning">La vraie image, c'est un buisson — pas une ligne.</div>
+  </div>
+</section>
+
+<!-- Arbre des grands singes interactif -->
+<section class="slide" id="arbre-singes">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>L'arbre évolutif des grands singes</h2>
+    <p class="subtitle">Chaque branche = une lignée. Les points = ancêtres communs. Échelle en millions d'années. <strong>Clique sur une espèce.</strong></p>
+
+    <div class="schema-container">
+      <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" aria-label="Arbre phylogénétique des grands singes">
+        <!-- Y axis labels -->
+        <line x1="60" y1="20" x2="60" y2="370" stroke="var(--ink-soft)" stroke-width="1"/>
+        <text x="50" y="25" text-anchor="end" font-size="11" fill="var(--ink-soft)">0 Ma</text>
+        <text x="50" y="100" text-anchor="end" font-size="11" fill="var(--ink-soft)">5 Ma</text>
+        <text x="50" y="175" text-anchor="end" font-size="11" fill="var(--ink-soft)">10 Ma</text>
+        <text x="50" y="250" text-anchor="end" font-size="11" fill="var(--ink-soft)">15 Ma</text>
+        <text x="50" y="325" text-anchor="end" font-size="11" fill="var(--ink-soft)">20 Ma</text>
+
+        <!-- Root: common ancestor at 25 Ma (off-screen bottom in our scale) -->
+        <!-- Trunk from 320 down -->
+        <line x1="375" y1="370" x2="375" y2="320" stroke="var(--ink)" stroke-width="2.5"/>
+
+        <!-- Split 1 at ~20Ma : gibbon vs others -->
+        <line x1="120" y1="320" x2="630" y2="320" stroke="var(--ink)" stroke-width="2"/>
+        <circle cx="375" cy="320" r="6" fill="var(--gold)"/>
+
+        <!-- Gibbon up to 0 -->
+        <line x1="120" y1="320" x2="120" y2="50" stroke="var(--ink)" stroke-width="2"/>
+
+        <!-- Right branch from 320 to ~265 (split orang) -->
+        <line x1="630" y1="320" x2="630" y2="260" stroke="var(--ink)" stroke-width="2"/>
+        <!-- Split 2 at ~16Ma: orang vs others -->
+        <line x1="250" y1="260" x2="630" y2="260" stroke="var(--ink)" stroke-width="2"/>
+        <circle cx="630" cy="260" r="6" fill="var(--gold)"/>
+        <!-- Orang up -->
+        <line x1="250" y1="260" x2="250" y2="50" stroke="var(--ink)" stroke-width="2"/>
+
+        <!-- From 630 up to ~155 (split gorilla) -->
+        <line x1="630" y1="260" x2="630" y2="155" stroke="var(--ink)" stroke-width="2"/>
+        <!-- Split 3 at 10 Ma -->
+        <line x1="380" y1="155" x2="630" y2="155" stroke="var(--ink)" stroke-width="2"/>
+        <circle cx="630" cy="155" r="6" fill="var(--gold)"/>
+        <!-- Gorilla up -->
+        <line x1="380" y1="155" x2="380" y2="50" stroke="var(--ink)" stroke-width="2"/>
+
+        <!-- From 630 up to ~110 (split chimp/human at 7Ma) -->
+        <line x1="630" y1="155" x2="630" y2="110" stroke="var(--ink)" stroke-width="2"/>
+        <line x1="510" y1="110" x2="630" y2="110" stroke="var(--ink)" stroke-width="2"/>
+        <circle cx="630" cy="110" r="6" fill="var(--gold)"/>
+        <line x1="510" y1="110" x2="510" y2="50" stroke="var(--ink)" stroke-width="2"/>
+        <line x1="630" y1="110" x2="630" y2="50" stroke="var(--ink)" stroke-width="2"/>
+
+        <!-- Species at top -->
+        <g class="clickable" data-ape="gibbon">
+          <circle cx="120" cy="40" r="18" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <text x="120" y="46" text-anchor="middle" font-size="18">🐒</text>
+          <text x="120" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Gibbon</text>
+        </g>
+        <g class="clickable" data-ape="orangutan">
+          <circle cx="250" cy="40" r="18" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <text x="250" y="46" text-anchor="middle" font-size="18">🦧</text>
+          <text x="250" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Orang-outan</text>
+        </g>
+        <g class="clickable" data-ape="gorilla">
+          <circle cx="380" cy="40" r="18" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <text x="380" y="46" text-anchor="middle" font-size="18">🦍</text>
+          <text x="380" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Gorille</text>
+        </g>
+        <g class="clickable" data-ape="chimp">
+          <circle cx="510" cy="40" r="18" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <text x="510" y="46" text-anchor="middle" font-size="18">🐵</text>
+          <text x="510" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Chimpanzé</text>
+        </g>
+        <g class="clickable" data-ape="human">
+          <circle cx="630" cy="40" r="18" fill="var(--bg)" stroke="var(--accent-red)" stroke-width="2"/>
+          <text x="630" y="46" text-anchor="middle" font-size="18">👤</text>
+          <text x="630" y="80" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">Humain</text>
+        </g>
+      </svg>
+
+      <div class="schema-info" id="ape-info">
+        <strong>👆 Clique sur une espèce</strong><br>Découvre la position de chaque grand singe sur l'arbre évolutif.
+      </div>
+    </div>
+
+    <div class="banner">C'est un BUISSON, pas une échelle. Pas de hiérarchie. Pas de progrès orienté vers nous.</div>
+  </div>
+</section>
+
+<!-- L'humain est un singe -->
+<section class="slide" id="humain-singe">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>L'humain <em>est</em> un singe — c'est de la classification</h2>
+    <p class="subtitle">Les Simiiformes (singes) ont 4 caractères stricts qui les définissent. L'humain les coche tous.</p>
+
+    <div class="row-list">
+      <div class="row">
+        <div class="row-num">1</div>
+        <div class="row-content">
+          <h4>Ongles sur tous les doigts</h4>
+          <p>Pas de griffes. Tous les Simiiformes ont des ongles plats. Les autres mammifères : griffes.</p>
+        </div>
+        <div class="row-check">✓</div>
+      </div>
+      <div class="row">
+        <div class="row-num">2</div>
+        <div class="row-content">
+          <h4>Absence de rhinarium</h4>
+          <p>Pas de truffe humide (comme un chien). Peau sèche et continue autour des narines.</p>
+        </div>
+        <div class="row-check">✓</div>
+      </div>
+      <div class="row">
+        <div class="row-num">3</div>
+        <div class="row-content">
+          <h4>Os de l'orbite fermé</h4>
+          <p>Une cloison osseuse complète sépare l'orbite oculaire de la fosse temporale.</p>
+        </div>
+        <div class="row-check">✓</div>
+      </div>
+      <div class="row">
+        <div class="row-num">4</div>
+        <div class="row-content">
+          <h4>Symphyse mandibulaire fusionnée</h4>
+          <p>Les deux moitiés de la mâchoire inférieure sont soudées en une seule pièce.</p>
+        </div>
+        <div class="row-check">✓</div>
+      </div>
+    </div>
+
+    <div class="banner warning">L'humain coche les 4 cases. Refuser qu'on soit un singe = refuser qu'une baleine soit un mammifère.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-ERV — preuves génétiques
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-erv">
+  <div class="slide-inner">
+    <div class="chapter-number">07</div>
+    <h2>Maintenant<br>les preuves <em>génétiques</em></h2>
+    <p class="subtitle">Là où ça devient vraiment difficile à contester. Sans réponse alternative.</p>
+  </div>
+</section>
+
+<section class="slide" id="erv">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Les rétrovirus endogènes</h2>
+    <p class="subtitle">Quand un virus s'inscrit dans l'ADN d'une cellule reproductrice, il se transmet aux descendants — pour toujours.</p>
+
+    <p>Les rétrovirus sont des virus capables d'insérer leur code génétique dans l'ADN de la cellule qu'ils infectent. Si cette cellule est une cellule de la lignée germinale (sperme ou ovule), l'insertion devient <strong>permanente et héritée</strong>.</p>
+
+    <p>Le virus s'insère <strong>au hasard</strong> parmi des millions de positions possibles dans le génome. Donc quand on retrouve les <em>mêmes</em> insertions virales aux <em>mêmes</em> positions exactes chez deux espèces, il n'y a qu'une seule explication : ces espèces ont hérité ces virus d'un ancêtre commun.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">de notre ADN</div>
+        <div class="stat-number">~8%</div>
+        <div class="stat-desc">est d'origine rétrovirale, hérité de virus anciens</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">fragments</div>
+        <div class="stat-number">100k</div>
+        <div class="stat-desc">de virus inscrits dans le génome humain</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">ERV partagés</div>
+        <div class="stat-number">Milliers</div>
+        <div class="stat-desc">aux mêmes positions exactes humain / chimpanzé</div>
+      </div>
+    </div>
+
+    <div class="banner success">Une seule explication tient : nous avons hérité ces virus d'un ancêtre commun.</div>
+  </div>
+</section>
+
+<section class="slide" id="erv-explications">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Examinons toutes les explications alternatives</h2>
+    <p class="subtitle">Quelles autres hypothèses pourraient expliquer ces ERV partagés ?</p>
+
+    <div class="row-list">
+      <div class="row">
+        <div class="row-num">A</div>
+        <div class="row-content">
+          <h4>« C'est le hasard »</h4>
+          <p>Statistiquement impossible. Probabilité quasi nulle pour des milliers d'insertions identiques aux mêmes loci.</p>
+        </div>
+        <div class="row-cross">✗</div>
+      </div>
+      <div class="row">
+        <div class="row-num">B</div>
+        <div class="row-content">
+          <h4>« C'est un design d'un créateur »</h4>
+          <p>Pourquoi un créateur insérerait-il des virus inactivés à des positions imitant exactement une descendance évolutive ?</p>
+        </div>
+        <div class="row-cross">✗</div>
+      </div>
+      <div class="row">
+        <div class="row-num">C</div>
+        <div class="row-content">
+          <h4>« Ces ERV ont une fonction commune »</h4>
+          <p>La plupart sont totalement inactifs (mutations désactivantes). Pas de justification fonctionnelle.</p>
+        </div>
+        <div class="row-cross">✗</div>
+      </div>
+      <div class="row" style="border-left-color:var(--accent-green);background:color-mix(in srgb, var(--accent-green) 10%, var(--bg-soft));">
+        <div class="row-num">D</div>
+        <div class="row-content">
+          <h4>« Nous descendons d'un ancêtre commun »</h4>
+          <p>Explique parfaitement le phénomène. Cohérent avec toutes les autres preuves indépendantes.</p>
+        </div>
+        <div class="row-check">✓</div>
+      </div>
+    </div>
+
+    <div class="banner">Pour comparer : tu as plus de chances de gagner au loto 100 fois d'affilée que ce soit du hasard.</div>
+
+    <!-- QUIZ 2 -->
+    <div class="quiz" data-correct="b" data-explanation="Les rétrovirus s'insèrent au hasard parmi des millions de positions possibles dans le génome. Retrouver les mêmes insertions exactes au même endroit chez deux espèces n'a qu'une explication parcimonieuse : un héritage commun.">
+      <div class="quiz-question">Pourquoi les ERV partagés sont-ils une preuve si forte de l'ancêtre commun ?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="a">Parce qu'ils sont nombreux</button>
+        <button class="quiz-option" data-value="b">Parce qu'ils s'insèrent au hasard, mais sont aux mêmes positions</button>
+        <button class="quiz-option" data-value="c">Parce qu'ils ont la même séquence ADN</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-FOSSILES — anatomie, fossiles
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-fossiles">
+  <div class="slide-inner">
+    <div class="chapter-number">08</div>
+    <h2>D'autres preuves<br>convergentes</h2>
+    <p class="subtitle">Anatomie, fossiles, datation : toutes les disciplines pointent dans la même direction.</p>
+  </div>
+</section>
+
+<!-- L'œil interactif -->
+<section class="slide" id="oeil">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>« L'œil est trop complexe pour évoluer » — vraiment ?</h2>
+    <p class="subtitle">Tous les stades intermédiaires existent dans des animaux vivants aujourd'hui. <strong>Clique sur chaque stade.</strong></p>
+
+    <div class="schema-container">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" aria-label="Évolution de l'œil">
+        <!-- Stage 1: photosensitive patch -->
+        <g class="clickable" data-eye-stage="eye-1">
+          <rect x="20" y="60" width="100" height="50" rx="4" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <line x1="35" y1="85" x2="105" y2="85" stroke="var(--accent-red)" stroke-width="6" stroke-linecap="round"/>
+          <text x="70" y="135" text-anchor="middle" font-size="11" fill="var(--ink)">Tache</text>
+          <text x="70" y="148" text-anchor="middle" font-size="10" fill="var(--ink-soft)">Méduse</text>
+        </g>
+        <text x="135" y="90" font-size="20" fill="var(--ink)">→</text>
+
+        <!-- Stage 2: cup -->
+        <g class="clickable" data-eye-stage="eye-2">
+          <rect x="160" y="60" width="100" height="50" rx="4" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <path d="M 175 95 Q 210 65 245 95" fill="none" stroke="var(--accent-red)" stroke-width="6"/>
+          <text x="210" y="135" text-anchor="middle" font-size="11" fill="var(--ink)">Cupule</text>
+          <text x="210" y="148" text-anchor="middle" font-size="10" fill="var(--ink-soft)">Planaire</text>
+        </g>
+        <text x="275" y="90" font-size="20" fill="var(--ink)">→</text>
+
+        <!-- Stage 3: pinhole -->
+        <g class="clickable" data-eye-stage="eye-3">
+          <rect x="300" y="60" width="100" height="50" rx="4" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <path d="M 315 95 Q 350 50 385 95 Z" fill="var(--accent-red)" stroke="var(--accent-red)" stroke-width="2"/>
+          <circle cx="350" cy="80" r="4" fill="var(--bg)"/>
+          <text x="350" y="135" text-anchor="middle" font-size="11" fill="var(--ink)">Sténopé</text>
+          <text x="350" y="148" text-anchor="middle" font-size="10" fill="var(--ink-soft)">Nautile</text>
+        </g>
+        <text x="415" y="90" font-size="20" fill="var(--ink)">→</text>
+
+        <!-- Stage 4: simple lens -->
+        <g class="clickable" data-eye-stage="eye-4">
+          <rect x="440" y="60" width="100" height="50" rx="4" fill="var(--bg)" stroke="var(--gold)" stroke-width="2"/>
+          <circle cx="490" cy="85" r="22" fill="var(--accent-red)" stroke="var(--accent-red)"/>
+          <ellipse cx="490" cy="78" rx="10" ry="6" fill="var(--bg-soft)" opacity="0.7"/>
+          <text x="490" y="135" text-anchor="middle" font-size="11" fill="var(--ink)">Cristallin</text>
+          <text x="490" y="148" text-anchor="middle" font-size="10" fill="var(--ink-soft)">Escargot marin</text>
+        </g>
+        <text x="555" y="90" font-size="20" fill="var(--ink)">→</text>
+
+        <!-- Stage 5: full eye -->
+        <g class="clickable" data-eye-stage="eye-5">
+          <rect x="580" y="60" width="100" height="50" rx="4" fill="var(--bg)" stroke="var(--accent-green)" stroke-width="2"/>
+          <circle cx="630" cy="85" r="22" fill="var(--accent-red)" stroke="var(--accent-red)"/>
+          <circle cx="630" cy="85" r="14" fill="var(--bg-soft)"/>
+          <circle cx="630" cy="85" r="7" fill="var(--ink)"/>
+          <text x="630" y="135" text-anchor="middle" font-size="11" fill="var(--ink)">Œil complet</text>
+          <text x="630" y="148" text-anchor="middle" font-size="10" fill="var(--ink-soft)">Vertébrés</text>
+        </g>
+      </svg>
+
+      <div class="schema-info" id="eye-info">
+        <strong>👆 Clique sur un stade</strong><br>Chacun de ces yeux existe chez un animal vivant aujourd'hui — du plus simple au plus complexe.
+      </div>
+    </div>
+
+    <div class="banner success">Chaque stade voit MIEUX que rien du tout. Donc chaque stade est avantageux. Pas besoin d'un saut miraculeux.</div>
+  </div>
+</section>
+
+<!-- Tiktaalik -->
+<section class="slide" id="tiktaalik">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Du poisson au tétrapode</h2>
+    <p class="subtitle">5 espèces fossiles, ~25 millions d'années de transition documentée.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>1. Eusthenopteron</h3>
+        <p>Poisson à nageoires charnues. Point de départ.</p>
+      </div>
+      <div class="card">
+        <h3>2. Panderichthys</h3>
+        <p>Crâne aplati, intermédiaire.</p>
+      </div>
+      <div class="card accent-red">
+        <h3>3. Tiktaalik <small style="color:var(--ink-soft);font-weight:400">— 2004</small></h3>
+        <p><strong>Le « poisson à pattes »</strong>. Fossile prédit puis trouvé en 2004 dans des roches datées du bon âge, au bon endroit.</p>
+      </div>
+      <div class="card">
+        <h3>4. Acanthostega</h3>
+        <p>4 pattes, encore aquatique.</p>
+      </div>
+      <div class="card">
+        <h3>5. Ichthyostega</h3>
+        <p>Premier tétrapode terrestre.</p>
+      </div>
+    </div>
+
+    <div class="banner">Le « chaînon manquant » entre poisson et tétrapode ? On l'a trouvé en 2004 : <em>Tiktaalik</em>.</div>
+  </div>
+</section>
+
+<!-- Datation -->
+<section class="slide" id="datation">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>« Mais comment on date ces fossiles ? »</h2>
+    <p class="subtitle">Question légitime. Réponse : la même physique nucléaire que celle des centrales et de la médecine.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>Le principe</h3>
+        <p>Chaque élément radioactif (¹⁴C, ²³⁸U, ⁴⁰K…) se désintègre à un rythme constant. En mesurant la proportion d'atomes parents/fils, on calcule l'âge d'une roche.</p>
+      </div>
+      <div class="card">
+        <h3>Plusieurs méthodes</h3>
+        <p>Carbone 14 → jusqu'à 50 000 ans. Uranium-Plomb → jusqu'à 4,5 milliards d'années. Potassium-Argon, Argon-Argon, Rubidium-Strontium…</p>
+      </div>
+      <div class="card">
+        <h3>Vérification croisée</h3>
+        <p>Quand 4 méthodes indépendantes datent le même fossile à 374, 375, 376 et 373 millions d'années, on peut être confiant.</p>
+      </div>
+    </div>
+
+    <div class="banner warning">Contester ces datations = contester la physique nucléaire. La même qui sauve des vies en médecine.</div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-CONVERGENCE — toutes les preuves
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-convergence">
+  <div class="slide-inner">
+    <div class="chapter-number">09</div>
+    <h2>Toutes les preuves<br><em>convergent</em></h2>
+    <p class="subtitle">6 disciplines totalement indépendantes pointent vers la même conclusion.</p>
+  </div>
+</section>
+
+<section class="slide" id="convergence">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Six disciplines, une seule conclusion</h2>
+    <p class="subtitle">Chacune pourrait potentiellement contredire la théorie. Aucune ne le fait. Toutes la confirment.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>🦴 Paléontologie</h3>
+        <p>Fossiles transitionnels (Tiktaalik, Archaeopteryx, Australopithèques…). Ordre cohérent dans toutes les couches géologiques.</p>
+      </div>
+      <div class="card">
+        <h3>🧬 Génétique</h3>
+        <p>98,7 % d'ADN partagé avec le chimpanzé. Chromosome 2 humain qui montre une fusion de chromosomes ancestraux.</p>
+      </div>
+      <div class="card">
+        <h3>🌍 Biogéographie</h3>
+        <p>Répartition des espèces sur Terre cohérente avec les continents en mouvement (marsupiaux en Australie, etc.).</p>
+      </div>
+      <div class="card">
+        <h3>🦠 Rétrovirus</h3>
+        <p>ERV partagés aux mêmes positions chez l'humain et les autres grands singes. Probabilité de hasard ≈ 0.</p>
+      </div>
+      <div class="card">
+        <h3>🐣 Embryologie</h3>
+        <p>Embryons de vertébrés similaires aux premiers stades — fentes branchiales, queue. Trace d'un héritage commun.</p>
+      </div>
+      <div class="card">
+        <h3>🦴 Anatomie comparée</h3>
+        <p>Os homologues : la main humaine, l'aile de chauve-souris, la nageoire de baleine ont les <strong>mêmes os</strong>. Plus organes vestigiaux (coccyx, appendice).</p>
+      </div>
+    </div>
+
+    <div class="banner success">Six chemins indépendants. Une seule destination. Ce n'est pas un hasard.</div>
+  </div>
+</section>
+
+<!-- The questions slide -->
+<section class="slide" id="questions">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>La question qu'il faut se poser</h2>
+    <p class="subtitle">Si l'évolution est fausse, alors il faut expliquer chacun de ces faits AUTREMENT.</p>
+
+    <div class="cards stagger">
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi les fossiles sont-ils ordonnés du plus simple au plus complexe dans les couches géologiques ?</p>
+      </div>
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi notre ADN est-il à 98,7 % identique à celui du chimpanzé ?</p>
+      </div>
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi partageons-nous les <strong>mêmes</strong> virus inactivés aux <strong>mêmes</strong> endroits que les autres grands singes ?</p>
+      </div>
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi l'œil humain a-t-il un point aveugle, alors que celui du poulpe n'en a pas ?</p>
+      </div>
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi avons-nous un coccyx, un appendice, des dents de sagesse mal placées ?</p>
+      </div>
+      <div class="card">
+        <h3>?</h3>
+        <p>Pourquoi observe-t-on de nouvelles espèces apparaître en laboratoire et dans la nature ?</p>
+      </div>
+    </div>
+
+    <div class="banner">L'évolution répond à TOUTES ces questions avec une seule explication. Que propose l'alternative ?</div>
+
+    <!-- QUIZ 3 -->
+    <div class="quiz" data-correct="c" data-explanation="C'est précisément ce qui rend la théorie de l'évolution si robuste : six approches scientifiques totalement indépendantes — paléontologie, génétique, biogéographie, rétrovirus, embryologie, anatomie — produisent des résultats cohérents entre eux. Ce niveau de convergence est extrêmement rare en science.">
+      <div class="quiz-question">Pourquoi la convergence des disciplines est-elle si convaincante ?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="a">Parce qu'elles utilisent les mêmes méthodes</button>
+        <button class="quiz-option" data-value="b">Parce qu'elles sont toutes biologiques</button>
+        <button class="quiz-option" data-value="c">Parce qu'elles sont indépendantes mais arrivent à la même conclusion</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CH-FINAL — à retenir
+     ============================================ -->
+<section class="slide chapter-divider" id="ch-final">
+  <div class="slide-inner">
+    <div class="chapter-number">10</div>
+    <h2>Pour finir</h2>
+    <p class="subtitle">Trois choses à retenir.</p>
+  </div>
+</section>
+
+<section class="slide final" id="final">
+  <div class="slide-inner">
+    <h2>Trois choses à retenir</h2>
+
+    <ol class="final-list">
+      <li>
+        <h3>L'évolution est un fait observé.</h3>
+        <p>Bactéries résistantes, variants Covid, chiens, spéciation observée. Ce n'est pas une opinion, c'est un constat.</p>
+      </li>
+      <li>
+        <h3>L'humain est un singe — par définition.</h3>
+        <p>Ongles, pas de rhinarium, os de l'orbite fermé, mâchoire fusionnée. Refuser ça, c'est refuser la classification scientifique elle-même.</p>
+      </li>
+      <li>
+        <h3>Les rétrovirus endogènes ferment le débat.</h3>
+        <p>Des milliers de virus inactivés aux mêmes positions exactes que le chimpanzé. Aucune explication alternative ne tient.</p>
+      </li>
+    </ol>
+
+    <div class="banner">Tu as le droit de croire ce que tu veux. Mais les preuves, elles, ne se discutent pas.</div>
+
+    <div class="arrow-nav">
+      <button class="arrow-btn" data-scroll-to="cover">↑ Recommencer</button>
+      <button class="arrow-btn" data-scroll-to="lexique">Lexique →</button>
+    </div>
+  </div>
+</section>
+
+<!-- LEXIQUE -->
+<section class="slide" id="lexique">
+  <div class="slide-inner">
+    <span class="section-marker"></span>
+    <h2>Lexique</h2>
+    <p class="subtitle">Les notions essentielles, définies précisément.</p>
+
+    <div class="row-list">
+      <div class="row">
+        <div class="row-num">A</div>
+        <div class="row-content">
+          <h4>Évolution</h4>
+          <p>Modification des caractéristiques héréditaires d'une population au fil des générations. Plus précisément : changement des fréquences alléliques au sein d'une population dans le temps.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">B</div>
+        <div class="row-content">
+          <h4>Sélection naturelle</h4>
+          <p>Processus par lequel les individus dont les caractères sont les mieux adaptés à leur environnement ont une descendance plus nombreuse. Les caractères favorables deviennent plus fréquents.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">C</div>
+        <div class="row-content">
+          <h4>Mutation</h4>
+          <p>Modification (souvent une erreur de copie) de la séquence d'ADN. Aléatoire et imprévisible. La majorité sont neutres ; certaines sont délétères, d'autres bénéfiques.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">D</div>
+        <div class="row-content">
+          <h4>Spéciation</h4>
+          <p>Processus par lequel une espèce ancestrale donne naissance à plusieurs espèces distinctes, généralement par isolement reproductif suivi d'évolution divergente.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">E</div>
+        <div class="row-content">
+          <h4>Ancêtre commun</h4>
+          <p>Espèce ancestrale dont descendent deux ou plusieurs espèces actuelles. Exemple : humain et chimpanzé partagent un ancêtre commun ayant vécu il y a ~7 millions d'années.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">F</div>
+        <div class="row-content">
+          <h4>Rétrovirus endogène (ERV)</h4>
+          <p>Virus dont le code génétique s'est inséré dans l'ADN d'une cellule reproductrice et a donc été transmis aux descendants. Constitue ~8 % du génome humain.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">G</div>
+        <div class="row-content">
+          <h4>Théorie scientifique</h4>
+          <p>Cadre explicatif validé par un faisceau convergent de preuves, qui résiste aux tentatives de réfutation et permet de faire des prédictions vérifiables. Pas une simple hypothèse.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-num">H</div>
+        <div class="row-content">
+          <h4>Simiiformes</h4>
+          <p>Groupe taxonomique précis incluant tous les singes, dont l'humain. 4 caractères stricts : ongles, pas de rhinarium, os de l'orbite fermé, symphyse mandibulaire fusionnée.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Présentation interactive sur la théorie de l'évolution.</p>
+  <p style="margin-top:0.5rem;">Raccourcis clavier : <strong>↓/↑</strong> ou <strong>Espace</strong> pour naviguer · <strong>M</strong> pour le sommaire · <strong>T</strong> pour le thème.</p>
+  <p style="margin-top:1rem;font-size:0.75rem;">Vulgarisation scientifique. Sources : Darwin, Mendel, Grant &amp; Grant, paléontologie moderne, génomique comparative.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
