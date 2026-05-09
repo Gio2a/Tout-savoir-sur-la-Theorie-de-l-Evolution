@@ -1,0 +1,268 @@
+﻿/* ============================================
+   QUIZ INTERACTIF — HUMAIN ET SINGES
+   Version simple avec grandes images
+   ============================================ */
+
+.taxonomy-quiz {
+  margin-top: 2rem;
+  background: var(--paper);
+  border: 1px solid rgba(184, 137, 58, 0.25);
+  border-radius: var(--radius);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  box-shadow: var(--shadow);
+}
+
+.quiz-counter {
+  color: var(--muted);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.quiz-progress-track {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.quiz-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+  transition: width 0.25s ease;
+}
+
+.trait-question {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.trait-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.trait-option {
+  position: relative;
+  border: 2px solid rgba(184, 137, 58, 0.25);
+  background: var(--bg-soft);
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  min-height: 320px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trait-option:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.trait-option img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+.option-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f3447;
+  font-weight: 900;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+}
+
+.trait-option.correct {
+  border-color: var(--green);
+}
+
+.trait-option.wrong {
+  border-color: var(--red);
+}
+
+.yesno-layout {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.yesno-image {
+  width: min(100%, 760px);
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(184, 137, 58, 0.25);
+}
+
+.yesno-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.yesno-button {
+  min-width: 150px;
+  border: 2px solid rgba(184, 137, 58, 0.28);
+  background: white;
+  color: #1f3447;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.yesno-button:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.quiz-result {
+  text-align: center;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.quiz-result h3 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-result-image {
+  width: min(100%, 620px);
+  margin: 1.5rem auto;
+  display: block;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(184, 137, 58, 0.25);
+}
+
+.quiz-result-highlight {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: var(--gold);
+  margin: 1.5rem 0;
+}
+
+.classification-chain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.classification-chain span {
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid rgba(184, 137, 58, 0.25);
+  font-weight: 800;
+}
+
+.quiz-restart {
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  background: var(--gold);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+  font: inherit;
+}
+
+@media (max-width: 760px) {
+  .trait-options {
+    grid-template-columns: 1fr;
+  }
+
+  .trait-option img {
+    height: 260px;
+  }
+
+  .yesno-image {
+    max-height: 300px;
+  }
+}
+
+/* ============================================
+   CORRECTION QUIZ — labels sous les images
+   ============================================ */
+
+.trait-options {
+  gap: 1.8rem;
+}
+
+.trait-option {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  background: var(--paper);
+}
+
+.trait-option img {
+  height: 460px;
+  object-fit: contain;
+  background: var(--bg-soft);
+  padding: 0.5rem;
+}
+
+.option-label {
+  position: static;
+  display: block;
+  margin: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 18px;
+  background: white;
+  color: #1f3447;
+  font-weight: 900;
+  text-align: center;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.yesno-image {
+  width: min(100%, 900px);
+  max-height: 520px;
+  object-fit: contain;
+  background: var(--bg-soft);
+  padding: 0.5rem;
+}
+
+.quiz-result-image {
+  width: min(100%, 760px);
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .trait-option img {
+    height: 340px;
+  }
+
+  .yesno-image {
+    max-height: 360px;
+  }
+}
