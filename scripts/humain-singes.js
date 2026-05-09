@@ -41,7 +41,7 @@
     },
     {
       type: "images",
-      question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres ?",
+      question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres doigts?",
       options: [
         {
           label: "Pouce opposable",
