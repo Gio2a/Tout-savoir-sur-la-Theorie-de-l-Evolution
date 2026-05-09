@@ -104,6 +104,21 @@
       ]
     },
     {
+  question: "Votre mâchoire inférieure est-elle fusionnée ou séparée en plusieurs parties ?",
+  answers: [
+    {
+      text: "Fusionnée",
+      image: "machoire-fusion.png",
+      correct: true
+    },
+    {
+      text: "Séparée en plusieurs parties",
+      image: "machoire-separation.png",
+      correct: false
+    }
+  ]
+},
+    {
       type: "images",
       question: "Vos yeux sont-ils orientés vers l’avant ou sur les côtés ?",
       options: [
