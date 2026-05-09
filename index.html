@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles/style.css" />
 
@@ -41,108 +41,241 @@
 <div class="progress-bar" id="progress-bar"></div>
 
 <aside class="chapter-nav" id="chapter-nav" aria-label="Sommaire">
-  <h3>Sommaire</h3>
+  <div class="nav-hud">
+    <span class="nav-kicker">Mission Board</span>
+    <h3>Carte d'expédition</h3>
+
+    <div class="nav-scan">
+      <span>Progression globale</span>
+      <strong id="nav-progress-label">0%</strong>
+      <div><i id="nav-progress-fill"></i></div>
+    </div>
+  </div>
 
   <ol>
-    <li data-target="accueil">
+    <li data-target="accueil" data-level="Hub" data-status="Online">
       <span class="ch-title">Introduction</span>
-      <span class="ch-sub">Une invitation à regarder ensemble</span>
+      <span class="ch-sub">Sas de départ</span>
     </li>
 
-    <li data-target="table-des-matieres">
-      <span class="ch-title">Table des matières</span>
-      <span class="ch-sub">Tous les chapitres</span>
+    <li data-target="table-des-matieres" data-level="Map" data-status="Open">
+      <span class="ch-title">Carte des missions</span>
+      <span class="ch-sub">Sélection de zone</span>
     </li>
 
-    <li data-page="chapitres/retrovirus.html">
+    <li data-page="chapitres/avant-tout.html" data-level="01" data-status="Briefing">
+      <span class="ch-title">Avant tout</span>
+      <span class="ch-sub">Briefing initial</span>
+    </li>
+
+    <li data-page="chapitres/theorie.html" data-level="02" data-status="Concept">
+      <span class="ch-title">Juste une théorie ?</span>
+      <span class="ch-sub">Décryptage scientifique</span>
+    </li>
+
+    <li data-page="chapitres/evolution-observee.html" data-level="03" data-status="Terrain">
+      <span class="ch-title">Évolution observée</span>
+      <span class="ch-sub">Preuves en direct</span>
+    </li>
+
+    <li data-page="chapitres/selection-naturelle.html" data-level="04" data-status="Mécanique">
+      <span class="ch-title">Sélection naturelle</span>
+      <span class="ch-sub">Moteur du vivant</span>
+    </li>
+
+    <li data-page="chapitres/micro-macro.html" data-level="05" data-status="Échelle">
+      <span class="ch-title">Micro / macro</span>
+      <span class="ch-sub">Changement d'échelle</span>
+    </li>
+
+    <li data-page="chapitres/humain-singes.html" data-level="06" data-status="Quiz">
+      <span class="ch-title">Humain et singes</span>
+      <span class="ch-sub">Mission anatomique</span>
+    </li>
+
+    <li data-page="chapitres/retrovirus.html" data-level="07" data-status="Boss">
       <span class="ch-title">Rétrovirus endogènes</span>
-      <span class="ch-sub">Preuve génétique</span>
+      <span class="ch-sub">Boss génétique</span>
+    </li>
+
+    <li data-page="chapitres/fossiles.html" data-level="08" data-status="Archives">
+      <span class="ch-title">Fossiles et datation</span>
+      <span class="ch-sub">Archives profondes</span>
+    </li>
+
+    <li data-page="chapitres/convergence.html" data-level="09" data-status="Final">
+      <span class="ch-title">Convergence</span>
+      <span class="ch-sub">Toutes les preuves</span>
+    </li>
+
+    <li data-page="chapitres/lexique.html" data-level="10" data-status="Codex">
+      <span class="ch-title">Lexique</span>
+      <span class="ch-sub">Inventaire des notions</span>
     </li>
   </ol>
+
+  <div class="nav-footer-card">
+    <span>Astuce clavier</span>
+    <strong>M</strong>
+    <p>ouvre ou ferme ce panneau de missions.</p>
+  </div>
 </aside>
 
 <div class="nav-overlay" id="nav-overlay"></div>
 
-<main class="slides">
+<div class="game-bg" aria-hidden="true">
+  <span class="orb orb-one"></span>
+  <span class="orb orb-two"></span>
+  <span class="orb orb-three"></span>
+</div>
+
+<main class="slides game-shell">
 
   <section class="slide cover" id="accueil">
-    <div class="slide-inner">
-      <div class="cover-eyebrow">Une invitation à regarder ensemble</div>
+    <div class="slide-inner hero-grid">
+      <div class="hero-copy">
+        <div class="cover-eyebrow">Mission interactive · Niveau 01</div>
 
-      <h1>
-        L'évolution :<br />
-        ce que disent <span class="accent">vraiment</span><br />
-        les preuves
-      </h1>
+        <h1>
+          Explore<br />
+          l'évolution<br />
+          comme un <span class="accent">jeu</span>
+        </h1>
 
-      <p class="cover-tagline">
-        Pas un débat. Une démonstration. Avec des schémas.
-      </p>
+        <p class="cover-tagline">
+          Débloque les preuves, traverse les chapitres et construis ton arbre du vivant étape par étape.
+        </p>
 
-      <div class="banner">
-        Choisis un chapitre dans la table des matières.
+        <div class="hero-actions">
+          <button class="primary-cta" data-scroll-to="table-des-matieres">Démarrer l'expédition</button>
+          <button class="secondary-cta" id="random-mission">Mission aléatoire</button>
+        </div>
+
+        <div class="achievement-strip" aria-label="Objectifs">
+          <span>🧬 ADN</span>
+          <span>🦴 Fossiles</span>
+          <span>🌍 Biogéographie</span>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Console de mission">
+        <div class="scanner-card">
+          <div class="scanner-top">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="dna-orbit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="mission-stats">
+            <div>
+              <strong>10</strong>
+              <span>chapitres</span>
+            </div>
+            <div>
+              <strong id="mission-score">0%</strong>
+              <span>progression</span>
+            </div>
+            <div>
+              <strong>∞</strong>
+              <span>preuves</span>
+            </div>
+          </div>
+
+          <div class="terminal" id="mission-terminal">
+            <p>> Initialisation du laboratoire...</p>
+            <p>> Clique sur une carte pour lancer une mission.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="slide" id="table-des-matieres">
     <div class="slide-inner">
-      <span class="section-marker"></span>
+      <div class="mission-header">
+        <span class="section-marker"></span>
 
-      <h2>Table des matières</h2>
+        <div>
+          <p class="cover-eyebrow">Carte du monde scientifique</p>
+          <h2>Choisis ta prochaine mission</h2>
+        </div>
+      </div>
 
       <p class="subtitle">
-        Chaque chapitre est maintenant une page séparée, pour pouvoir l'améliorer indépendamment.
+        Chaque chapitre devient une zone à explorer : commence par les bases, puis débloque les preuves les plus fortes.
       </p>
 
-      <div class="cards">
+      <div class="mission-progress">
+        <span>Campagne de découverte</span>
+        <div class="mission-track"><div class="mission-fill" id="mission-fill"></div></div>
+      </div>
 
-        <a class="card" href="chapitres/avant-tout.html">
+      <div class="cards mission-map">
+
+        <a class="card mission-card" href="chapitres/avant-tout.html" data-mission="Briefing initial">
+          <span class="mission-badge">Briefing</span>
           <h3>01 — Avant tout</h3>
           <p>Ce que cette présentation n'est pas : pas une attaque, pas un dogme, pas une explication par le hasard.</p>
         </a>
 
-        <a class="card" href="chapitres/theorie.html">
+        <a class="card mission-card" href="chapitres/theorie.html" data-mission="Décryptage scientifique">
+          <span class="mission-badge">Concept</span>
           <h3>02 — « C'est juste une théorie »</h3>
           <p>Comprendre la différence entre une supposition du langage courant et une théorie scientifique.</p>
         </a>
 
-        <a class="card" href="chapitres/evolution-observee.html">
+        <a class="card mission-card" href="chapitres/evolution-observee.html" data-mission="Observation en direct">
+          <span class="mission-badge">Terrain</span>
           <h3>03 — Évolution observée</h3>
           <p>Bactéries résistantes, variants du Covid, sélection artificielle, insectes résistants.</p>
         </a>
 
-        <a class="card" href="chapitres/selection-naturelle.html">
+        <a class="card mission-card" href="chapitres/selection-naturelle.html" data-mission="Moteur de sélection">
+          <span class="mission-badge">Mécanique</span>
           <h3>04 — Sélection naturelle</h3>
           <p>Le mécanisme : variation, pression de sélection, génération suivante.</p>
         </a>
 
-        <a class="card" href="chapitres/micro-macro.html">
+        <a class="card mission-card" href="chapitres/micro-macro.html" data-mission="Changement d'échelle">
+          <span class="mission-badge">Échelle</span>
           <h3>05 — Micro et macroévolution</h3>
           <p>Pourquoi il n'y a pas de barrière magique entre petits changements et grandes transformations.</p>
         </a>
 
-        <a class="card" href="chapitres/humain-singes.html">
+        <a class="card mission-card" href="chapitres/humain-singes.html" data-mission="Quiz anatomique">
+          <span class="mission-badge">Quiz</span>
           <h3>06 — Humain et singes</h3>
           <p>Ancêtre commun, buisson évolutif, classification et Simiiformes.</p>
         </a>
 
-        <a class="card accent-green" href="chapitres/retrovirus.html">
+        <a class="card mission-card accent-green" href="chapitres/retrovirus.html" data-mission="Boss génétique">
+          <span class="mission-badge">Boss</span>
           <h3>07 — Rétrovirus endogènes</h3>
           <p>Les ERV : une preuve génétique très forte de l'ancêtre commun.</p>
         </a>
 
-        <a class="card" href="chapitres/fossiles.html">
+        <a class="card mission-card" href="chapitres/fossiles.html" data-mission="Archives fossiles">
+          <span class="mission-badge">Archives</span>
           <h3>08 — Fossiles et datation</h3>
           <p>Œil, Tiktaalik, fossiles transitionnels, registre fossile et datation radiométrique.</p>
         </a>
 
-        <a class="card" href="chapitres/convergence.html">
+        <a class="card mission-card" href="chapitres/convergence.html" data-mission="Final convergence">
+          <span class="mission-badge">Final</span>
           <h3>09 — Convergence des preuves</h3>
           <p>Paléontologie, génétique, biogéographie, embryologie, anatomie comparée.</p>
         </a>
 
-        <a class="card" href="chapitres/lexique.html">
+        <a class="card mission-card" href="chapitres/lexique.html" data-mission="Inventaire">
+          <span class="mission-badge">Glossaire</span>
           <h3>10 — Lexique</h3>
           <p>Définitions utiles : évolution, sélection naturelle, mutation, espèce, phylogénie, ERV.</p>
         </a>

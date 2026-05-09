@@ -7,6 +7,10 @@
   --gold-soft: #d4a85a;
   --accent-red: #8a2c33;
   --accent-green: #4a7c59;
+  --green: #4a7c59;
+  --red: #8a2c33;
+  --paper: #fffaf0;
+  --muted: #6a7480;
   --line: #d8d0bb;
   --shadow: rgba(31, 52, 71, 0.08);
   --shadow-strong: rgba(31, 52, 71, 0.18);
@@ -28,6 +32,10 @@
   --gold-soft: #e8c082;
   --accent-red: #c45661;
   --accent-green: #6fa67e;
+  --green: #6fa67e;
+  --red: #c45661;
+  --paper: #172230;
+  --muted: #b8b0a0;
   --line: #2c3a48;
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-strong: rgba(0, 0, 0, 0.5);
@@ -202,14 +210,16 @@ em {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(360px, 85vw);
-  background: var(--bg-soft);
-  border-left: 1px solid var(--line);
+  width: min(430px, 92vw);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--bg-soft) 92%, transparent)),
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 38%);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
   z-index: 200;
   transform: translateX(100%);
   transition: transform var(--transition);
   overflow-y: auto;
-  padding: 5rem 2rem 2rem;
+  padding: 5rem 1.15rem 1.25rem;
   box-shadow: -10px 0 40px var(--shadow-strong);
 }
 
@@ -217,48 +227,134 @@ em {
   transform: translateX(0);
 }
 
-.chapter-nav h3 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+.nav-hud {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  box-shadow: 0 18px 45px var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-kicker {
+  display: inline-flex;
+  margin-bottom: 0.35rem;
   color: var(--gold);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-body);
-  font-weight: 600;
+  font: 900 0.72rem "Space Grotesk", var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.chapter-nav h3 {
+  font-family: "Space Grotesk", var(--font-body);
+  font-size: 1.45rem;
+  letter-spacing: -0.05em;
+  margin-bottom: 1rem;
+}
+
+.nav-scan {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.nav-scan strong {
+  color: var(--gold);
+  font-family: "Space Grotesk", var(--font-body);
+}
+
+.nav-scan div {
+  grid-column: 1 / -1;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.nav-scan i {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--accent-green));
+  transition: width 0.3s ease;
 }
 
 .chapter-nav ol {
   list-style: none;
   counter-reset: chapter;
+  display: grid;
+  gap: 0.7rem;
 }
 
 .chapter-nav li {
   counter-increment: chapter;
-  margin-bottom: 1.25rem;
-  padding-left: 2.5rem;
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 74px;
+  padding: 0.85rem 0.9rem;
   position: relative;
   cursor: pointer;
-  transition: color 0.25s ease;
+  overflow: hidden;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  box-shadow: 0 10px 28px rgba(31, 52, 71, 0.07);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .chapter-nav li::before {
-  content: counter(chapter, decimal-leading-zero);
+  content: attr(data-level);
+  position: static;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: #172033;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  font: 900 0.8rem "Space Grotesk", var(--font-body);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+.chapter-nav li::after {
+  content: attr(data-status);
   position: absolute;
-  left: 0;
-  top: 0.1em;
-  font-family: var(--font-display);
+  right: 0.8rem;
+  top: 0.7rem;
+  padding: 0.22rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(10, 15, 25, 0.08);
   color: var(--gold);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .chapter-nav li:hover {
-  color: var(--gold);
+  transform: translateX(-6px) scale(1.01);
+  border-color: var(--gold);
+  box-shadow: 0 18px 45px var(--shadow-strong);
 }
 
 .chapter-nav li .ch-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+  padding-right: 4.5rem;
+  font-family: "Space Grotesk", var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
   display: block;
   line-height: 1.25;
 }
@@ -268,6 +364,40 @@ em {
   color: var(--ink-soft);
   display: block;
   margin-top: 0.2rem;
+}
+
+.nav-footer-card {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 24px;
+  background: rgba(10, 15, 25, 0.9);
+  color: #dfffea;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.35);
+}
+
+.nav-footer-card span {
+  color: #9df7c5;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.nav-footer-card strong {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin: 0.55rem 0;
+  border-radius: 10px;
+  background: #9df7c5;
+  color: #101827;
+}
+
+.nav-footer-card p {
+  margin: 0;
+  color: rgba(223, 255, 234, 0.76);
+  font-size: 0.86rem;
 }
 
 .nav-overlay {
@@ -629,6 +759,433 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.game-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 28%),
+    radial-gradient(circle at 80% 25%, color-mix(in srgb, var(--accent-green) 18%, transparent), transparent 30%),
+    linear-gradient(135deg, color-mix(in srgb, var(--bg) 88%, #0f172a), var(--bg));
+}
+
+.game-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--gold) 20%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 20%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black, transparent 72%);
+}
+
+.orb {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.22;
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+
+.orb-one {
+  left: 5%;
+  top: 12%;
+  background: var(--gold);
+}
+
+.orb-two {
+  right: 8%;
+  top: 34%;
+  background: var(--accent-green);
+  animation-delay: -3s;
+}
+
+.orb-three {
+  left: 42%;
+  bottom: 4%;
+  background: var(--accent-red);
+  animation-delay: -6s;
+}
+
+@keyframes orbFloat {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+
+  to {
+    transform: translate3d(3rem, -2rem, 0) scale(1.12);
+  }
+}
+
+.game-shell .slide {
+  max-width: 1240px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.hero-copy {
+  text-align: left;
+}
+
+.hero-copy h1 {
+  font-family: "Space Grotesk", var(--font-body);
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.08em;
+  text-shadow: 0 18px 50px var(--shadow-strong);
+}
+
+.hero-copy .accent {
+  display: inline-block;
+  padding: 0 0.18em;
+  border-radius: 0.22em;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  color: #172033;
+  transform: rotate(-2deg);
+}
+
+.hero-actions,
+.achievement-strip,
+.mission-stats,
+.scanner-top,
+.mission-header {
+  display: flex;
+  align-items: center;
+}
+
+.hero-actions {
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 1.25rem;
+}
+
+.primary-cta,
+.secondary-cta {
+  border: 0;
+  border-radius: 999px;
+  padding: 1rem 1.35rem;
+  font: 800 0.95rem var(--font-body);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.primary-cta {
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  color: #172033;
+  box-shadow: 0 18px 45px color-mix(in srgb, var(--gold) 34%, transparent);
+}
+
+.secondary-cta {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.primary-cta:hover,
+.secondary-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.achievement-strip {
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.achievement-strip span,
+.mission-badge {
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.achievement-strip span {
+  padding: 0.55rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.scanner-card {
+  position: relative;
+  min-height: 520px;
+  padding: 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent);
+  border-radius: 34px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--paper) 86%, transparent), color-mix(in srgb, var(--bg-soft) 72%, transparent)),
+    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 36%);
+  box-shadow: 0 30px 90px var(--shadow-strong);
+  overflow: hidden;
+}
+
+.scanner-card::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 120deg, transparent, color-mix(in srgb, var(--gold) 20%, transparent), transparent 34%);
+  animation: scannerSpin 9s linear infinite;
+}
+
+@keyframes scannerSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scanner-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.scanner-top {
+  gap: 0.45rem;
+}
+
+.scanner-top span {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.dna-orbit {
+  position: relative;
+  width: min(78vw, 330px);
+  height: min(78vw, 330px);
+  margin: 2.2rem auto;
+  border: 1px dashed color-mix(in srgb, var(--gold) 42%, transparent);
+  border-radius: 50%;
+  animation: pulseRing 2.8s ease-in-out infinite;
+}
+
+.dna-orbit::before {
+  content: "🧬";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(4rem, 12vw, 7rem);
+  filter: drop-shadow(0 18px 20px var(--shadow-strong));
+  animation: dnaFloat 2.2s ease-in-out infinite alternate;
+}
+
+.dna-orbit span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 22px var(--gold);
+}
+
+.dna-orbit span:nth-child(1) { left: 48%; top: -9px; }
+.dna-orbit span:nth-child(2) { right: 9%; top: 22%; background: var(--accent-green); }
+.dna-orbit span:nth-child(3) { right: 16%; bottom: 13%; }
+.dna-orbit span:nth-child(4) { left: 14%; bottom: 12%; background: var(--accent-red); }
+.dna-orbit span:nth-child(5) { left: 5%; top: 28%; }
+
+@keyframes pulseRing {
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 45px color-mix(in srgb, var(--gold) 24%, transparent);
+  }
+}
+
+@keyframes dnaFloat {
+  to {
+    transform: translateY(-12px) rotate(6deg);
+  }
+}
+
+.mission-stats {
+  justify-content: space-between;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.mission-stats div {
+  flex: 1;
+  border-radius: 22px;
+  padding: 0.9rem 0.55rem;
+  background: color-mix(in srgb, var(--bg) 52%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+}
+
+.mission-stats strong {
+  display: block;
+  font: 900 1.55rem "Space Grotesk", var(--font-body);
+}
+
+.mission-stats span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.terminal {
+  min-height: 92px;
+  margin-top: 1rem;
+  border-radius: 18px;
+  padding: 1rem;
+  background: rgba(10, 15, 25, 0.88);
+  color: #9df7c5;
+  font: 700 0.86rem "Space Grotesk", monospace;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+.terminal p {
+  margin: 0.18rem 0;
+}
+
+.mission-header {
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.mission-header .cover-eyebrow {
+  margin: 0 0 0.35rem;
+}
+
+.mission-progress {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.5rem 0 2rem;
+  font-weight: 900;
+}
+
+.mission-track {
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--paper) 68%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.mission-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--accent-green));
+  transition: width 0.35s ease;
+}
+
+.mission-map {
+  perspective: 1200px;
+}
+
+.mission-card {
+  position: relative;
+  min-height: 210px;
+  padding: 1.3rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--bg-soft) 88%, transparent));
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  box-shadow: 0 18px 45px var(--shadow);
+  transform-style: preserve-3d;
+}
+
+.mission-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--gold) 18%, transparent), transparent 36%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.mission-card::after {
+  content: "▶";
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.mission-card:hover {
+  transform: translateY(-10px) rotateX(4deg) rotateY(-4deg);
+  border-color: var(--gold);
+  box-shadow: 0 30px 70px var(--shadow-strong);
+}
+
+.mission-card:hover::before {
+  opacity: 1;
+}
+
+.mission-card.pulse-mission {
+  animation: missionPulse 0.7s ease-in-out 2;
+  border-color: var(--gold);
+}
+
+@keyframes missionPulse {
+  50% {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--gold) 18%, transparent), 0 34px 80px var(--shadow-strong);
+  }
+}
+
+.mission-badge {
+  display: inline-flex;
+  padding: 0.38rem 0.68rem;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mission-card h3,
+.mission-card p,
+.mission-badge {
+  position: relative;
+  z-index: 1;
+}
+
+.mission-card h3 {
+  font-family: "Space Grotesk", var(--font-body);
+  letter-spacing: -0.04em;
+}
+
+.mission-card p {
+  padding-right: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy,
+  .cover {
+    text-align: left;
+  }
+
+  .scanner-card {
+    min-height: auto;
+  }
+}
+
 /* Responsive */
 
 @media (max-width: 700px) {
@@ -750,7 +1307,173 @@ a.card {
   border-color: var(--gold);
 }
 
+.chapter-game .slide-inner {
+  position: relative;
+}
+
+.chapter-hud {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(150px, 220px);
+  gap: 1rem;
+  align-items: center;
+  width: min(100%, 920px);
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--paper) 88%, transparent), color-mix(in srgb, var(--bg-soft) 70%, transparent)),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 34%);
+  box-shadow: 0 18px 48px var(--shadow);
+}
+
+.chapter-hud strong {
+  display: block;
+  font: 900 1rem "Space Grotesk", var(--font-body);
+}
+
+.chapter-hud p {
+  margin: 0.18rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.xp-meter {
+  display: grid;
+  gap: 0.45rem;
+  font: 800 0.78rem "Space Grotesk", var(--font-body);
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.xp-meter span {
+  display: block;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.xp-meter i {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--accent-green));
+  transition: width 0.35s ease;
+}
+
+.chapter-game .card,
+.chapter-game .row,
+.chapter-game .stat {
+  position: relative;
+  overflow: hidden;
+}
+
+.unlock-card {
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.unlock-card::after {
+  content: "SCAN";
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  padding: 0.25rem 0.48rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  color: var(--bg);
+  font: 900 0.58rem "Space Grotesk", var(--font-body);
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.unlock-card:hover,
+.unlock-card:focus-visible,
+.unlock-card.unlocked {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 58px var(--shadow-strong);
+  filter: saturate(1.12);
+}
+
+.unlock-card:hover::after,
+.unlock-card:focus-visible::after,
+.unlock-card.unlocked::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.unlock-card.unlocked::after {
+  content: "VALIDÉ";
+  background: var(--accent-green);
+  color: #07120d;
+}
+
+.chapter-commander {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  width: min(340px, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 22px;
+  background: rgba(10, 15, 25, 0.9);
+  color: #dfffe9;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  transform: translateY(calc(100% - 3.25rem));
+  transition: transform 0.25s ease;
+}
+
+.chapter-commander:hover,
+.chapter-commander:focus-within,
+.chapter-commander.open {
+  transform: translateY(0);
+}
+
+.chapter-commander strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--gold);
+  font: 900 0.8rem "Space Grotesk", var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.chapter-commander p {
+  margin: 0.25rem 0;
+  font-size: 0.84rem;
+}
+
+.chapter-commander button {
+  width: 100%;
+  margin-top: 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 0.9rem;
+  background: linear-gradient(135deg, var(--gold), var(--accent-green));
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
 @media (max-width: 760px) {
+  .chapter-hud {
+    grid-template-columns: 1fr;
+  }
+
+  .xp-meter {
+    text-align: left;
+  }
+
   .row-list .row {
     grid-template-columns: 1fr;
   }
