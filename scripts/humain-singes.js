@@ -243,7 +243,7 @@
         >
 
         <p class="quiz-result-highlight">
-          Tu as toutes les propriétés biologiques d’un singe.
+          Tu fais parti du grand groupe des singes, et tu partages ces caractères anatomiques avec les 300 autres espèces de singes!
         </p>
 
         <div class="classification-chain">
