@@ -436,6 +436,140 @@
     updateChapterXp();
   }
 
+  const simWorld = document.getElementById("sim-world");
+
+  if (simWorld) {
+    const generationCount = document.getElementById("generation-count");
+    const lightCount = document.getElementById("light-count");
+    const darkCount = document.getElementById("dark-count");
+    const selectionMessage = document.getElementById("selection-message");
+    const nextGeneration = document.getElementById("next-generation");
+    const resetSelection = document.getElementById("reset-selection");
+    const envButtons = document.querySelectorAll("[data-env]");
+    let environment = "light";
+    let generation = 0;
+    let population = [];
+
+    function createPopulation() {
+      population = Array.from({ length: 32 }, function (_, index) {
+        return {
+          id: index,
+          trait: index % 2 === 0 ? "light" : "dark",
+          x: 8 + Math.random() * 84,
+          y: 12 + Math.random() * 76
+        };
+      });
+    }
+
+    function renderPopulation(removedIds) {
+      simWorld.innerHTML = "";
+
+      population.forEach(function (creature) {
+        const dot = document.createElement("span");
+        dot.className = "creature " + creature.trait + " newborn";
+        dot.style.left = creature.x + "%";
+        dot.style.top = creature.y + "%";
+
+        if (removedIds && removedIds.includes(creature.id)) {
+          dot.classList.add("removed");
+        }
+
+        simWorld.appendChild(dot);
+      });
+    }
+
+    function updateSelectionStats() {
+      const light = population.filter(function (creature) {
+        return creature.trait === "light";
+      }).length;
+      const dark = population.length - light;
+
+      if (generationCount) {
+        generationCount.textContent = generation;
+      }
+
+      if (lightCount) {
+        lightCount.textContent = light;
+      }
+
+      if (darkCount) {
+        darkCount.textContent = dark;
+      }
+
+      if (selectionMessage) {
+        const favored = environment === "light" ? "clairs" : "foncés";
+        selectionMessage.textContent = "Milieu " + (environment === "light" ? "clair" : "sombre") + " : les individus " + favored + " survivent mieux.";
+      }
+    }
+
+    function setEnvironment(value) {
+      environment = value;
+      simWorld.dataset.environment = value;
+      updateSelectionStats();
+    }
+
+    function evolveGeneration() {
+      generation += 1;
+
+      const favoredTrait = environment === "light" ? "light" : "dark";
+      const survivors = population.filter(function (creature) {
+        const chance = creature.trait === favoredTrait ? 0.82 : 0.38;
+        return Math.random() < chance;
+      });
+
+      const removedIds = population.filter(function (creature) {
+        return !survivors.includes(creature);
+      }).map(function (creature) {
+        return creature.id;
+      });
+
+      renderPopulation(removedIds);
+
+      setTimeout(function () {
+        const nextPopulation = survivors.slice();
+
+        while (nextPopulation.length < 32) {
+          const parent = survivors[Math.floor(Math.random() * survivors.length)] || population[Math.floor(Math.random() * population.length)];
+          const mutation = Math.random() < 0.08;
+
+          nextPopulation.push({
+            id: Date.now() + Math.random(),
+            trait: mutation ? (parent.trait === "light" ? "dark" : "light") : parent.trait,
+            x: 8 + Math.random() * 84,
+            y: 12 + Math.random() * 76
+          });
+        }
+
+        population = nextPopulation;
+        renderPopulation();
+        updateSelectionStats();
+      }, 520);
+    }
+
+    envButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        setEnvironment(button.dataset.env);
+      });
+    });
+
+    if (nextGeneration) {
+      nextGeneration.addEventListener("click", evolveGeneration);
+    }
+
+    if (resetSelection) {
+      resetSelection.addEventListener("click", function () {
+        generation = 0;
+        createPopulation();
+        renderPopulation();
+        updateSelectionStats();
+      });
+    }
+
+    createPopulation();
+    renderPopulation();
+    updateSelectionStats();
+  }
+
   /* =========================
      QUIZ
      ========================= */

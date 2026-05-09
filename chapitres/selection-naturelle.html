@@ -120,6 +120,45 @@
         Ce n'est pas l'individu qui décide de s'adapter : c'est la population qui change parce que certains individus transmettent plus souvent leurs caractères.
       </div>
 
+      <div class="selection-sim" id="selection-sim">
+        <div class="sim-panel">
+          <div>
+            <span class="mission-badge">Simulation active</span>
+            <h3>Laboratoire de sélection</h3>
+            <p>
+              Change le milieu, lance les générations et observe quel caractère devient majoritaire dans la population.
+            </p>
+          </div>
+
+          <div class="sim-controls">
+            <button type="button" data-env="light">Milieu clair</button>
+            <button type="button" data-env="dark">Milieu sombre</button>
+            <button type="button" id="next-generation">Génération suivante</button>
+            <button type="button" id="reset-selection">Réinitialiser</button>
+          </div>
+        </div>
+
+        <div class="sim-world" data-environment="light" id="sim-world"></div>
+
+        <div class="sim-stats">
+          <div>
+            <strong id="generation-count">0</strong>
+            <span>génération</span>
+          </div>
+          <div>
+            <strong id="light-count">0</strong>
+            <span>clairs</span>
+          </div>
+          <div>
+            <strong id="dark-count">0</strong>
+            <span>foncés</span>
+          </div>
+          <div>
+            <strong id="selection-message">Milieu clair : les individus clairs sont moins visibles.</strong>
+          </div>
+        </div>
+      </div>
+
       <div class="chapter-actions">
         <a class="action-link" href="evolution-observee.html">← Chapitre précédent</a>
         <a class="action-link" href="../index.html">Retour au sommaire</a>
