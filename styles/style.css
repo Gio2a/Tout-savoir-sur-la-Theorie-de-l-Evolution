@@ -134,7 +134,7 @@ em {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-  padding: 0.75rem 1.5rem;
+  padding: 0.35rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -186,7 +186,7 @@ em {
 
 .progress-bar {
   position: fixed;
-  top: 60px;
+  top: 46px;
   left: 0;
   height: 2px;
   background: var(--gold);
@@ -288,13 +288,13 @@ em {
 /* Structure des pages */
 
 .slides {
-  padding-top: 70px;
+  padding-top: 52px;
   position: relative;
   z-index: 2;
 }
 
 .slide {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 52px);
   padding: var(--slide-padding);
   display: flex;
   flex-direction: column;
