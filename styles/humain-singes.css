@@ -793,53 +793,75 @@
 }
 
 /* ============================================
-   PROPAGATION CONTINUE
+   ANIMATION CONTINUE
    ============================================ */
+
+.branch {
+
+  fill: none;
+
+  stroke: #6d80ad;
+  stroke-width: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  visibility: hidden;
+
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+}
 
 /* TRONC */
 
-.tree-active .d0 {
+.tree-active .trunk {
 
   visibility: visible;
 
   animation:
-    drawTree 2.4s linear forwards;
+    drawTree 1.8s linear forwards;
 }
 
-/* PREMIÈRES BRANCHES */
+/* BRANCHES */
 
-.tree-active .d1 {
+.tree-active .branch-top {
 
   visibility: visible;
 
   animation:
-    drawTree 2.6s linear forwards;
+    drawTree 3.8s linear forwards;
 
-  animation-delay: 1.7s;
+  animation-delay: 1.5s;
 }
 
-/* BRANCHES INTERMÉDIAIRES */
-
-.tree-active .d2 {
+.tree-active .branch-top-2 {
 
   visibility: visible;
 
   animation:
-    drawTree 2.5s linear forwards;
+    drawTree 3s linear forwards;
 
-  animation-delay: 2.8s;
+  animation-delay: 2.4s;
 }
 
-/* EXTRÉMITÉS */
-
-.tree-active .d3 {
+.tree-active .branch-middle {
 
   visibility: visible;
 
   animation:
-    drawTree 2.3s linear forwards;
+    drawTree 4s linear forwards;
 
-  animation-delay: 3.8s;
+  animation-delay: 1.9s;
+}
+
+.tree-active .branch-bottom {
+
+  visibility: visible;
+
+  animation:
+    drawTree 3.6s linear forwards;
+
+  animation-delay: 2.2s;
 }
 
 }
