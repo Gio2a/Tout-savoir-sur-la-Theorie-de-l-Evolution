@@ -638,9 +638,12 @@
 
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
+}
 
+.tree-visible .branch {
   animation:
     drawBranch 2s ease forwards;
+}
 }
 
 /* DELAIS */
@@ -665,9 +668,12 @@
   opacity: 0;
 
   transform-origin: center;
+}
 
+.tree-visible .node {
   animation:
     popNode 0.5s ease forwards;
+}
 }
 
 .origin-node {
