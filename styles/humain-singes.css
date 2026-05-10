@@ -808,24 +808,28 @@
 
 /* TRONC */
 
+/* ============================================
+   PROPAGATION FLUIDE
+   ============================================ */
+
 .tree-active .d0 {
 
   visibility: visible;
 
   animation:
-    drawTree 1.2s ease forwards;
+    drawTree 2.8s cubic-bezier(.65,.05,.36,1) forwards;
 }
 
-/* GROSSES BRANCHES */
+/* GRANDES BRANCHES */
 
 .tree-active .d1 {
 
   visibility: visible;
 
   animation:
-    drawTree 1.3s ease forwards;
+    drawTree 2.6s cubic-bezier(.65,.05,.36,1) forwards;
 
-  animation-delay: 1s;
+  animation-delay: 1.4s;
 }
 
 /* BRANCHES INTERMÉDIAIRES */
@@ -835,9 +839,9 @@
   visibility: visible;
 
   animation:
-    drawTree 1.2s ease forwards;
+    drawTree 2.2s cubic-bezier(.65,.05,.36,1) forwards;
 
-  animation-delay: 2.2s;
+  animation-delay: 2.5s;
 }
 
 /* EXTRÉMITÉS */
@@ -847,9 +851,9 @@
   visibility: visible;
 
   animation:
-    drawTree 1s ease forwards;
+    drawTree 1.8s cubic-bezier(.65,.05,.36,1) forwards;
 
-  animation-delay: 3.2s;
+  animation-delay: 3.5s;
 }
 
 /* APPARITION DES NOEUDS */
