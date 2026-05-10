@@ -863,7 +863,7 @@
   animation:
     popNode .45s ease forwards;
 
-  animation-delay: 4.1s;
+  animation-delay: 5s;
 }
 
 .tree-active .node-small {
@@ -871,5 +871,5 @@
   animation:
     fadeText .3s ease forwards;
 
-  animation-delay: 4.2s;
+  animation-delay: 5s;
 }
