@@ -247,7 +247,7 @@
       dnaContext.save();
       dnaContext.globalAlpha = alpha;
       dnaContext.shadowColor = color;
-      dnaContext.shadowBlur = 16;
+      dnaContext.shadowBlur = 8;
       dnaContext.fillStyle = color;
       dnaContext.beginPath();
       dnaContext.arc(x, y, radius, 0, Math.PI * 2);
@@ -262,7 +262,7 @@
       dnaContext.lineWidth = width;
       dnaContext.lineCap = "round";
       dnaContext.shadowColor = typeof color === "string" ? color : "rgba(255, 255, 255, 0.45)";
-      dnaContext.shadowBlur = 12;
+      dnaContext.shadowBlur = 7;
       dnaContext.beginPath();
       dnaContext.moveTo(x1, y1);
       dnaContext.lineTo(x2, y2);
@@ -272,8 +272,8 @@
 
     function drawDnaTube(pointA, pointB, color, alpha) {
       const scale = (pointA.scale + pointB.scale) / 2;
-      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, color, 3.4 + scale * 4.4, alpha);
-      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, "rgba(255, 255, 255, 0.72)", 0.7 + scale * 0.9, alpha * 0.42);
+      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, color, 2.2 + scale * 3.4, alpha);
+      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, "rgba(255, 255, 255, 0.38)", 0.45 + scale * 0.6, alpha * 0.26);
     }
 
     function drawDnaBasePair(pointA, pointB, colorA, colorB, alpha) {
@@ -281,17 +281,7 @@
       gradient.addColorStop(0, colorA);
       gradient.addColorStop(0.5, "rgba(236, 248, 255, 0.72)");
       gradient.addColorStop(1, colorB);
-      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, gradient, 2 + ((pointA.scale + pointB.scale) / 2) * 2.6, alpha);
-    }
-
-    function drawDnaLabel(text, x, y, alpha) {
-      dnaContext.save();
-      dnaContext.globalAlpha = alpha;
-      dnaContext.fillStyle = "#e9fbff";
-      dnaContext.font = "800 9px Space Grotesk, monospace";
-      dnaContext.textAlign = "center";
-      dnaContext.fillText(text, x, y);
-      dnaContext.restore();
+      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, gradient, 1.1 + ((pointA.scale + pointB.scale) / 2) * 1.4, alpha);
     }
 
     function drawDnaFrame(time) {
@@ -299,27 +289,27 @@
         return;
       }
 
-      pointer.x += (pointer.targetX - pointer.x) * 0.075;
-      pointer.y += (pointer.targetY - pointer.y) * 0.075;
+      pointer.x += (pointer.targetX - pointer.x) * 0.035;
+      pointer.y += (pointer.targetY - pointer.y) * 0.035;
 
       dnaContext.clearRect(0, 0, dnaWidth, dnaHeight);
 
-      const centerX = dnaWidth / 2 + pointer.x * 18;
-      const centerY = dnaHeight / 2 - 2 + pointer.y * 10;
-      const helixHeight = dnaHeight * 0.68;
-      const helixRadius = dnaWidth * 0.16;
-      const perspective = 470;
-      const steps = 42;
-      const phase = time * 0.00155;
-      const tilt = -0.34 + pointer.y * 0.18;
-      const turns = Math.PI * 6.7;
+      const centerX = dnaWidth / 2 + pointer.x * 7;
+      const centerY = dnaHeight / 2 + Math.sin(time * 0.00042) * 2 + pointer.y * 5;
+      const helixHeight = dnaHeight * 0.64;
+      const helixRadius = dnaWidth * 0.135;
+      const perspective = 640;
+      const steps = 58;
+      const phase = time * 0.00072;
+      const tilt = -0.26 + pointer.y * 0.08;
+      const turns = Math.PI * 7.2;
       const strandA = [];
       const strandB = [];
       const basePairs = [];
 
       for (let i = 0; i < steps; i++) {
         const progress = i / (steps - 1);
-        const angle = progress * turns + phase + pointer.x * 0.35;
+        const angle = progress * turns + phase + pointer.x * 0.12;
         const y3 = -helixHeight / 2 + progress * helixHeight;
 
         function projectPoint(offset) {
@@ -352,20 +342,12 @@
         });
       }
 
-      const aura = dnaContext.createRadialGradient(centerX, centerY, 10, centerX, centerY, dnaWidth * 0.42);
-      aura.addColorStop(0, "rgba(13, 229, 255, 0.13)");
-      aura.addColorStop(0.46, "rgba(255, 41, 213, 0.07)");
+      const aura = dnaContext.createRadialGradient(centerX, centerY, 12, centerX, centerY, dnaWidth * 0.38);
+      aura.addColorStop(0, "rgba(210, 235, 232, 0.1)");
+      aura.addColorStop(0.58, "rgba(125, 170, 165, 0.04)");
       aura.addColorStop(1, "rgba(0, 0, 0, 0)");
       dnaContext.fillStyle = aura;
       dnaContext.fillRect(0, 0, dnaWidth, dnaHeight);
-
-      for (let i = 0; i < 18; i++) {
-        const angle = phase * 0.8 + i * Math.PI * 2 / 18;
-        const radius = dnaWidth * 0.34 + Math.sin(phase + i) * 8;
-        const particleX = centerX + Math.cos(angle) * radius;
-        const particleY = centerY + Math.sin(angle) * radius;
-        drawDnaParticle(particleX, particleY, 1.1 + (i % 3) * 0.7, i % 2 ? "#ff29d5" : "#0de5ff", 0.18);
-      }
 
       basePairs
         .slice()
@@ -375,12 +357,8 @@
         .forEach(function (base) {
           const isAT = base.pair.indexOf("A") !== -1;
           const averageScale = (base.a.scale + base.b.scale) / 2;
-          const alpha = 0.22 + Math.min(averageScale, 1.22) * 0.36;
-          drawDnaBasePair(base.a, base.b, isAT ? "#e2ad55" : "#7cc18d", isAT ? "#e66f7d" : "#62d7ff", alpha);
-
-          if (base.index % 6 === 0 && averageScale > 0.98) {
-            drawDnaLabel(base.pair, (base.a.x + base.b.x) / 2, (base.a.y + base.b.y) / 2 - 5, 0.28 + averageScale * 0.2);
-          }
+          const alpha = 0.13 + Math.min(averageScale, 1.18) * 0.22;
+          drawDnaBasePair(base.a, base.b, isAT ? "#d8b56b" : "#85b98f", isAT ? "#c8878d" : "#84bec9", alpha);
         });
 
       const segments = [];
@@ -389,13 +367,13 @@
         segments.push({
           from: strandA[i - 1],
           to: strandA[i],
-          color: "#13e8ff",
+          color: "#7fc9d7",
           depth: (strandA[i - 1].z + strandA[i].z) / 2
         });
         segments.push({
           from: strandB[i - 1],
           to: strandB[i],
-          color: "#ff2bd6",
+          color: "#c895d5",
           depth: (strandB[i - 1].z + strandB[i].z) / 2
         });
       }
@@ -406,29 +384,22 @@
         })
         .forEach(function (segment) {
           const scale = (segment.from.scale + segment.to.scale) / 2;
-          drawDnaTube(segment.from, segment.to, segment.color, 0.24 + Math.min(scale, 1.25) * 0.58);
+          drawDnaTube(segment.from, segment.to, segment.color, 0.18 + Math.min(scale, 1.18) * 0.42);
         });
 
       strandA.concat(strandB).sort(function (first, second) {
         return first.z - second.z;
       }).forEach(function (point, index) {
-        if (index % 2 === 0) {
-          drawDnaParticle(point.x, point.y, 2.2 + point.scale * 2.8, point.z > 0 ? "#e9fbff" : "#8cecff", 0.34 + Math.min(point.scale, 1.22) * 0.34);
+        if (index % 3 === 0) {
+          drawDnaParticle(point.x, point.y, 1.4 + point.scale * 1.9, point.z > 0 ? "#f0eee3" : "#9dcbd0", 0.18 + Math.min(point.scale, 1.18) * 0.24);
         }
       });
-
-      const scanY = centerY - helixHeight / 2 + ((time * 0.00022) % 1) * helixHeight;
-      const scanGradient = dnaContext.createLinearGradient(centerX - helixRadius * 2.2, scanY, centerX + helixRadius * 2.2, scanY);
-      scanGradient.addColorStop(0, "rgba(13, 229, 255, 0)");
-      scanGradient.addColorStop(0.5, "rgba(255, 255, 255, 0.34)");
-      scanGradient.addColorStop(1, "rgba(255, 41, 213, 0)");
-      drawDnaLine(centerX - helixRadius * 2.35, scanY, centerX + helixRadius * 2.35, scanY, scanGradient, 1.4, 0.62);
 
       const currentTick = Math.floor(time / 480);
 
       if (dnaReadout && currentTick !== readoutTick) {
         readoutTick = currentTick;
-        dnaReadout.textContent = "séquence " + dnaBases[currentTick % dnaBases.length] + " · scan " + String(currentTick % 100).padStart(2, "0");
+        dnaReadout.textContent = "double hélice · rotation lente";
       }
     }
 
