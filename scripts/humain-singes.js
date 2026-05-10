@@ -340,7 +340,7 @@
     </span>
   </span>
 
-  <span class="trait-info">
+   <span class="trait-info">
     Mâchoire fusionnée
 
     <span class="trait-tooltip">
@@ -351,66 +351,16 @@
   </span>
 
 </div>
-.trait-info {
-  position: relative;
-  cursor: pointer;
-}
 
-.trait-tooltip {
-  position: absolute;
-  bottom: 145%;
-  left: 50%;
-  transform: translateX(-50%);
+<button class="quiz-restart" id="quiz-restart">
+  Recommencer le quiz
+</button>
 
-  width: 260px;
+</div>
+`;
 
-  background: rgba(15, 15, 15, 0.97);
-  color: white;
-
-  padding: 14px;
-  border-radius: 14px;
-
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: left;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-
-  z-index: 100;
-  pointer-events: none;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-.trait-tooltip strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 15px;
-  color: #7fd4ff;
-}
-
-.trait-info:hover .trait-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-4px);
-}
-        <button class="quiz-restart" id="quiz-restart">
-          Recommencer le quiz
-        </button>
-      </div>
-    `;
-
-    document.getElementById("quiz-restart").addEventListener("click", function () {
-      currentQuestion = 0;
-      score = 0;
-      renderQuestion();
-    });
-  }
-
+document.getElementById("quiz-restart").addEventListener("click", function () {
+  currentQuestion = 0;
+  score = 0;
   renderQuestion();
-})();
+});
