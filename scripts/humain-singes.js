@@ -269,7 +269,7 @@
         >
 
         <p class="quiz-result-highlight">
-          Tu fais partie du grand groupe des singes, et tu partages ces caractères anatomiques avec les 300 autres espèces de singes !
+         Tu es un singe, comme les 300 autres espèces avec lesquelles tu partages ces caractères anatomiques.
         </p>
 
         <div class="classification-chain">
