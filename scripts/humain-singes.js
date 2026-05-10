@@ -368,20 +368,29 @@ document.getElementById("quiz-restart").addEventListener("click", function () {
 
   renderQuestion();
 })();
+/* ============================================
+   ANIMATION ARBRE ÉVOLUTIF
+   ============================================ */
+
 const treeSection = document.querySelector(".evolution-tree-slide");
 
-const observer = new IntersectionObserver((entries) => {
+if (treeSection) {
 
-  entries.forEach(entry => {
+  const observer = new IntersectionObserver((entries) => {
 
-    if (entry.isIntersecting) {
-      treeSection.classList.add("tree-visible");
-    }
+    entries.forEach(entry => {
 
+      if (entry.isIntersecting) {
+
+        treeSection.classList.add("tree-visible");
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.35
   });
 
-}, {
-  threshold: 0.35
-});
-
-observer.observe(treeSection);
+  observer.observe(treeSection);
+}
