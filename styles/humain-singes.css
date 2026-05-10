@@ -680,8 +680,8 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  stroke-dasharray: 4000;
-  stroke-dashoffset: 4000;
+  stroke-dasharray: 12000;
+  stroke-dashoffset: 12000;
 }
 
 /* NODES */
@@ -740,20 +740,6 @@
 }
 
 /* ACTIVE STATE */
-
-.tree-active .node:not(.root-node) {
-  animation:
-    popNode .45s ease forwards;
-
-  animation-delay: 3.8s;
-}
-
-.tree-active .node-small {
-  animation:
-    fadeText .3s ease forwards;
-
-  animation-delay: 4s;
-}
 
 /* KEYFRAMES */
 
@@ -821,7 +807,7 @@
   visibility: visible;
 
   animation:
-    drawTree 5.8s linear forwards;
+    drawTree 8s linear forwards;
 }
 /* APPARITION DES NOEUDS */
 
