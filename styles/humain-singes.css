@@ -722,3 +722,17 @@
     transform: scale(1);
   }
 }
+.evolution-tree-slide .slide-inner {
+  max-width: 1400px;
+}
+
+.tree-animation-wrapper {
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.evolution-tree-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
