@@ -741,11 +741,6 @@
 
 /* ACTIVE STATE */
 
-.tree-active .branch {
-  animation:
-    drawTree 4.2s ease forwards;
-}
-
 .tree-active .node:not(.root-node) {
   animation:
     popNode .45s ease forwards;
@@ -795,4 +790,82 @@
   to {
     opacity: 1;
   }
+}
+/* ============================================
+   PROPAGATION DEPUIS A
+   ============================================ */
+
+.trunk {
+  stroke-width: 7;
+}
+
+.branch {
+  visibility: hidden;
+
+  filter:
+    drop-shadow(0 0 2px rgba(109,128,173,.15));
+}
+
+/* TRONC */
+
+.tree-active .d0 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 1.2s ease forwards;
+}
+
+/* GROSSES BRANCHES */
+
+.tree-active .d1 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 1.3s ease forwards;
+
+  animation-delay: 1s;
+}
+
+/* BRANCHES INTERMÉDIAIRES */
+
+.tree-active .d2 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 1.2s ease forwards;
+
+  animation-delay: 2.2s;
+}
+
+/* EXTRÉMITÉS */
+
+.tree-active .d3 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 1s ease forwards;
+
+  animation-delay: 3.2s;
+}
+
+/* APPARITION DES NOEUDS */
+
+.tree-active .node:not(.root-node) {
+
+  animation:
+    popNode .45s ease forwards;
+
+  animation-delay: 4.1s;
+}
+
+.tree-active .node-small {
+
+  animation:
+    fadeText .3s ease forwards;
+
+  animation-delay: 4.2s;
 }
