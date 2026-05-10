@@ -792,22 +792,56 @@
     drop-shadow(0 0 2px rgba(109,128,173,.15));
 }
 
+/* ============================================
+   PROPAGATION CONTINUE
+   ============================================ */
+
 /* TRONC */
 
-/* ============================================
-   PROPAGATION FLUIDE
-   ============================================ */
-
-/* ============================================
-   ANIMATION CONTINUE
-   ============================================ */
-
-.tree-active .branch {
+.tree-active .d0 {
 
   visibility: visible;
 
   animation:
-    drawTree 8s linear forwards;
+    drawTree 2.4s linear forwards;
+}
+
+/* PREMIÈRES BRANCHES */
+
+.tree-active .d1 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 2.6s linear forwards;
+
+  animation-delay: 1.7s;
+}
+
+/* BRANCHES INTERMÉDIAIRES */
+
+.tree-active .d2 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 2.5s linear forwards;
+
+  animation-delay: 2.8s;
+}
+
+/* EXTRÉMITÉS */
+
+.tree-active .d3 {
+
+  visibility: visible;
+
+  animation:
+    drawTree 2.3s linear forwards;
+
+  animation-delay: 3.8s;
+}
+
 }
 /* APPARITION DES NOEUDS */
 
