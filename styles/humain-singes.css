@@ -482,3 +482,105 @@
     font-size: 13px;
   }
 }
+/* ============================================
+   TABLEAU CLASSIFICATION
+   ============================================ */
+
+.classification-table-wrapper {
+  margin-top: 2rem;
+}
+
+.classification-title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.classification-subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.classification-table-scroll {
+  overflow-x: auto;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.classification-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  background: #f6f3ec;
+}
+
+.classification-table thead {
+  background: #083b4c;
+}
+
+.classification-table th {
+  color: white;
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.classification-table td {
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 1rem;
+}
+
+.classification-table tbody tr:nth-child(even) {
+  background: #efe9dc;
+}
+
+.highlight-row {
+  background: linear-gradient(90deg, #9d1230, #b3123d) !important;
+}
+
+.highlight-row td {
+  color: white;
+  font-weight: 700;
+}
+
+.final-row {
+  background: #083b4c !important;
+}
+
+.final-row td {
+  color: white;
+  font-weight: 700;
+}
+
+.classification-banner {
+  margin-top: 1.5rem;
+  background: #083b4c;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 24px;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 760px) {
+
+  .classification-title {
+    font-size: 2rem;
+  }
+
+  .classification-table th,
+  .classification-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .classification-banner {
+    font-size: 1rem;
+  }
+}
