@@ -216,7 +216,7 @@
 
   if (dnaCanvas) {
     const dnaContext = dnaCanvas.getContext("2d");
-    const dnaOrbit = dnaCanvas.closest(".dna-orbit");
+    const dnaOrbit = dnaCanvas.closest(".dna-stage");
     const dnaReadout = document.querySelector(".dna-readout span");
     const dnaBases = ["A-T", "C-G", "G-C", "T-A"];
     const pointer = {
