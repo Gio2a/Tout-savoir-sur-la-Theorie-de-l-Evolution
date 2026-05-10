@@ -368,3 +368,20 @@ document.getElementById("quiz-restart").addEventListener("click", function () {
 
   renderQuestion();
 })();
+const treeSection = document.querySelector(".evolution-tree-slide");
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+      treeSection.classList.add("tree-visible");
+    }
+
+  });
+
+}, {
+  threshold: 0.35
+});
+
+observer.observe(treeSection);
