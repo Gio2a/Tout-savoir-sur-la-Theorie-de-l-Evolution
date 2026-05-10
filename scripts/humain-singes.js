@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   "use strict";
 
   const quizRoot = document.getElementById("taxonomy-quiz");
@@ -41,7 +41,7 @@
     },
     {
       type: "images",
-      question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres ?",
+      question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres doigts ?",
       options: [
         {
           label: "Pouce opposable",
@@ -118,6 +118,22 @@
     }
   ]
 },
+    {
+      type: "images",
+      question: "Votre mâchoire inférieure est-elle fusionnée ou séparée en plusieurs parties ?",
+      options: [
+        {
+          label: "Fusionnée",
+          image: "../images/humain-singes/machoire-fusion.png",
+          correct: true
+        },
+        {
+          label: "Séparée en plusieurs parties",
+          image: "../images/humain-singes/machoire-separation.png",
+          correct: false
+        }
+      ]
+    },
     {
       type: "images",
       question: "Vos yeux sont-ils orientés vers l’avant ou sur les côtés ?",
@@ -258,7 +274,7 @@
         >
 
         <p class="quiz-result-highlight">
-          Tu as toutes les propriétés biologiques d’un singe.
+          Tu fais partie du grand groupe des singes, et tu partages ces caractères anatomiques avec les 300 autres espèces de singes !
         </p>
 
         <div class="classification-chain">
@@ -268,6 +284,7 @@
           <span>Nez sec</span>
           <span>Ongles plats</span>
           <span>Orbites fermées</span>
+          <span>Mâchoire fusionnée</span>
           <span>Yeux vers l’avant</span>
         </div>
 
