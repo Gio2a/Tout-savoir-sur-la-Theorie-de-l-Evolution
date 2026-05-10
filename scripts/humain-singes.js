@@ -1,6 +1,82 @@
 (function () {
   "use strict";
 
+  const treeLab = document.getElementById("evo-tree-lab");
+
+  if (treeLab) {
+    const tree = treeLab.querySelector(".evo-tree");
+    const nodes = treeLab.querySelectorAll("[data-tree-node]");
+    const consoleBox = document.getElementById("tree-console");
+    const nodeTexts = {
+      ancestor: {
+        title: "Ancêtre commun",
+        text: "C'est le point de départ du schéma : plusieurs lignées peuvent partir d'une même population ancestrale."
+      },
+      primates: {
+        title: "Primates",
+        text: "Les primates regroupent des espèces qui partagent des caractères hérités, comme une vision importante et des mains capables de saisir."
+      },
+      gorilla: {
+        title: "Gorille",
+        text: "Le gorille n'est pas l'ancêtre de l'humain : c'est une autre branche issue d'ancêtres communs plus anciens."
+      },
+      chimp: {
+        title: "Chimpanzé",
+        text: "Le chimpanzé est notre proche cousin évolutif. Humains et chimpanzés partagent un ancêtre commun, mais aucun ne descend de l'autre."
+      },
+      human: {
+        title: "Humain",
+        text: "L'humain est une branche de l'arbre des primates. L'évolution ne mène pas vers l'humain : elle produit plusieurs lignées différentes."
+      }
+    };
+
+    function revealNode(name) {
+      const data = nodeTexts[name];
+
+      if (!data || !tree) {
+        return;
+      }
+
+      tree.classList.add("reveal-ancestor");
+
+      if (name === "primates" || name === "gorilla" || name === "chimp" || name === "human") {
+        tree.classList.add("reveal-primates");
+      }
+
+      if (name === "gorilla") {
+        tree.classList.add("reveal-gorilla");
+      }
+
+      if (name === "chimp") {
+        tree.classList.add("reveal-chimp");
+      }
+
+      if (name === "human") {
+        tree.classList.add("reveal-human");
+      }
+
+      nodes.forEach(function (node) {
+        node.classList.toggle("active", node.dataset.treeNode === name);
+
+        if (node.dataset.treeNode === name) {
+          node.classList.add("unlocked");
+        }
+      });
+
+      if (consoleBox) {
+        consoleBox.innerHTML = "<strong>" + data.title + "</strong><p>" + data.text + "</p>";
+      }
+    }
+
+    nodes.forEach(function (node) {
+      node.addEventListener("click", function () {
+        revealNode(node.dataset.treeNode);
+      });
+    });
+
+    revealNode("ancestor");
+  }
+
   const quizRoot = document.getElementById("taxonomy-quiz");
 
   if (!quizRoot) {

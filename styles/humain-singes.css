@@ -341,3 +341,161 @@
 .classification-chain span {
   padding: 0.5rem 0.75rem;
 }
+
+.evo-tree-lab {
+  margin-top: 2rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  border-radius: 32px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background:
+    radial-gradient(circle at 78% 14%, color-mix(in srgb, var(--green) 18%, transparent), transparent 28%),
+    linear-gradient(145deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--bg-soft) 82%, transparent));
+  box-shadow: 0 24px 70px var(--shadow);
+}
+
+.tree-brief {
+  max-width: 760px;
+}
+
+.tree-brief h3 {
+  margin: 0;
+  font: 900 clamp(1.6rem, 3vw, 2.3rem) "Space Grotesk", var(--font-body);
+}
+
+.tree-brief p {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+}
+
+.evo-tree {
+  position: relative;
+  min-height: 480px;
+  margin-top: 1.4rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 90%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 34%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 70%, transparent), color-mix(in srgb, var(--paper) 88%, transparent));
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.tree-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tree-path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--gold) 70%, transparent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 55%, transparent));
+  transition: stroke-dashoffset 0.9s ease;
+}
+
+.evo-tree.reveal-ancestor .path-ancestor,
+.evo-tree.reveal-primates .path-ancestor,
+.evo-tree.reveal-gorilla .path-gorilla,
+.evo-tree.reveal-chimp .path-chimp,
+.evo-tree.reveal-human .path-human {
+  stroke-dashoffset: 0;
+}
+
+.tree-node {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.85rem 1rem;
+  background: rgba(10, 15, 25, 0.88);
+  color: #f8f1dd;
+  font: 900 0.85rem "Space Grotesk", var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  transform: translate(-50%, -50%) scale(0.88);
+  opacity: 0.35;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.tree-node::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid color-mix(in srgb, var(--gold) 38%, transparent);
+  border-radius: inherit;
+  animation: treePulse 1.8s ease-in-out infinite;
+}
+
+.tree-node.active,
+.tree-node.unlocked,
+.tree-node:hover,
+.tree-node:focus-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  background: linear-gradient(135deg, #101827, color-mix(in srgb, var(--gold) 30%, #101827));
+}
+
+.root {
+  left: 50%;
+  top: 91%;
+}
+
+.node-primate {
+  left: 50%;
+  top: 55%;
+}
+
+.node-gorilla {
+  left: 18%;
+  top: 18%;
+}
+
+.node-chimp {
+  left: 38%;
+  top: 14%;
+}
+
+.node-human {
+  left: 84%;
+  top: 12%;
+}
+
+.tree-console {
+  margin-top: 1rem;
+  border-radius: 22px;
+  padding: 1rem;
+  background: rgba(10, 15, 25, 0.9);
+  color: #dfffe9;
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.24);
+}
+
+.tree-console strong {
+  color: var(--gold);
+  font: 900 1rem "Space Grotesk", var(--font-body);
+}
+
+.tree-console p {
+  margin: 0.45rem 0 0;
+}
+
+@keyframes treePulse {
+  50% {
+    transform: scale(1.12);
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 760px) {
+  .evo-tree {
+    min-height: 420px;
+  }
+
+  .tree-node {
+    padding: 0.7rem 0.75rem;
+    font-size: 0.72rem;
+  }
+}

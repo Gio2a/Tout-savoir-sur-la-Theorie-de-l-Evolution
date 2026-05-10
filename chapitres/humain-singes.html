@@ -140,6 +140,36 @@
       <div class="banner">
         La bonne image : un arbre avec des branches, pas une échelle.
       </div>
+
+      <div class="evo-tree-lab" id="evo-tree-lab">
+        <div class="tree-brief">
+          <span class="mission-badge">Arbre interactif</span>
+          <h3>Déploie les branches de parenté</h3>
+          <p>
+            Clique sur les nœuds lumineux pour révéler les groupes. Le but est de voir que l'humain n'est pas le sommet d'une ligne, mais une branche parmi d'autres.
+          </p>
+        </div>
+
+        <div class="evo-tree">
+          <button class="tree-node root active" data-tree-node="ancestor">Ancêtre commun</button>
+          <button class="tree-node node-primate" data-tree-node="primates">Primates</button>
+          <button class="tree-node node-gorilla" data-tree-node="gorilla">Gorille</button>
+          <button class="tree-node node-chimp" data-tree-node="chimp">Chimpanzé</button>
+          <button class="tree-node node-human" data-tree-node="human">Humain</button>
+
+          <svg class="tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="tree-path path-ancestor" d="M50 92 C50 76, 50 68, 50 55" />
+            <path class="tree-path path-gorilla" d="M50 55 C34 45, 24 34, 18 18" />
+            <path class="tree-path path-chimp" d="M50 55 C48 40, 43 29, 38 14" />
+            <path class="tree-path path-human" d="M50 55 C62 42, 73 30, 84 12" />
+          </svg>
+        </div>
+
+        <div class="tree-console" id="tree-console">
+          <strong>Ancêtre commun</strong>
+          <p>C'est le point de départ du schéma : plusieurs lignées peuvent partir d'une même population ancestrale.</p>
+        </div>
+      </div>
     </div>
   </section>
 
