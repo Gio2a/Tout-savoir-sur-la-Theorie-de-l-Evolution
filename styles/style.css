@@ -968,21 +968,73 @@ footer a:hover {
   border: 1px dashed color-mix(in srgb, var(--gold) 42%, transparent);
   border-radius: 50%;
   animation: pulseRing 2.8s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(13, 229, 255, 0.13), transparent 28%),
+    radial-gradient(circle at 54% 48%, rgba(255, 41, 213, 0.12), transparent 24%);
+  box-shadow: inset 0 0 42px rgba(13, 229, 255, 0.08), 0 0 58px rgba(218, 168, 79, 0.16);
+  overflow: hidden;
 }
 
 .dna-orbit::before {
-  content: "🧬";
+  content: "";
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: clamp(4rem, 12vw, 7rem);
-  filter: drop-shadow(0 18px 20px var(--shadow-strong));
-  animation: dnaFloat 2.2s ease-in-out infinite alternate;
+  inset: 12%;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, transparent, rgba(13, 229, 255, 0.24), transparent 34%, rgba(255, 41, 213, 0.2), transparent 62%);
+  filter: blur(12px);
+  opacity: 0.75;
+  animation: scannerSpin 7s linear infinite;
 }
 
-.dna-orbit span {
+.dna-canvas {
   position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.dna-readout {
+  position: absolute;
+  left: 50%;
+  bottom: 1.4rem;
+  z-index: 3;
+  display: grid;
+  gap: 0.1rem;
+  min-width: 150px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(13, 229, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(10, 15, 25, 0.72);
+  color: #dffbff;
+  text-align: center;
+  transform: translateX(-50%);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+}
+
+.dna-readout strong {
+  font: 900 0.82rem "Space Grotesk", var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dna-readout span {
+  position: static;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(223, 251, 255, 0.72);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dna-orbit > span {
+  position: absolute;
+  z-index: 4;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -990,11 +1042,11 @@ footer a:hover {
   box-shadow: 0 0 22px var(--gold);
 }
 
-.dna-orbit span:nth-child(1) { left: 48%; top: -9px; }
-.dna-orbit span:nth-child(2) { right: 9%; top: 22%; background: var(--accent-green); }
-.dna-orbit span:nth-child(3) { right: 16%; bottom: 13%; }
-.dna-orbit span:nth-child(4) { left: 14%; bottom: 12%; background: var(--accent-red); }
-.dna-orbit span:nth-child(5) { left: 5%; top: 28%; }
+.dna-orbit > span:nth-of-type(1) { left: 48%; top: -9px; }
+.dna-orbit > span:nth-of-type(2) { right: 9%; top: 22%; background: var(--accent-green); }
+.dna-orbit > span:nth-of-type(3) { right: 16%; bottom: 13%; }
+.dna-orbit > span:nth-of-type(4) { left: 14%; bottom: 12%; background: var(--accent-red); }
+.dna-orbit > span:nth-of-type(5) { left: 5%; top: 28%; }
 
 @keyframes pulseRing {
   50% {

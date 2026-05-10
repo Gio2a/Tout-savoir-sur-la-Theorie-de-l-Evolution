@@ -212,6 +212,190 @@
     });
   });
 
+  const dnaCanvas = document.getElementById("dna-canvas");
+
+  if (dnaCanvas) {
+    const dnaContext = dnaCanvas.getContext("2d");
+    const dnaOrbit = dnaCanvas.closest(".dna-orbit");
+    const dnaReadout = document.querySelector(".dna-readout span");
+    const dnaBases = ["A-T", "C-G", "G-C", "T-A"];
+    const pointer = {
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0
+    };
+    let dnaWidth = 0;
+    let dnaHeight = 0;
+    let dnaRatio = 1;
+    let readoutTick = -1;
+
+    function resizeDnaCanvas() {
+      const rect = dnaCanvas.getBoundingClientRect();
+      dnaRatio = Math.min(window.devicePixelRatio || 1, 2);
+      dnaWidth = rect.width;
+      dnaHeight = rect.height;
+      dnaCanvas.width = Math.round(dnaWidth * dnaRatio);
+      dnaCanvas.height = Math.round(dnaHeight * dnaRatio);
+
+      if (dnaContext) {
+        dnaContext.setTransform(dnaRatio, 0, 0, dnaRatio, 0, 0);
+      }
+    }
+
+    function drawDnaParticle(x, y, radius, color, alpha) {
+      dnaContext.save();
+      dnaContext.globalAlpha = alpha;
+      dnaContext.shadowColor = color;
+      dnaContext.shadowBlur = 16;
+      dnaContext.fillStyle = color;
+      dnaContext.beginPath();
+      dnaContext.arc(x, y, radius, 0, Math.PI * 2);
+      dnaContext.fill();
+      dnaContext.restore();
+    }
+
+    function drawDnaLine(x1, y1, x2, y2, color, width, alpha) {
+      dnaContext.save();
+      dnaContext.globalAlpha = alpha;
+      dnaContext.strokeStyle = color;
+      dnaContext.lineWidth = width;
+      dnaContext.lineCap = "round";
+      dnaContext.shadowColor = typeof color === "string" ? color : "rgba(255, 255, 255, 0.45)";
+      dnaContext.shadowBlur = 12;
+      dnaContext.beginPath();
+      dnaContext.moveTo(x1, y1);
+      dnaContext.lineTo(x2, y2);
+      dnaContext.stroke();
+      dnaContext.restore();
+    }
+
+    function drawDnaFrame(time) {
+      if (!dnaContext || dnaWidth === 0 || dnaHeight === 0) {
+        return;
+      }
+
+      pointer.x += (pointer.targetX - pointer.x) * 0.075;
+      pointer.y += (pointer.targetY - pointer.y) * 0.075;
+
+      dnaContext.clearRect(0, 0, dnaWidth, dnaHeight);
+
+      const centerX = dnaWidth / 2 + pointer.x * 18;
+      const centerY = dnaHeight / 2 - 4 + pointer.y * 12;
+      const helixHeight = dnaHeight * 0.58;
+      const amplitude = dnaWidth * 0.18;
+      const steps = 34;
+      const phase = time * 0.0022;
+      const points = [];
+
+      for (let i = 0; i < steps; i++) {
+        const progress = i / (steps - 1);
+        const angle = progress * Math.PI * 5.2 + phase;
+        const y = centerY - helixHeight / 2 + progress * helixHeight;
+        const wave = Math.sin(angle);
+        const depth = Math.cos(angle);
+        const twist = Math.sin(progress * Math.PI) * 10;
+
+        points.push({
+          x1: centerX + wave * amplitude + pointer.y * twist,
+          x2: centerX - wave * amplitude - pointer.y * twist,
+          y: y,
+          z1: (depth + 1) / 2,
+          z2: 1 - ((depth + 1) / 2),
+          depth: depth
+        });
+      }
+
+      const aura = dnaContext.createRadialGradient(centerX, centerY, 10, centerX, centerY, dnaWidth * 0.42);
+      aura.addColorStop(0, "rgba(13, 229, 255, 0.16)");
+      aura.addColorStop(0.46, "rgba(255, 41, 213, 0.08)");
+      aura.addColorStop(1, "rgba(0, 0, 0, 0)");
+      dnaContext.fillStyle = aura;
+      dnaContext.fillRect(0, 0, dnaWidth, dnaHeight);
+
+      for (let i = 0; i < 12; i++) {
+        const angle = phase * 0.6 + i * Math.PI * 2 / 12;
+        const radius = dnaWidth * 0.34 + Math.sin(phase + i) * 8;
+        const particleX = centerX + Math.cos(angle) * radius;
+        const particleY = centerY + Math.sin(angle) * radius;
+        drawDnaParticle(particleX, particleY, 1.5 + (i % 3), i % 2 ? "#ff29d5" : "#0de5ff", 0.24);
+      }
+
+      points.forEach(function (point, index) {
+        const baseColor = dnaBases[index % dnaBases.length].includes("A") ? "#e2ad55" : "#7cc18d";
+        const baseAlpha = 0.2 + Math.abs(point.depth) * 0.24;
+        drawDnaLine(point.x1, point.y, point.x2, point.y, baseColor, 1.15 + Math.abs(point.depth), baseAlpha);
+      });
+
+      for (let i = 1; i < points.length; i++) {
+        const previous = points[i - 1];
+        const current = points[i];
+        const cyanDepth = (previous.z1 + current.z1) / 2;
+        const magentaDepth = (previous.z2 + current.z2) / 2;
+
+        drawDnaLine(previous.x1, previous.y, current.x1, current.y, "#0de5ff", 2.2 + cyanDepth * 4.2, 0.34 + cyanDepth * 0.62);
+        drawDnaLine(previous.x2, previous.y, current.x2, current.y, "#ff29d5", 2.2 + magentaDepth * 4.2, 0.34 + magentaDepth * 0.62);
+      }
+
+      points.forEach(function (point, index) {
+        drawDnaParticle(point.x1, point.y, 2.2 + point.z1 * 3.8, "#0de5ff", 0.55 + point.z1 * 0.42);
+        drawDnaParticle(point.x2, point.y, 2.2 + point.z2 * 3.8, "#ff29d5", 0.55 + point.z2 * 0.42);
+
+        if (index % 7 === 0) {
+          const marker = dnaBases[(Math.floor(time / 320) + index) % dnaBases.length];
+          dnaContext.save();
+          dnaContext.globalAlpha = 0.42;
+          dnaContext.fillStyle = "#dffbff";
+          dnaContext.font = "700 9px Space Grotesk, monospace";
+          dnaContext.fillText(marker, point.x1 + 8, point.y + 3);
+          dnaContext.restore();
+        }
+      });
+
+      const scanY = centerY - helixHeight / 2 + ((time * 0.00022) % 1) * helixHeight;
+      const scanGradient = dnaContext.createLinearGradient(centerX - amplitude * 1.55, scanY, centerX + amplitude * 1.55, scanY);
+      scanGradient.addColorStop(0, "rgba(13, 229, 255, 0)");
+      scanGradient.addColorStop(0.5, "rgba(255, 255, 255, 0.48)");
+      scanGradient.addColorStop(1, "rgba(255, 41, 213, 0)");
+      drawDnaLine(centerX - amplitude * 1.6, scanY, centerX + amplitude * 1.6, scanY, scanGradient, 1.8, 0.8);
+
+      const currentTick = Math.floor(time / 480);
+
+      if (dnaReadout && currentTick !== readoutTick) {
+        readoutTick = currentTick;
+        dnaReadout.textContent = "séquence " + dnaBases[currentTick % dnaBases.length] + " · scan " + String(currentTick % 100).padStart(2, "0");
+      }
+    }
+
+    function animateDna(time) {
+      drawDnaFrame(time);
+      window.requestAnimationFrame(animateDna);
+    }
+
+    if (dnaContext && dnaOrbit) {
+      resizeDnaCanvas();
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(resizeDnaCanvas).observe(dnaOrbit);
+      } else {
+        window.addEventListener("resize", resizeDnaCanvas);
+      }
+
+      dnaOrbit.addEventListener("pointermove", function (event) {
+        const rect = dnaOrbit.getBoundingClientRect();
+        pointer.targetX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        pointer.targetY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      });
+
+      dnaOrbit.addEventListener("pointerleave", function () {
+        pointer.targetX = 0;
+        pointer.targetY = 0;
+      });
+
+      window.requestAnimationFrame(animateDna);
+    }
+  }
+
   /* =========================
      EXPÉRIENCE MISSION
      ========================= */
