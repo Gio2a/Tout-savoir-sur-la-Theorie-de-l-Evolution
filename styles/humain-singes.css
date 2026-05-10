@@ -584,3 +584,6 @@
     font-size: 1rem;
   }
 }
+.final-row strong {
+  color: white !important;
+}
