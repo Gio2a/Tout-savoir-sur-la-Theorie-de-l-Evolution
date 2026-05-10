@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles/style.css?v=dna-subtle-4" />
+  <link rel="stylesheet" href="styles/style.css?v=dna-anno-5" />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧬%3C/text%3E%3C/svg%3E" />
 </head>
@@ -168,15 +168,34 @@
 
           <div class="dna-stage">
             <canvas id="dna-canvas" class="dna-canvas" aria-label="Animation interactive d'une double hélice ADN"></canvas>
-            <div class="dna-readout">
-              <strong>ADN vivant</strong>
-              <span>rendu JavaScript</span>
+
+            <svg class="dna-leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="22" y1="24" x2="44" y2="34" />
+              <line x1="78" y1="30" x2="58" y2="40" />
+              <line x1="20" y1="70" x2="44" y2="58" />
+              <line x1="80" y1="74" x2="60" y2="64" />
+              <line x1="50" y1="6" x2="50" y2="18" />
+              <line x1="50" y1="94" x2="50" y2="84" />
+            </svg>
+
+            <div class="dna-anno dna-anno-tl">
+              <span class="dna-anno-tag">Squelette sucre-phosphate</span>
+              <span class="dna-anno-sub">brin externe répété</span>
             </div>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="dna-anno dna-anno-tr">
+              <span class="dna-anno-tag">Paires de bases</span>
+              <span class="dna-anno-sub">A · T · G · C</span>
+            </div>
+            <div class="dna-anno dna-anno-bl">
+              <span class="dna-anno-tag">Liaisons hydrogène</span>
+              <span class="dna-anno-sub">tiennent les deux brins</span>
+            </div>
+            <div class="dna-anno dna-anno-br">
+              <span class="dna-anno-tag">Pas de l'hélice</span>
+              <span class="dna-anno-sub">≈ 10,5 paires / tour</span>
+            </div>
+            <div class="dna-anno dna-anno-top">5′</div>
+            <div class="dna-anno dna-anno-bottom">3′</div>
           </div>
 
           <div class="mission-stats">
@@ -303,6 +322,6 @@
   </p>
 </footer>
 
-<script src="scripts/site.js?v=dna-subtle-4" defer></script>
+<script src="scripts/site.js?v=dna-anno-5" defer></script>
 </body>
 </html>

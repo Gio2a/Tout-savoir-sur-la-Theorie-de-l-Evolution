@@ -276,12 +276,25 @@
       drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, "rgba(255, 255, 255, 0.38)", 0.45 + scale * 0.6, alpha * 0.26);
     }
 
-    function drawDnaBasePair(pointA, pointB, colorA, colorB, alpha) {
+    function drawDnaBasePair(pointA, pointB, colorA, colorB, alpha, bondCount) {
       const gradient = dnaContext.createLinearGradient(pointA.x, pointA.y, pointB.x, pointB.y);
       gradient.addColorStop(0, colorA);
-      gradient.addColorStop(0.5, "rgba(236, 248, 255, 0.72)");
+      gradient.addColorStop(0.5, "rgba(236, 248, 255, 0.55)");
       gradient.addColorStop(1, colorB);
-      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, gradient, 1.1 + ((pointA.scale + pointB.scale) / 2) * 1.4, alpha);
+      const baseWidth = 0.9 + ((pointA.scale + pointB.scale) / 2) * 1.1;
+      drawDnaLine(pointA.x, pointA.y, pointB.x, pointB.y, gradient, baseWidth, alpha * 0.55);
+
+      const segments = bondCount || 2;
+      const dx = (pointB.x - pointA.x) / (segments * 2 + 1);
+      const dy = (pointB.y - pointA.y) / (segments * 2 + 1);
+
+      for (let s = 0; s < segments; s++) {
+        const startX = pointA.x + dx * (s * 2 + 1);
+        const startY = pointA.y + dy * (s * 2 + 1);
+        const endX = startX + dx;
+        const endY = startY + dy;
+        drawDnaLine(startX, startY, endX, endY, "rgba(232, 240, 248, 0.48)", 0.6, alpha * 0.85);
+      }
     }
 
     function drawDnaFrame(time) {
@@ -357,8 +370,16 @@
         .forEach(function (base) {
           const isAT = base.pair.indexOf("A") !== -1;
           const averageScale = (base.a.scale + base.b.scale) / 2;
-          const alpha = 0.13 + Math.min(averageScale, 1.18) * 0.22;
-          drawDnaBasePair(base.a, base.b, isAT ? "#d8b56b" : "#85b98f", isAT ? "#c8878d" : "#84bec9", alpha);
+          const alpha = 0.16 + Math.min(averageScale, 1.18) * 0.26;
+          const bonds = isAT ? 2 : 3;
+          drawDnaBasePair(
+            base.a,
+            base.b,
+            isAT ? "#d8b56b" : "#85b98f",
+            isAT ? "#c8878d" : "#84bec9",
+            alpha,
+            bonds
+          );
         });
 
       const segments = [];
