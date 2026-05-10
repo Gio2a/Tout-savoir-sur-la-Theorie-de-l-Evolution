@@ -479,7 +479,7 @@
 
       <div class="controls">
         <button id="backBtn" class="secondary" type="button">◀ Reculer</button>
-        <input id="timeSlider" type="range" min="0" max="541" value="541" step="1" aria-label="Date en millions d'années" />
+        <<input id="timeSlider" type="range" min="0" max="541" value="0" step="1" aria-label="Date en millions d'années" />
         <button id="forwardBtn" class="secondary" type="button">Avancer ▶</button>
         <button id="playBtn" type="button">▶ Lecture</button>
         <button id="resetBtn" class="secondary" type="button">↺ Reset</button>
@@ -1046,49 +1046,58 @@
       }
     }
 
-    function step(delta) {
-      const next = clamp(Number(slider.value) + delta, PRESENT, OLDEST);
-      update(next);
-    }
+    <script>
+function step(delta) {
+  const next = clamp(Number(slider.value) - delta, PRESENT, OLDEST);
+  update(next);
+}
 
-    function play() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-        playBtn.textContent = "▶ Lecture";
-        return;
-      }
+function play() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+    playBtn.textContent = "▶ Lecture";
+    return;
+  }
 
-      playBtn.textContent = "⏸ Pause";
+  playBtn.textContent = "⏸ Pause";
 
-      timer = setInterval(() => {
-        const current = Number(slider.value);
-        if (current <= PRESENT) {
-          clearInterval(timer);
-          timer = null;
-          playBtn.textContent = "▶ Lecture";
-          return;
-        }
-        update(current - 1);
-      }, 45);
-    }
+  timer = setInterval(() => {
+    const current = Number(slider.value);
 
-    function reset() {
-      if (timer) clearInterval(timer);
+    if (current >= OLDEST) {
+      clearInterval(timer);
       timer = null;
       playBtn.textContent = "▶ Lecture";
-      update(OLDEST);
+      return;
     }
 
-    drawTimeline();
-    drawKeyTraits();
-    update(OLDEST);
+    update(current + 1);
+  }, 45);
+}
 
-    slider.addEventListener("input", event => update(event.target.value));
-    backBtn.addEventListener("click", () => step(10));
-    forwardBtn.addEventListener("click", () => step(-10));
-    playBtn.addEventListener("click", play);
-    resetBtn.addEventListener("click", reset);
-  </script>
+function reset() {
+  if (timer) clearInterval(timer);
+
+  timer = null;
+  playBtn.textContent = "▶ Lecture";
+
+  update(PRESENT);
+}
+
+drawTimeline();
+drawKeyTraits();
+update(PRESENT);
+
+slider.addEventListener("input", event => update(event.target.value));
+
+backBtn.addEventListener("click", () => step(10));
+
+forwardBtn.addEventListener("click", () => step(-10));
+
+playBtn.addEventListener("click", play);
+
+resetBtn.addEventListener("click", reset);
+</script>
 </body>
 </html>
