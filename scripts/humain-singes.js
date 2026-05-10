@@ -7,6 +7,9 @@
     return;
   }
 
+  // ORDRE IDENTIQUE AU TABLEAU :
+  // Vertébrés → Mammifères → Primates → Haplorhiniens → Simiiformes
+
   const questions = [
     {
       type: "images",
@@ -24,6 +27,7 @@
         }
       ]
     },
+
     {
       type: "yesno",
       question: "Les femelles de votre espèce produisent-elles du lait ?",
@@ -39,6 +43,7 @@
         }
       ]
     },
+
     {
       type: "images",
       question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres doigts ?",
@@ -55,22 +60,24 @@
         }
       ]
     },
+
     {
       type: "images",
-      question: "Votre nez est-il sec ou humide ?",
+      question: "Vos yeux sont-ils orientés vers l’avant ou sur les côtés ?",
       options: [
         {
-          label: "Nez sec",
-          image: "../images/humain-singes/nez-sec.png",
+          label: "Vers l’avant",
+          image: "../images/humain-singes/yeux-face.png",
           correct: true
         },
         {
-          label: "Nez humide",
-          image: "../images/humain-singes/nez-humide.png",
+          label: "Sur les côtés",
+          image: "../images/humain-singes/yeux-cote.png",
           correct: false
         }
       ]
     },
+
     {
       type: "images",
       question: "Possédez-vous des ongles plats ou des griffes ?",
@@ -87,9 +94,27 @@
         }
       ]
     },
+
     {
       type: "images",
-      question: "Vos orbites sont-elles ouvertes ou complètement fermées par l’os ?",
+      question: "Votre nez est-il sec ou humide ?",
+      options: [
+        {
+          label: "Nez sec",
+          image: "../images/humain-singes/nez-sec.png",
+          correct: true
+        },
+        {
+          label: "Nez humide",
+          image: "../images/humain-singes/nez-humide.png",
+          correct: false
+        }
+      ]
+    },
+
+    {
+      type: "images",
+      question: "Possédez-vous des orbites ouvertes ou complètement fermées par l’os ?",
       options: [
         {
           label: "Orbites fermées par l’os",
@@ -103,21 +128,7 @@
         }
       ]
     },
-    {
-  question: "Votre mâchoire inférieure est-elle fusionnée ou séparée en plusieurs parties ?",
-  answers: [
-    {
-      text: "Fusionnée",
-      image: "machoire-fusion.png",
-      correct: true
-    },
-    {
-      text: "Séparée en plusieurs parties",
-      image: "machoire-separation.png",
-      correct: false
-    }
-  ]
-},
+
     {
       type: "images",
       question: "Votre mâchoire inférieure est-elle fusionnée ou séparée en plusieurs parties ?",
@@ -130,22 +141,6 @@
         {
           label: "Séparée en plusieurs parties",
           image: "../images/humain-singes/machoire-separation.png",
-          correct: false
-        }
-      ]
-    },
-    {
-      type: "images",
-      question: "Vos yeux sont-ils orientés vers l’avant ou sur les côtés ?",
-      options: [
-        {
-          label: "Vers l’avant",
-          image: "../images/humain-singes/yeux-face.png",
-          correct: true
-        },
-        {
-          label: "Sur les côtés",
-          image: "../images/humain-singes/yeux-cote.png",
           correct: false
         }
       ]
@@ -281,11 +276,11 @@
           <span>Colonne vertébrale</span>
           <span>Production de lait</span>
           <span>Pouce opposable</span>
-          <span>Nez sec</span>
+          <span>Vision vers l’avant</span>
           <span>Ongles plats</span>
+          <span>Nez sec</span>
           <span>Orbites fermées</span>
           <span>Mâchoire fusionnée</span>
-          <span>Yeux vers l’avant</span>
         </div>
 
         <button class="quiz-restart" id="quiz-restart">
