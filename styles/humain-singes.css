@@ -812,50 +812,17 @@
    PROPAGATION FLUIDE
    ============================================ */
 
-.tree-active .d0 {
+/* ============================================
+   ANIMATION CONTINUE
+   ============================================ */
+
+.tree-active .branch {
 
   visibility: visible;
 
   animation:
-    drawTree 2.8s cubic-bezier(.65,.05,.36,1) forwards;
+    drawTree 5.8s linear forwards;
 }
-
-/* GRANDES BRANCHES */
-
-.tree-active .d1 {
-
-  visibility: visible;
-
-  animation:
-    drawTree 2.6s cubic-bezier(.65,.05,.36,1) forwards;
-
-  animation-delay: 1.4s;
-}
-
-/* BRANCHES INTERMÉDIAIRES */
-
-.tree-active .d2 {
-
-  visibility: visible;
-
-  animation:
-    drawTree 2.2s cubic-bezier(.65,.05,.36,1) forwards;
-
-  animation-delay: 2.5s;
-}
-
-/* EXTRÉMITÉS */
-
-.tree-active .d3 {
-
-  visibility: visible;
-
-  animation:
-    drawTree 1.8s cubic-bezier(.65,.05,.36,1) forwards;
-
-  animation-delay: 3.5s;
-}
-
 /* APPARITION DES NOEUDS */
 
 .tree-active .node:not(.root-node) {
