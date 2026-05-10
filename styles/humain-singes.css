@@ -341,3 +341,51 @@
 .classification-chain span {
   padding: 0.5rem 0.75rem;
 }
+.trait-info {
+  position: relative;
+  cursor: pointer;
+}
+
+.trait-tooltip {
+  position: absolute;
+  bottom: 145%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 260px;
+
+  background: rgba(15, 15, 15, 0.97);
+  color: white;
+
+  padding: 14px;
+  border-radius: 14px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  z-index: 100;
+  pointer-events: none;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.trait-tooltip strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #7fd4ff;
+}
+
+.trait-info:hover .trait-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px);
+}
