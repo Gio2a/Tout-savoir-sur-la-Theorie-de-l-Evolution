@@ -374,23 +374,18 @@ document.getElementById("quiz-restart").addEventListener("click", function () {
 
 const treeSection = document.querySelector(".evolution-tree-slide");
 
-if (treeSection) {
+const treeButton = document.getElementById("start-tree-btn");
 
-  const observer = new IntersectionObserver((entries) => {
+if (treeSection && treeButton) {
 
-    entries.forEach(entry => {
+  treeButton.addEventListener("click", () => {
 
-      if (entry.isIntersecting) {
+    treeSection.classList.remove("tree-active");
 
-        treeSection.classList.add("tree-visible");
+    void treeSection.offsetWidth;
 
-      }
+    treeSection.classList.add("tree-active");
 
-    });
-
-  }, {
-    threshold: 0.35
   });
 
-  observer.observe(treeSection);
 }
