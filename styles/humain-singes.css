@@ -736,3 +736,149 @@
   height: auto;
   display: block;
 }
+.evolution-tree-layout {
+  max-width: 1700px;
+}
+
+.tree-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.tree-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: .7;
+}
+
+.tree-button {
+  display: block;
+
+  margin: 0 auto 3rem auto;
+
+  padding: 1rem 2rem;
+
+  border: none;
+  border-radius: 999px;
+
+  background: #5f7fb2;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.tree-svg-wrapper {
+  width: 100%;
+}
+
+.evolution-tree-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* BRANCHES */
+
+.branch {
+  fill: none;
+
+  stroke: #6b7faa;
+  stroke-width: 4;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  opacity: 0;
+
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+}
+
+/* NODES */
+
+.node {
+  fill: #5f7fb2;
+
+  opacity: 0;
+
+  filter:
+    drop-shadow(0 4px 12px rgba(0,0,0,.15));
+}
+
+.root-node {
+  opacity: 1;
+}
+
+.node-label {
+  fill: white;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.node-small {
+  fill: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* FOOTER */
+
+.tree-footer {
+  margin-top: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  opacity: .7;
+}
+
+.tree-line {
+  width: 140px;
+  height: 1px;
+  background: #9ba8bf;
+}
+
+/* ACTIVE */
+
+.tree-active .branch {
+  animation:
+    drawTree 4s ease forwards;
+}
+
+.tree-active .node:not(.root-node),
+.tree-active .node-small {
+  animation:
+    fadeNode .4s ease forwards;
+  animation-delay: 3.6s;
+}
+
+@keyframes drawTree {
+
+  from {
+    stroke-dashoffset: 4000;
+    opacity: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeNode {
+
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
