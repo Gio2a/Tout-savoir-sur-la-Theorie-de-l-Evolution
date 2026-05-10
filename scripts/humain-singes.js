@@ -364,3 +364,7 @@ document.getElementById("quiz-restart").addEventListener("click", function () {
   score = 0;
   renderQuestion();
 });
+}
+
+  renderQuestion();
+})();
