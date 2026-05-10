@@ -273,16 +273,132 @@
         </p>
 
         <div class="classification-chain">
-          <span>Colonne vertébrale</span>
-          <span>Production de lait</span>
-          <span>Pouce opposable</span>
-          <span>Vision vers l’avant</span>
-          <span>Ongles plats</span>
-          <span>Nez sec</span>
-          <span>Orbites fermées</span>
-          <span>Mâchoire fusionnée</span>
-        </div>
 
+  <span class="trait-info">
+    Colonne vertébrale
+
+    <span class="trait-tooltip">
+      <strong>Vertébrés</strong><br>
+      La colonne vertébrale protège la moelle épinière et soutient le corps.
+      Les poissons, amphibiens, reptiles, oiseaux et mammifères partagent ce caractère.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Production de lait
+
+    <span class="trait-tooltip">
+      <strong>Mammifères</strong><br>
+      Les femelles produisent du lait grâce aux glandes mammaires afin de nourrir les petits après la naissance.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Pouce opposable
+
+    <span class="trait-tooltip">
+      <strong>Primates</strong><br>
+      Le pouce opposable permet une préhension fine et une manipulation précise des objets et des branches.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Vision vers l’avant
+
+    <span class="trait-tooltip">
+      <strong>Primates</strong><br>
+      Les yeux orientés vers l’avant permettent une vision en relief et une meilleure estimation des distances.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Ongles plats
+
+    <span class="trait-tooltip">
+      <strong>Simiiformes</strong><br>
+      Les doigts possèdent des ongles plats plutôt que des griffes,
+      améliorant la précision des mouvements et la sensibilité tactile.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Nez sec
+
+    <span class="trait-tooltip">
+      <strong>Haplorhiniens</strong><br>
+      Le nez est sec, contrairement aux lémuriens qui possèdent un rhinarium humide.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Orbites fermées
+
+    <span class="trait-tooltip">
+      <strong>Simiiformes</strong><br>
+      Les orbites sont complètement fermées par l’os,
+      renforçant la protection des yeux.
+    </span>
+  </span>
+
+  <span class="trait-info">
+    Mâchoire fusionnée
+
+    <span class="trait-tooltip">
+      <strong>Simiiformes</strong><br>
+      La mâchoire inférieure est fusionnée en une seule structure osseuse,
+      ce qui renforce la stabilité de la morsure.
+    </span>
+  </span>
+
+</div>
+.trait-info {
+  position: relative;
+  cursor: pointer;
+}
+
+.trait-tooltip {
+  position: absolute;
+  bottom: 145%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 260px;
+
+  background: rgba(15, 15, 15, 0.97);
+  color: white;
+
+  padding: 14px;
+  border-radius: 14px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  z-index: 100;
+  pointer-events: none;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.trait-tooltip strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #7fd4ff;
+}
+
+.trait-info:hover .trait-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px);
+}
         <button class="quiz-restart" id="quiz-restart">
           Recommencer le quiz
         </button>
