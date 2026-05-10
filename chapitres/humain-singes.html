@@ -254,70 +254,106 @@
   </section>
 <section class="slide evolution-tree-slide">
 
-  <div class="slide-inner">
+  <div class="tree-animation-wrapper">
 
-    <span class="section-marker"></span>
+<svg
+  class="evolution-tree-svg"
+  viewBox="0 0 1600 900"
+  xmlns="http://www.w3.org/2000/svg"
+>
 
-    <h2>L'évolution est buissonnante</h2>
+  <!-- TRONC -->
 
-    <p class="subtitle">
-      Une espèce ancestrale peut donner naissance à plusieurs lignées.
-      L'évolution produit des ramifications, pas une ligne menant à l'humain.
-    </p>
+  <path class="branch trunk delay-0"
+    d="M90 450
+       C 220 450, 280 440, 380 410" />
 
-    <div class="tree-animation-wrapper">
+  <!-- RAMIFICATION 1 -->
 
-      <svg
-        class="evolution-tree-svg"
-        viewBox="0 0 1200 700"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+  <path class="branch thick delay-1"
+    d="M380 410
+       C 520 300, 650 250, 860 220" />
 
-        <!-- BRANCHES -->
+  <path class="branch medium delay-2"
+    d="M860 220
+       C 980 170, 1120 150, 1290 120" />
 
-        <path class="branch delay-1"
-          d="M120 350 C 260 350, 300 340, 420 300" />
+  <path class="branch thin delay-3"
+    d="M1290 120
+       C 1380 100, 1460 90, 1540 80" />
 
-        <path class="branch delay-2"
-          d="M120 350 C 260 350, 300 370, 420 430" />
+  <path class="branch thin delay-4"
+    d="M1290 120
+       C 1380 150, 1460 180, 1540 200" />
 
-        <path class="branch delay-3"
-          d="M420 300 C 560 240, 650 240, 760 180" />
+  <!-- RAMIFICATION 2 -->
 
-        <path class="branch delay-4"
-          d="M420 300 C 560 320, 650 330, 760 300" />
+  <path class="branch medium delay-5"
+    d="M860 220
+       C 980 260, 1120 290, 1380 310" />
 
-        <path class="branch delay-5"
-          d="M420 430 C 560 430, 650 500, 760 560" />
+  <path class="branch thin delay-6"
+    d="M1380 310
+       C 1450 300, 1500 295, 1560 295" />
 
-        <path class="branch delay-6"
-          d="M760 180 C 880 120, 980 120, 1080 140" />
+  <path class="branch thin delay-7"
+    d="M1380 310
+       C 1450 340, 1500 355, 1560 370" />
 
-        <path class="branch delay-7"
-          d="M760 180 C 880 210, 980 220, 1080 240" />
+  <!-- RAMIFICATION CENTRALE -->
 
-        <path class="branch delay-8"
-          d="M760 300 C 900 300, 980 340, 1080 360" />
+  <path class="branch thick delay-8"
+    d="M380 410
+       C 540 430, 700 470, 980 500" />
 
-        <path class="branch delay-9"
-          d="M760 560 C 900 560, 980 600, 1080 620" />
+  <path class="branch medium delay-9"
+    d="M980 500
+       C 1100 500, 1250 500, 1450 510" />
 
-        <!-- POINT ANCESTRAL -->
+  <path class="branch medium delay-10"
+    d="M980 500
+       C 1080 550, 1200 590, 1400 640" />
 
-        <circle class="node origin-node" cx="120" cy="350" r="22" />
+  <path class="branch thin delay-11"
+    d="M1400 640
+       C 1470 660, 1520 680, 1570 710" />
 
-        <text x="120" y="357" text-anchor="middle" class="node-text">
-          A
-        </text>
+  <!-- RAMIFICATION BASSE -->
 
-        <!-- ESPÈCES -->
+  <path class="branch thick delay-12"
+    d="M380 410
+       C 520 550, 700 690, 1080 760" />
 
-        <circle class="node delay-node-1" cx="1080" cy="140" r="18" />
-        <circle class="node delay-node-2" cx="1080" cy="240" r="18" />
-        <circle class="node delay-node-3" cx="1080" cy="360" r="18" />
-        <circle class="node delay-node-4" cx="1080" cy="620" r="18" />
+  <path class="branch medium delay-13"
+    d="M1080 760
+       C 1240 770, 1380 770, 1530 760" />
 
-      </svg>
+  <!-- NOEUD RACINE -->
+
+  <circle class="node root-node" cx="90" cy="450" r="34" />
+
+  <text
+    x="90"
+    y="462"
+    text-anchor="middle"
+    class="node-label"
+  >
+    A
+  </text>
+
+  <!-- NOEUDS TERMINAUX -->
+
+  <circle class="node delay-node-1" cx="1540" cy="80" r="22" />
+  <circle class="node delay-node-2" cx="1540" cy="200" r="22" />
+  <circle class="node delay-node-3" cx="1560" cy="295" r="22" />
+  <circle class="node delay-node-4" cx="1560" cy="370" r="22" />
+  <circle class="node delay-node-5" cx="1450" cy="510" r="22" />
+  <circle class="node delay-node-6" cx="1570" cy="710" r="22" />
+  <circle class="node delay-node-7" cx="1530" cy="760" r="22" />
+
+</svg>
+
+</div>
 
     </div>
 
