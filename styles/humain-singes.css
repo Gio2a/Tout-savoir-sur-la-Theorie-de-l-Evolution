@@ -174,7 +174,7 @@
   margin-top: 1.4rem;
 }
 
-.classification-chain span {
+.classification-chain > span {
   padding: 0.65rem 0.9rem;
   border-radius: 999px;
   background: var(--paper);
