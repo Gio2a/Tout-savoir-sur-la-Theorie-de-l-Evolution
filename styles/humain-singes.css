@@ -286,79 +286,232 @@
   box-shadow: 0 16px 40px rgba(0,0,0,0.12);
 }
 
+.branching-visual {
+  max-width: 980px;
+  margin: 2rem auto 0;
+  text-align: center;
+}
+
+.branch-animation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  border: 2px solid rgba(184, 137, 58, 0.35);
+  background: linear-gradient(180deg, #fff9eb 0%, #f7e3b6 100%);
+  color: #1f3447;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 16px 38px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.branch-animation-btn:hover,
+.branch-animation-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 44px rgba(0,0,0,0.14);
+}
+
+.branching-svg-wrapper {
+  margin: 1.5rem auto 0;
+  padding: 1.5rem;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 28% 34%, rgba(247, 227, 182, 0.38) 0, rgba(247, 227, 182, 0) 32%),
+    radial-gradient(circle at 74% 70%, rgba(185, 79, 95, 0.08) 0, rgba(185, 79, 95, 0) 28%),
+    linear-gradient(180deg, #fffaf0 0%, #f6efdf 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 137, 58, 0.16),
+    inset 0 28px 70px rgba(255, 255, 255, 0.72),
+    0 20px 45px rgba(0,0,0,0.08);
+}
+
+.branching-svg {
+  width: 100%;
+  height: auto;
+}
+
+.branching-path {
+  fill: none;
+  stroke: #b8893a;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+}
+
+.extinct-path {
+  stroke: #b94f5f;
+}
+
+.extinct-path-top {
+  stroke: url("#extinct-gradient-top");
+}
+
+.extinct-path-bottom {
+  stroke: url("#extinct-gradient-bottom");
+}
+
+.branching-path.visible {
+  opacity: 1;
+  animation: draw-branch-line 2.2s forwards ease;
+}
+
+@keyframes draw-branch-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.branching-node,
+.branching-label,
+.ancestor-node {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.branching-node.visible,
+.branching-label.visible,
+.ancestor-node.visible {
+  opacity: 1;
+}
+
+.extinct-marker {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.extinct-marker.visible {
+  opacity: 1;
+}
+
+.branching-node {
+  fill: #b8893a;
+}
+
+.ancestor-node {
+  fill: #1f3447;
+  stroke: #fffaf0;
+  stroke-width: 3;
+}
+
+.root-node {
+  fill: #b8893a;
+}
+
+.branching-node.root-node,
+.branching-label.root-label {
+  opacity: 1;
+}
+
+.extinct-marker line {
+  stroke: #b94f5f;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.branching-label {
+  fill: white;
+  font-size: 16px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.branching-label.root-label {
+  font-size: 18px;
+}
+
+.branching-explanations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.2rem auto 0;
+  text-align: left;
+}
+
+.branching-explanation {
+  border-left: 4px solid #b8893a;
+  background: rgba(255, 250, 240, 0.78);
+  padding: 1rem 1rem 1rem 1.1rem;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  box-shadow: inset 0 0 0 1px rgba(184, 137, 58, 0.12);
+  transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.branching-explanation.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.branching-explanation.is-active {
+  background: rgba(255, 249, 235, 0.96);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 137, 58, 0.24),
+    0 14px 32px rgba(184, 137, 58, 0.16);
+}
+
+.branching-explanation:nth-child(3) {
+  border-left-color: #b94f5f;
+}
+
+.branching-explanation:nth-child(3).is-active {
+  box-shadow:
+    inset 0 0 0 1px rgba(185, 79, 95, 0.24),
+    0 14px 32px rgba(185, 79, 95, 0.16);
+}
+
+.branching-explanation h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.35rem;
+  color: #1f3447;
+  font-size: 1rem;
+}
+
+.ancestor-key {
+  width: 0.78rem;
+  height: 0.78rem;
+  border-radius: 50%;
+  background: #1f3447;
+  border: 3px solid #fffaf0;
+  box-shadow: 0 0 0 1px rgba(31, 52, 71, 0.25);
+  flex: 0 0 auto;
+}
+
+.branching-explanation p {
+  margin: 0;
+  color: #4f5f6b;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.branching-conclusion {
+  max-width: 860px;
+  margin: 1.15rem auto 0;
+  color: #1f3447;
+  font-weight: 800;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(0.45rem);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.branching-conclusion.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .highlight-row { background: linear-gradient(90deg, #9d1230, #b3123d) !important; color: white !important; }
 .final-row { background: #083b4c !important; color: white !important; }
 .final-row td, .highlight-row td { color: white !important; font-weight: 700; }
 .highlight-row strong, .final-row strong { color: white !important; }
-
-/* ============================================
-   ARBRE ÉVOLUTIF (LOGIQUE AMÉLIORÉE)
-   ============================================ */
-
-.evolution-tree-layout { max-width: 1700px; margin: 0 auto; text-align: center; }
-
-.tree-button {
-  display: block;
-  margin: 0 auto 3rem;
-  padding: 1rem 2.2rem;
-  border: none;
-  border-radius: 0;
-  background: #5f7fb2;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .2s ease;
-}
-
-.tree-button:hover { transform: scale(1.05); }
-
-/* BRANCHES */
-.branch {
-  fill: none;
-  stroke: #6d80ad;
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0; /* Caché au départ */
-  
-  /* On prépare le tracé */
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  
-  /* Transition fluide quand on ajoute la classe .visible */
-  transition: stroke-dashoffset 1.5s ease-out, opacity 0.2s;
-}
-
-.trunk { stroke-width: 7; }
-
-/* NOEUDS ET LETTRES */
-.node {
-  fill: #5f7fb2;
-  opacity: 0;
-  transform: scale(0);
-  transform-origin: center;
-  transform-box: fill-box;
-  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.17, 0.89, 0.32, 1.28);
-}
-
-.root-node { 
-  opacity: 1 !important; 
-  transform: scale(1) !important; 
-}
-
-.node-label { fill: white; font-size: 42px; font-weight: 700; pointer-events: none; }
-.node-small { fill: white; font-size: 20px; font-weight: 700; opacity: 0; transition: opacity 0.4s; }
-
-/* ÉTATS ACTIFS (déclenchés par JS) */
-.branch.visible {
-  opacity: 1;
-  stroke-dashoffset: 0;
-}
-
-.node.visible, .node-small.visible {
-  opacity: 1;
-  transform: scale(1);
-}
 
 /* ============================================
    RESPONSIVE
@@ -371,5 +524,5 @@
   .yesno-image { max-width: 100%; }
   .classification-table { min-width: 600px; }
   .evolution-tree-svg { width: 140%; margin-left: -20%; }
+  .branching-explanations { grid-template-columns: 1fr; }
 }
-

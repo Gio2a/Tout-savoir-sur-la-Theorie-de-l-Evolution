@@ -219,60 +219,70 @@
     }
 
     renderQuestion();
-  }
 
-  /* ============================================
-     2. NOUVELLE ANIMATION ARBRE ÉVOLUTIF
-     ============================================ */
-  const treeSection = document.querySelector(".evolution-tree-slide");
-  const treeButton = document.getElementById("start-tree-btn");
+    const branchSection = document.querySelector('.evolution-branching-slide');
+    const branchButton = document.getElementById('start-branch-animation');
 
-  if (treeSection && treeButton) {
-    const branches = treeSection.querySelectorAll('.branch');
-    const nodes = treeSection.querySelectorAll('.node, .node-small');
+    if (branchSection && branchButton) {
+      const paths = branchSection.querySelectorAll('.branching-path');
+      const revealedElements = branchSection.querySelectorAll('.branching-node, .branching-label, .ancestor-node, .extinct-marker');
+      const explanationCards = branchSection.querySelectorAll('.branching-explanation');
+      const conclusion = branchSection.querySelector('.branching-conclusion');
+      const animationSteps = [1, 2, 3, 4, 5];
+      let branchAnimationTimers = [];
 
-    // INITIALISATION : Mesurer les traits pour le tracé CSS
-    branches.forEach(path => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-    });
+      paths.forEach(path => {
+        const length = path.getTotalLength();
+        const hiddenLength = length + 24;
+        path.style.strokeDasharray = hiddenLength;
+        path.style.strokeDashoffset = hiddenLength;
+      });
 
-    treeButton.addEventListener("click", () => {
-      // 1. Reset complet
-      treeSection.classList.remove("tree-active");
-      branches.forEach(b => b.classList.remove('visible'));
-      nodes.forEach(n => n.classList.remove('visible'));
+      function scheduleBranchAnimation(callback, delay) {
+        const timer = setTimeout(callback, delay);
+        branchAnimationTimers.push(timer);
+      }
 
-      // Force le recalcul pour relancer l'anim
-      void treeSection.offsetWidth;
+      function highlightExplanation(name) {
+        const card = branchSection.querySelector(`[data-explanation="${name}"]`);
+        if (!card) return;
 
-      // 2. Déclenchement séquentiel
-      treeSection.classList.add("tree-active");
+        explanationCards.forEach(el => el.classList.remove('is-active'));
+        card.classList.add('is-visible', 'is-active');
 
-      // Étape A : Le tronc (immédiat)
-      const trunk = treeSection.querySelector('.trunk');
-      if (trunk) trunk.classList.add('visible');
+        scheduleBranchAnimation(() => {
+          card.classList.remove('is-active');
+        }, 1900);
+      }
 
-      // Étape B : Branches principales (après 1s)
-      setTimeout(() => {
-        const mains = ['.top-main', '.middle-main', '.bottom-main'];
-        mains.forEach(cls => {
-          const el = treeSection.querySelector(cls);
-          if (el) el.classList.add('visible');
+      branchButton.addEventListener('click', () => {
+        branchAnimationTimers.forEach(timer => clearTimeout(timer));
+        branchAnimationTimers = [];
+        paths.forEach(path => path.classList.remove('visible'));
+        revealedElements.forEach(el => el.classList.remove('visible'));
+        explanationCards.forEach(el => el.classList.remove('is-visible', 'is-active'));
+        if (conclusion) conclusion.classList.remove('is-visible');
+        branchButton.textContent = "Rejouer";
+
+        void branchSection.offsetWidth;
+
+        animationSteps.forEach((step, index) => {
+          scheduleBranchAnimation(() => {
+            branchSection.querySelectorAll(`[data-step="${step}"]`).forEach(el => {
+              el.classList.add('visible');
+            });
+          }, 100 + index * 1450);
         });
-      }, 1000);
 
-      // Étape C : Toutes les ramifications (après 2s)
-      setTimeout(() => {
-        branches.forEach(b => b.classList.add('visible'));
-      }, 2000);
-
-      // Étape D : Apparition des lettres et points (après 3.5s)
-      setTimeout(() => {
-        nodes.forEach(n => n.classList.add('visible'));
-      }, 3500);
-    });
+        scheduleBranchAnimation(() => highlightExplanation('ancestor'), 1650);
+        scheduleBranchAnimation(() => highlightExplanation('diversification'), 3100);
+        scheduleBranchAnimation(() => highlightExplanation('extinction'), 4550);
+        scheduleBranchAnimation(() => {
+          if (conclusion) conclusion.classList.add('is-visible');
+        }, 8200);
+      });
+    }
   }
+
 
 })();

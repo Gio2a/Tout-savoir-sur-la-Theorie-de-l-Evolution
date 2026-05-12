@@ -252,177 +252,117 @@
       </div>
     </div>
   </section>
-<section class="slide evolution-tree-slide">
+  <section class="slide evolution-branching-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
 
-  <div class="slide-inner evolution-tree-layout">
+      <h2>Évolution buissonnante</h2>
 
-    <h2 class="tree-title">
-      L'évolution est buissonnante
-    </h2>
+      <p class="subtitle">
+        L'évolution ne suit pas une ligne droite : elle forme des branches issues d'ancêtres communs, dont certaines disparaissent.
+      </p>
 
-    <p class="tree-subtitle">
-      Une diversification progressive, diffuse et sans trajectoire unique
-    </p>
+      <div class="branching-visual">
+        <button id="start-branch-animation" class="branch-animation-btn">Lancer l'animation</button>
 
-    <button id="start-tree-btn" class="tree-button">
-      Démarrer l'animation
-    </button>
+        <div class="branching-svg-wrapper">
+          <svg class="branching-svg" viewBox="40 0 1120 620" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="extinct-gradient-top" gradientUnits="userSpaceOnUse" x1="780" y1="280" x2="940" y2="235">
+                <stop offset="0%" stop-color="#b8893a" />
+                <stop offset="45%" stop-color="#b8893a" />
+                <stop offset="100%" stop-color="#b94f5f" />
+              </linearGradient>
+              <linearGradient id="extinct-gradient-bottom" gradientUnits="userSpaceOnUse" x1="580" y1="400" x2="710" y2="455">
+                <stop offset="0%" stop-color="#b8893a" />
+                <stop offset="45%" stop-color="#b8893a" />
+                <stop offset="100%" stop-color="#b94f5f" />
+              </linearGradient>
+            </defs>
 
-    <div class="tree-svg-wrapper">
+            <path class="branching-path trunk" data-step="1" d="M120 310 C 220 310, 290 310, 360 310" />
 
-      <svg
-        class="evolution-tree-svg"
-        viewBox="0 0 1800 980"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+            <path class="branching-path" data-step="2" d="M360 310 C 445 310, 480 220, 580 220" />
+            <path class="branching-path" data-step="2" d="M360 310 C 445 310, 480 400, 580 400" />
 
-    <!-- TRONC -->
+            <path class="branching-path" data-step="3" d="M580 220 C 650 220, 690 135, 780 135" />
+            <path class="branching-path" data-step="3" d="M580 220 C 650 220, 690 280, 780 280" />
+            <path class="branching-path" data-step="3" d="M580 400 C 650 400, 690 345, 780 345" />
+            <path class="branching-path" data-step="3" d="M580 400 C 650 400, 690 500, 780 500" />
 
-<path class="branch trunk"
-d="M120 470
-   C 260 470, 330 460, 430 430" />
+            <path class="branching-path" data-step="4" d="M780 135 C 870 135, 940 80, 1060 80" />
+            <path class="branching-path" data-step="4" d="M780 135 C 870 135, 940 170, 1060 170" />
+            <path class="branching-path" data-step="4" d="M780 280 C 875 280, 940 300, 1060 300" />
+            <path class="branching-path extinct-path extinct-path-top" data-step="4" d="M780 280 C 845 280, 880 235, 940 235" />
+            <path class="branching-path" data-step="4" d="M780 345 C 870 345, 940 355, 1060 355" />
+            <path class="branching-path" data-step="4" d="M780 345 C 870 345, 940 425, 1060 425" />
+            <path class="branching-path" data-step="4" d="M780 500 C 870 500, 940 500, 1060 500" />
+            <path class="branching-path" data-step="4" d="M780 500 C 870 500, 940 565, 1060 565" />
+            <path class="branching-path extinct-path extinct-path-bottom" data-step="4" d="M580 400 C 630 400, 665 455, 710 455" />
 
-<!-- BRANCHE HAUTE PRINCIPALE -->
+            <circle class="ancestor-node" data-step="2" cx="360" cy="310" r="6" />
+            <circle class="ancestor-node" data-step="3" cx="580" cy="220" r="6" />
+            <circle class="ancestor-node" data-step="3" cx="580" cy="400" r="6" />
+            <circle class="ancestor-node" data-step="4" cx="780" cy="135" r="6" />
+            <circle class="ancestor-node" data-step="4" cx="780" cy="280" r="6" />
+            <circle class="ancestor-node" data-step="4" cx="780" cy="345" r="6" />
+            <circle class="ancestor-node" data-step="4" cx="780" cy="500" r="6" />
 
-<path class="branch top-main"
-d="M430 430
-   C 540 270, 700 190, 910 170
-   C 1050 120, 1180 120, 1360 120" />
+            <circle class="branching-node root-node" cx="120" cy="310" r="18" />
+            <text class="branching-label root-label" x="120" y="316" text-anchor="middle">A</text>
 
-<!-- B -->
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="80" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="86" text-anchor="middle">B</text>
 
-<path class="branch top-b"
-d="M1360 120
-   C 1450 90, 1540 70, 1660 70" />
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="170" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="176" text-anchor="middle">C</text>
 
-<!-- C D E F -->
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="300" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="306" text-anchor="middle">D</text>
 
-<path class="branch top-secondary"
-d="M910 170
-   C 1090 170, 1230 260, 1450 260" />
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="355" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="361" text-anchor="middle">E</text>
 
-<path class="branch top-c"
-d="M1450 260
-   C 1520 230, 1590 220, 1740 220" />
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="425" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="431" text-anchor="middle">F</text>
 
-<path class="branch top-e"
-d="M1450 260
-   C 1520 300, 1590 340, 1700 350" />
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="500" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="506" text-anchor="middle">G</text>
 
-<path class="branch top-f"
-d="M1450 260
-   C 1520 420, 1590 470, 1740 470" />
+            <circle class="branching-node leaf" data-step="5" cx="1060" cy="565" r="14" />
+            <text class="branching-label" data-step="5" x="1060" y="571" text-anchor="middle">H</text>
 
-<!-- BRANCHE MILIEU -->
+            <g class="extinct-marker" data-step="5" transform="translate(940 235)">
+              <line x1="-12" y1="-12" x2="12" y2="12" />
+              <line x1="12" y1="-12" x2="-12" y2="12" />
+            </g>
+            <g class="extinct-marker" data-step="5" transform="translate(710 455)">
+              <line x1="-12" y1="-12" x2="12" y2="12" />
+              <line x1="12" y1="-12" x2="-12" y2="12" />
+            </g>
+          </svg>
+        </div>
 
-<path class="branch middle-main"
-d="M430 430
-   C 620 430, 760 470, 980 500" />
-
-<!-- G -->
-
-<path class="branch middle-g"
-d="M980 500
-   C 1110 430, 1240 400, 1460 400" />
-
-<!-- H I J -->
-
-<path class="branch middle-secondary"
-d="M980 500
-   C 1140 540, 1280 590, 1540 600" />
-
-<path class="branch middle-i"
-d="M1540 600
-   C 1600 570, 1650 560, 1760 560" />
-
-<path class="branch middle-j"
-d="M1540 600
-   C 1600 650, 1660 700, 1780 730" />
-
-<!-- BRANCHE BASSE -->
-
-<path class="branch bottom-main"
-d="M430 430
-   C 520 650, 720 780, 980 790" />
-
-<!-- K -->
-
-<path class="branch bottom-k"
-d="M980 790
-   C 1160 760, 1320 760, 1500 760" />
-
-<!-- L -->
-
-<path class="branch bottom-l"
-d="M980 790
-   C 1130 860, 1280 870, 1500 860" />
-       
-
-        <!-- NODE A -->
-
-        <circle class="node root-node" cx="120" cy="470" r="54" />
-        <text x="120" y="487" text-anchor="middle" class="node-label">A</text>
-
-        <!-- NODES -->
-
-        <circle class="node" cx="1660" cy="70" r="28" />
-        <text x="1660" y="79" text-anchor="middle" class="node-small">B</text>
-
-        <circle class="node" cx="1660" cy="210" r="28" />
-        <text x="1660" y="219" text-anchor="middle" class="node-small">C</text>
-
-        <circle class="node" cx="1740" cy="220" r="28" />
-        <text x="1740" y="229" text-anchor="middle" class="node-small">D</text>
-
-        <circle class="node" cx="1700" cy="350" r="28" />
-        <text x="1700" y="359" text-anchor="middle" class="node-small">E</text>
-
-        <circle class="node" cx="1740" cy="470" r="28" />
-        <text x="1740" y="479" text-anchor="middle" class="node-small">F</text>
-
-        <circle class="node" cx="1460" cy="400" r="28" />
-        <text x="1460" y="409" text-anchor="middle" class="node-small">G</text>
-
-        <circle class="node" cx="1540" cy="600" r="28" />
-        <text x="1540" y="609" text-anchor="middle" class="node-small">H</text>
-
-        <circle class="node" cx="1760" cy="560" r="28" />
-        <text x="1760" y="569" text-anchor="middle" class="node-small">I</text>
-
-        <circle class="node" cx="1780" cy="730" r="28" />
-        <text x="1780" y="739" text-anchor="middle" class="node-small">J</text>
-
-        <circle class="node" cx="1500" cy="760" r="28" />
-        <text x="1500" y="769" text-anchor="middle" class="node-small">K</text>
-
-        <circle class="node" cx="1500" cy="860" r="28" />
-        <text x="1500" y="869" text-anchor="middle" class="node-small">L</text>
-
-      </svg>
-
+        <div class="branching-explanations" aria-label="Explications de l'évolution buissonnante">
+          <div class="branching-explanation" data-explanation="ancestor">
+            <h3><span class="ancestor-key" aria-hidden="true"></span>Ancêtre commun</h3>
+            <p>Les petits cercles indiquent les ancêtres communs récents aux lignées qui se séparent.</p>
+          </div>
+          <div class="branching-explanation" data-explanation="diversification">
+            <h3>Diversification</h3>
+            <p>Une même espèce peut donner naissance à plusieurs espèces au fil du temps.</p>
+          </div>
+          <div class="branching-explanation" data-explanation="extinction">
+            <h3>Extinction</h3>
+            <p>Certaines branches s'arrêtent : elles ne mènent pas à des espèces actuelles.</p>
+          </div>
+        </div>
+        <p class="branching-conclusion">
+          Les espèces actuelles ne sont donc pas les étapes d'une chaîne : ce sont les extrémités de branches différentes.
+        </p>
+      </div>
     </div>
-
-    <div class="tree-footer">
-
-      <span class="tree-line"></span>
-
-      <span class="tree-footer-text">
-        Diversification continue et sans direction prédéfinie
-      </span>
-
-      <span class="tree-line"></span>
-
-    </div>
-
-    <div class="tree-conclusion">
-      L'humain est une branche parmi d'autres,
-      pas le “sommet” de l'évolution.
-    </div>
-
-</section>
-  </div>
-
-</section>
+  </section>
   <section class="slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
