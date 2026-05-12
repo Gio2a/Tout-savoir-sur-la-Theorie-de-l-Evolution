@@ -77,6 +77,41 @@
       }
     ];
 
+    const traitDescriptions = {
+      "Colonne vertébrale": {
+        label: "Colonne vertébrale",
+        tooltip: "Vertébrés : Structure osseuse ou cartilagineuse qui soutient le corps et protège la moelle épinière."
+      },
+      "Oui": {
+        label: "Production de lait",
+        tooltip: "Mammifères : Capacité des femelles à produire du lait grâce aux glandes mammaires pour nourrir les petits."
+      },
+      "Pouce opposable": {
+        label: "Pouce opposable",
+        tooltip: "Primates : Pouce capable de se placer face aux autres doigts, permettant une meilleure préhension des objets."
+      },
+      "Vers l’avant": {
+        label: "Vision vers l’avant",
+        tooltip: "Primates : Yeux orientés vers l’avant offrant une vision binoculaire et une meilleure perception des distances."
+      },
+      "Ongles plats": {
+        label: "Ongles plats",
+        tooltip: "Singes : Ongles remplaçant les griffes, facilitant la manipulation fine et la sensibilité tactile."
+      },
+      "Nez sec": {
+        label: "Nez sec",
+        tooltip: "Haplorhiniens : Absence de truffe humide, caractéristique de ce sous-groupe des primates comprenant les singes, dont les humains."
+      },
+      "Orbites fermées par l’os": {
+        label: "Orbites fermées par l’os",
+        tooltip: "Primates : Cavités oculaires entièrement entourées d’os, protégeant mieux les yeux."
+      },
+      "Fusionnée": {
+        label: "Mâchoire fusionnée",
+        tooltip: "Singes : Les deux parties de la mâchoire inférieure sont fusionnées en un seul os solide, renforçant la mâchoire."
+      }
+    };
+
     let currentQuestion = 0;
     let score = 0;
     let locked = false;
@@ -152,15 +187,29 @@
     }
 
     function renderResult() {
+      const traitsHTML = questions.map(question => {
+        const correctOption = question.options.find(opt => opt.correct);
+        if (!correctOption) return "";
+        const metadata = traitDescriptions[correctOption.label] || {
+          label: correctOption.label,
+          tooltip: ""
+        };
+        return `
+          <span class="trait-info">
+            ${metadata.label}
+            <span class="trait-tooltip">${metadata.tooltip}</span>
+          </span>
+        `;
+      }).join("");
+
       quizRoot.innerHTML = `
         <div class="quiz-result">
           <h3>Félicitations !</h3>
           <img class="quiz-result-image" src="../images/humain-singes/felicitations-singe.png" alt="Félicitations">
           <p class="quiz-result-highlight">Tu es un singe, comme les 300 autres espèces avec lesquelles tu partages ces caractères.</p>
           <div class="classification-chain">
-             <span class="trait-info">Colonne vertébrale<span class="trait-tooltip"><strong>Vertébrés</strong>...</span></span>
-             <span class="trait-info">Production de lait<span class="trait-tooltip"><strong>Mammifères</strong>...</span></span>
-             </div>
+             ${traitsHTML}
+          </div>
           <button class="quiz-restart" id="quiz-restart">Recommencer le quiz</button>
         </div>
       `;
