@@ -61,7 +61,7 @@
         <div class="card">
           <h3>Meilleure formulation</h3>
           <p>
-            L'humain et les autres grands singes ont des ancêtres communs.
+            L'humain est un singe.
           </p>
         </div>
 
@@ -98,6 +98,112 @@
         Dans le langage courant, “singe” peut être utilisé de manière vague.
         En classification biologique, on regarde les caractères partagés et les liens de parenté.
       </div>
+  <div class="classification-table-wrapper">
+
+  <h3 class="classification-title">
+    La classification complète de l'Homme
+  </h3>
+
+  <p class="classification-subtitle">
+    À chaque niveau, un caractère anatomique précis nous range dans le groupe.
+    C'est de la taxonomie, pas de l'opinion.
+  </p>
+
+  <div class="classification-table-scroll">
+    <table class="classification-table">
+
+      <thead>
+        <tr>
+          <th>RANG</th>
+          <th>GROUPE</th>
+          <th>CARACTÈRE QUI NOUS Y RANGE</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Domaine</td>
+          <td><em>Eucaryotes</em></td>
+          <td>Cellules avec noyau</td>
+        </tr>
+
+        <tr>
+          <td>Règne</td>
+          <td><em>Animaux (Metazoa)</em></td>
+          <td>Multicellulaire, hétérotrophe, mobile</td>
+        </tr>
+
+        <tr>
+          <td>Embranchement</td>
+          <td><em>Chordés</em></td>
+          <td>Notochorde au stade embryonnaire</td>
+        </tr>
+
+        <tr>
+          <td>Sous-embr.</td>
+          <td><em>Vertébrés</em></td>
+          <td>Colonne vertébrale, crâne</td>
+        </tr>
+
+        <tr>
+          <td>Classe</td>
+          <td><em>Mammifères</em></td>
+          <td>Poils, glandes mammaires, sang chaud</td>
+        </tr>
+
+        <tr>
+          <td>Ordre</td>
+          <td><em>Primates</em></td>
+          <td>Pouce opposable, vision binoculaire, ongles</td>
+        </tr>
+
+        <tr>
+          <td>Sous-ordre</td>
+          <td><em>Haplorhiniens</em></td>
+          <td>Pas de rhinarium (nez sec)</td>
+        </tr>
+
+        <tr class="highlight-row">
+          <td>Infra-ordre</td>
+          <td><strong>Simiiformes (= SINGES)</strong></td>
+          <td>Ongles, orbite fermée, mandibule fusionnée</td>
+        </tr>
+
+        <tr>
+          <td>Parvordre</td>
+          <td><em>Catarrhiniens</em></td>
+          <td>Narines rapprochées vers le bas</td>
+        </tr>
+
+        <tr>
+          <td>Super-famille</td>
+          <td><em>Hominoïdes</em></td>
+          <td>Pas de queue, grande taille, épaule mobile</td>
+        </tr>
+
+        <tr>
+          <td>Famille</td>
+          <td><em>Hominidés (grands singes)</em></td>
+          <td>Gorille, chimpanzé, orang-outan, humain</td>
+        </tr>
+
+        <tr class="final-row">
+          <td>Genre / Espèce</td>
+          <td><strong>Homo sapiens</strong></td>
+          <td>Bipédie permanente, gros cortex, langage</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="classification-banner">
+    Du domaine à l'espèce : 13 niveaux de classification.
+    L'humain est dedans à chaque étape.
+    C'est un fait taxonomique.
+  </div>
+
+</div>
     </div>
   </section>
 
@@ -106,7 +212,11 @@
       <span class="section-marker"></span>
 
       <h2>La “marche du progrès” est trompeuse</h2>
-
+<div class="evolution-myth-image">
+  <img
+      src="../images/humain-singes/marche-progres.png"
+  />
+</div>
       <p class="subtitle">
         L'image classique qui montre un singe devenant progressivement un humain donne une mauvaise impression.
       </p>
@@ -142,7 +252,177 @@
       </div>
     </div>
   </section>
+<section class="slide evolution-tree-slide">
 
+  <div class="slide-inner evolution-tree-layout">
+
+    <h2 class="tree-title">
+      L'évolution est buissonnante
+    </h2>
+
+    <p class="tree-subtitle">
+      Une diversification progressive, diffuse et sans trajectoire unique
+    </p>
+
+    <button id="start-tree-btn" class="tree-button">
+      Démarrer l'animation
+    </button>
+
+    <div class="tree-svg-wrapper">
+
+      <svg
+        class="evolution-tree-svg"
+        viewBox="0 0 1800 980"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+
+    <!-- TRONC -->
+
+<path class="branch trunk"
+d="M120 470
+   C 260 470, 330 460, 430 430" />
+
+<!-- BRANCHE HAUTE PRINCIPALE -->
+
+<path class="branch top-main"
+d="M430 430
+   C 540 270, 700 190, 910 170
+   C 1050 120, 1180 120, 1360 120" />
+
+<!-- B -->
+
+<path class="branch top-b"
+d="M1360 120
+   C 1450 90, 1540 70, 1660 70" />
+
+<!-- C D E F -->
+
+<path class="branch top-secondary"
+d="M910 170
+   C 1090 170, 1230 260, 1450 260" />
+
+<path class="branch top-c"
+d="M1450 260
+   C 1520 230, 1590 220, 1740 220" />
+
+<path class="branch top-e"
+d="M1450 260
+   C 1520 300, 1590 340, 1700 350" />
+
+<path class="branch top-f"
+d="M1450 260
+   C 1520 420, 1590 470, 1740 470" />
+
+<!-- BRANCHE MILIEU -->
+
+<path class="branch middle-main"
+d="M430 430
+   C 620 430, 760 470, 980 500" />
+
+<!-- G -->
+
+<path class="branch middle-g"
+d="M980 500
+   C 1110 430, 1240 400, 1460 400" />
+
+<!-- H I J -->
+
+<path class="branch middle-secondary"
+d="M980 500
+   C 1140 540, 1280 590, 1540 600" />
+
+<path class="branch middle-i"
+d="M1540 600
+   C 1600 570, 1650 560, 1760 560" />
+
+<path class="branch middle-j"
+d="M1540 600
+   C 1600 650, 1660 700, 1780 730" />
+
+<!-- BRANCHE BASSE -->
+
+<path class="branch bottom-main"
+d="M430 430
+   C 520 650, 720 780, 980 790" />
+
+<!-- K -->
+
+<path class="branch bottom-k"
+d="M980 790
+   C 1160 760, 1320 760, 1500 760" />
+
+<!-- L -->
+
+<path class="branch bottom-l"
+d="M980 790
+   C 1130 860, 1280 870, 1500 860" />
+       
+
+        <!-- NODE A -->
+
+        <circle class="node root-node" cx="120" cy="470" r="54" />
+        <text x="120" y="487" text-anchor="middle" class="node-label">A</text>
+
+        <!-- NODES -->
+
+        <circle class="node" cx="1660" cy="70" r="28" />
+        <text x="1660" y="79" text-anchor="middle" class="node-small">B</text>
+
+        <circle class="node" cx="1660" cy="210" r="28" />
+        <text x="1660" y="219" text-anchor="middle" class="node-small">C</text>
+
+        <circle class="node" cx="1740" cy="220" r="28" />
+        <text x="1740" y="229" text-anchor="middle" class="node-small">D</text>
+
+        <circle class="node" cx="1700" cy="350" r="28" />
+        <text x="1700" y="359" text-anchor="middle" class="node-small">E</text>
+
+        <circle class="node" cx="1740" cy="470" r="28" />
+        <text x="1740" y="479" text-anchor="middle" class="node-small">F</text>
+
+        <circle class="node" cx="1460" cy="400" r="28" />
+        <text x="1460" y="409" text-anchor="middle" class="node-small">G</text>
+
+        <circle class="node" cx="1540" cy="600" r="28" />
+        <text x="1540" y="609" text-anchor="middle" class="node-small">H</text>
+
+        <circle class="node" cx="1760" cy="560" r="28" />
+        <text x="1760" y="569" text-anchor="middle" class="node-small">I</text>
+
+        <circle class="node" cx="1780" cy="730" r="28" />
+        <text x="1780" y="739" text-anchor="middle" class="node-small">J</text>
+
+        <circle class="node" cx="1500" cy="760" r="28" />
+        <text x="1500" y="769" text-anchor="middle" class="node-small">K</text>
+
+        <circle class="node" cx="1500" cy="860" r="28" />
+        <text x="1500" y="869" text-anchor="middle" class="node-small">L</text>
+
+      </svg>
+
+    </div>
+
+    <div class="tree-footer">
+
+      <span class="tree-line"></span>
+
+      <span class="tree-footer-text">
+        Diversification continue et sans direction prédéfinie
+      </span>
+
+      <span class="tree-line"></span>
+
+    </div>
+
+    <div class="tree-conclusion">
+      L'humain est une branche parmi d'autres,
+      pas le “sommet” de l'évolution.
+    </div>
+
+</section>
+  </div>
+
+</section>
   <section class="slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
