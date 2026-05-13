@@ -104,7 +104,7 @@
       },
       "Orbites fermées par l’os": {
         label: "Orbites fermées par l’os",
-        tooltip: "Primates : Cavités oculaires entièrement entourées d’os, protégeant mieux les yeux."
+        tooltip: "Singes : Cavités oculaires entièrement entourées d’os, protégeant mieux les yeux."
       },
       "Fusionnée": {
         label: "Mâchoire fusionnée",
@@ -280,6 +280,117 @@
         scheduleBranchAnimation(() => {
           if (conclusion) conclusion.classList.add('is-visible');
         }, 8200);
+      });
+    }
+
+    const missingLinkSection = document.querySelector('.missing-link-slide');
+    const missingLinkButton = document.getElementById('start-missing-link-animation');
+
+    if (missingLinkSection && missingLinkButton) {
+      const stage = missingLinkSection.querySelector('.missing-link-stage');
+      const question = missingLinkSection.querySelector('.missing-link-question');
+      const caption = missingLinkSection.querySelector('.missing-link-caption');
+      const missingConclusion = missingLinkSection.querySelector('.missing-link-conclusion');
+      const foundNodes = missingLinkSection.querySelectorAll('.missing-link-node.found');
+      let currentMissingLinkStep = 0;
+
+      const missingLinkSteps = [
+        {
+          reveal: '2',
+          text: 'On trouve C : l’intervalle A-B est mieux documenté.',
+          button: 'Chercher le nouveau chaînon manquant'
+        },
+        {
+          questionX: '32%',
+          focusLeft: '8%',
+          focusWidth: '48%',
+          moves: [{ step: '2', x: '56%' }],
+          text: 'Nouvelle objection : il manque maintenant un intermédiaire entre A et C.',
+          button: 'Trouver D'
+        },
+        {
+          reveal: '4',
+          text: 'On trouve D : l’intervalle A-C est à son tour réduit.',
+          button: 'Chercher encore'
+        },
+        {
+          questionX: '21%',
+          focusLeft: '8%',
+          focusWidth: '26%',
+          moves: [{ step: '4', x: '34%' }],
+          text: 'Même logique : il manquerait désormais un intermédiaire entre A et D.',
+          button: 'Trouver E'
+        },
+        {
+          reveal: '6',
+          text: 'On trouve E... et on pourrait recommencer encore.',
+          button: 'Voir la conclusion'
+        },
+        {
+          questionX: '15%',
+          focusLeft: '8%',
+          focusWidth: '14%',
+          moves: [{ step: '6', x: '22%' }],
+          text: 'Le “chaînon manquant” se déplace toujours vers un intervalle plus petit : ce n’est pas une vraie objection.',
+          conclusion: true,
+          button: 'Recommencer'
+        }
+      ];
+
+      function setMissingFocus(left, width) {
+        if (!stage) return;
+        stage.style.setProperty('--focus-left', left);
+        stage.style.setProperty('--focus-width', width);
+      }
+
+      function resetMissingLinkAnimation() {
+        currentMissingLinkStep = 0;
+        foundNodes.forEach(node => node.classList.remove('visible'));
+        const resetPositions = { 2: '50%', 4: '32%', 6: '21%' };
+        Object.entries(resetPositions).forEach(([step, x]) => {
+          const node = missingLinkSection.querySelector(`[data-link-step="${step}"]`);
+          if (node) node.style.setProperty('--x', x);
+        });
+        if (missingConclusion) missingConclusion.classList.remove('visible');
+        if (question) {
+          question.classList.add('visible');
+          question.style.setProperty('--x', '50%');
+        }
+        if (caption) caption.textContent = 'On cherche un “chaînon manquant” entre A et B.';
+        setMissingFocus('8%', '84%');
+        missingLinkButton.textContent = 'Trouver le chaînon manquant';
+      }
+
+      function renderMissingLinkStep(step) {
+        if (step.moves) {
+          step.moves.forEach(move => {
+            const node = missingLinkSection.querySelector(`[data-link-step="${move.step}"]`);
+            if (node) node.style.setProperty('--x', move.x);
+          });
+        }
+        if (step.questionX && question) {
+          question.classList.add('visible');
+          question.style.setProperty('--x', step.questionX);
+        }
+        if (step.focusLeft && step.focusWidth) setMissingFocus(step.focusLeft, step.focusWidth);
+        if (step.reveal) {
+          const node = missingLinkSection.querySelector(`[data-link-step="${step.reveal}"]`);
+          if (node) node.classList.add('visible');
+          if (question) question.classList.remove('visible');
+        }
+        if (caption) caption.textContent = step.text;
+        if (step.conclusion && missingConclusion) missingConclusion.classList.add('visible');
+        missingLinkButton.textContent = step.button;
+      }
+
+      missingLinkButton.addEventListener('click', () => {
+        if (currentMissingLinkStep >= missingLinkSteps.length) {
+          resetMissingLinkAnimation();
+          return;
+        }
+
+        renderMissingLinkStep(missingLinkSteps[currentMissingLinkStep]);
+        currentMissingLinkStep++;
       });
     }
   }

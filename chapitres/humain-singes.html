@@ -154,7 +154,7 @@
         <tr>
           <td>Ordre</td>
           <td><em>Primates</em></td>
-          <td>Pouce opposable, vision binoculaire, ongles</td>
+          <td>Pouce opposable, vision binoculaire</td>
         </tr>
 
         <tr>
@@ -359,6 +359,40 @@
         </div>
         <p class="branching-conclusion">
           Les espèces actuelles ne sont donc pas les étapes d'une chaîne : ce sont les extrémités de branches différentes.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="slide missing-link-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Le faux problème du “chaînon manquant”</h2>
+
+      <p class="subtitle">
+        Chaque fossile intermédiaire découvert comble un intervalle, mais permet aussi de réclamer un nouvel intervalle plus petit.
+      </p>
+
+      <div class="missing-link-visual">
+        <button id="start-missing-link-animation" class="branch-animation-btn">Trouver le chaînon manquant</button>
+
+        <div class="missing-link-stage" aria-live="polite">
+          <div class="missing-link-track"></div>
+          <div class="missing-link-focus"></div>
+
+          <div class="missing-link-node fixed visible" style="--x: 8%;" data-node="A">A</div>
+          <div class="missing-link-node fixed visible" style="--x: 92%;" data-node="B">B</div>
+          <div class="missing-link-node found" style="--x: 50%;" data-link-step="2">C</div>
+          <div class="missing-link-node found" style="--x: 32%;" data-link-step="4">D</div>
+          <div class="missing-link-node found" style="--x: 21%;" data-link-step="6">E</div>
+
+          <div class="missing-link-question visible" style="--x: 50%;">?</div>
+        </div>
+
+        <p class="missing-link-caption">On cherche un “chaînon manquant” entre A et B.</p>
+
+        <p class="missing-link-conclusion">
+          Comme l'évolution est buissonnante et graduelle, il n'existe pas un chaînon unique qui relierait deux espèces. Le problème n'est donc pas l'absence d'intermédiaires : c'est une demande impossible à satisfaire, car on peut toujours redécouper l'intervalle.
         </p>
       </div>
     </div>
