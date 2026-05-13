@@ -76,24 +76,78 @@
     </div>
   </section>
 
+  <section class="slide fossil-register-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Le registre fossile</h2>
+
+      <p class="subtitle">
+        Les groupes n'apparaissent pas tous en même temps : ils émergent dans un ordre cohérent, certains se diversifient, d'autres disparaissent.
+      </p>
+
+      <div class="fossil-register" id="fossil-register">
+        <div class="fossil-view-controls" aria-label="Choisir les éléments affichés">
+          <button class="fossil-view-button active" type="button" data-fossil-view="groupe">Groupes</button>
+          <button class="fossil-view-button" type="button" data-fossil-view="caractère">Caractères</button>
+        </div>
+
+        <div class="fossil-register-main">
+          <div class="fossil-periods" aria-label="Périodes géologiques">
+            <button class="fossil-period" data-period="cambrian" style="--x: 0%; --w: 10.35%;"><span>Cambrien</span><small>541-485 Ma</small></button>
+            <button class="fossil-period" data-period="ordovician" style="--x: 10.35%; --w: 7.58%;"><span>Ordovicien</span><small>485-444 Ma</small></button>
+            <button class="fossil-period" data-period="silurian" style="--x: 17.93%; --w: 4.62%;"><span>Silurien</span><small>444-419 Ma</small></button>
+            <button class="fossil-period" data-period="devonian" style="--x: 22.55%; --w: 11.09%;"><span>Dévonien</span><small>419-359 Ma</small></button>
+            <button class="fossil-period" data-period="carboniferous" style="--x: 33.64%; --w: 11.09%;"><span>Carbonifère</span><small>359-299 Ma</small></button>
+            <button class="fossil-period" data-period="permian" style="--x: 44.73%; --w: 8.69%;"><span>Permien</span><small>299-252 Ma</small></button>
+            <button class="fossil-period" data-period="triassic" style="--x: 53.42%; --w: 9.43%;"><span>Trias</span><small>252-201 Ma</small></button>
+            <button class="fossil-period" data-period="jurassic" style="--x: 62.85%; --w: 10.35%;"><span>Jurassique</span><small>201-145 Ma</small></button>
+            <button class="fossil-period" data-period="cretaceous" style="--x: 73.2%; --w: 14.6%;"><span>Crétacé</span><small>145-66 Ma</small></button>
+            <button class="fossil-period" data-period="cenozoic" style="--x: 87.8%; --w: 12.2%;"><span>Cénozoïque</span><small>66 Ma-actuel</small></button>
+          </div>
+
+          <div class="fossil-grid" aria-label="Frise interactive du registre fossile">
+            <div class="fossil-axis"><span>Passé</span><span>Présent</span></div>
+            <div class="fossil-absence fossil-absence-before" aria-hidden="true"></div>
+            <div class="fossil-absence fossil-absence-after" aria-hidden="true"></div>
+
+            <button class="fossil-row-item" data-kind="groupe" data-name="Trilobites" data-start="521" data-end="252" data-period="Cambrien à Permien" data-status="disparu" data-desc="Ils apparaissent au Cambrien et disparaissent à la fin du Permien. On ne les trouve donc ni avant le Cambrien, ni dans les couches récentes." style="--row: 1; --x: 3.7%; --w: 49.72%; --item-color: #6b5b95;"><span class="fossil-label">Trilobites</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Vertébrés aquatiques" data-start="520" data-end="0" data-period="Depuis le Cambrien" data-status="encore présent" data-desc="Les plus anciens vertébrés connus apparaissent au Cambrien, surtout sous forme d'animaux aquatiques sans mâchoires. Ce repère évite de faire des “poissons” un groupe unique et simple." style="--row: 2; --x: 3.88%; --w: 96.12%; --item-color: #2f6f73;"><span class="fossil-label">Vertébrés aquatiques</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Plantes terrestres" data-start="470" data-end="0" data-period="Depuis l'Ordovicien" data-status="encore présent" data-desc="Les premières traces généralement acceptées des plantes terrestres sont des spores du milieu de l'Ordovicien. Les fossiles plus complets de plantes terrestres arrivent plus tard, surtout au Silurien." style="--row: 3; --x: 13.12%; --w: 86.88%; --item-color: #5f8f64;"><span class="fossil-label">Plantes terrestres</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Tétrapodes" data-start="397" data-end="0" data-period="Depuis le Dévonien" data-status="encore présent" data-desc="Les tétrapodes regroupent les vertébrés à membres et leurs descendants. Des pistes fossiles vers 397 Ma suggèrent leur présence, tandis que les fossiles corporels deviennent surtout connus vers la fin du Dévonien." style="--row: 4; --x: 26.62%; --w: 73.38%; --item-color: #657f4b;"><span class="fossil-label">Tétrapodes</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Amniotes" data-start="320" data-end="0" data-period="Depuis le Carbonifère" data-status="encore présent" data-desc="Les amniotes apparaissent au Carbonifère et regroupent les lignées qui mèneront notamment aux mammifères, aux reptiles au sens large et aux oiseaux. Leur histoire est liée à l'oeuf amniotique." style="--row: 5; --x: 40.85%; --w: 59.15%; --item-color: #8b7047;"><span class="fossil-label">Amniotes</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Dinosaures non aviens" data-start="230" data-end="66" data-period="Trias à Crétacé" data-status="disparu" data-desc="Les dinosaures non aviens apparaissent au Trias et disparaissent à la fin du Crétacé. Les oiseaux, eux, sont une branche de dinosaures qui a survécu." style="--row: 6; --x: 57.49%; --w: 30.31%; --item-color: #9a5a4a;"><span class="fossil-label">Dinosaures non aviens</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Mammifères" data-start="225" data-end="0" data-period="Depuis le Trias" data-status="encore présent" data-desc="Les premiers mammaliaformes apparaissent au Trias. Le repère est utile pédagogiquement : les mammifères arrivent très longtemps après les premiers fossiles du Cambrien." style="--row: 7; --x: 58.41%; --w: 41.59%; --item-color: #7b5f47;"><span class="fossil-label">Mammifères</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Ammonites" data-start="201" data-end="66" data-period="Jurassique à Crétacé" data-status="disparu" data-desc="Les ammonites sont des mollusques marins à coquille en spirale. Elles se diversifient fortement au Mésozoïque et disparaissent à la fin du Crétacé, lors de la même crise que les dinosaures non aviens." style="--row: 8; --x: 62.85%; --w: 24.95%; --item-color: #567f9f;"><span class="fossil-label">Ammonites</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Oiseaux" data-start="150" data-end="0" data-period="Depuis le Jurassique" data-status="encore présent" data-desc="Les premiers oiseaux et formes proches apparaissent au Jurassique au sein des dinosaures théropodes. Ils montrent qu'une branche peut survivre alors que d'autres branches proches disparaissent." style="--row: 9; --x: 72.27%; --w: 27.73%; --item-color: #b08d4d;"><span class="fossil-label">Oiseaux</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item" data-kind="groupe" data-name="Primates" data-start="55" data-end="0" data-period="Depuis l'Éocène" data-status="encore présent" data-desc="Les primates bien documentés dans le registre fossile apparaissent vers 55 Ma. Des parents possibles ou formes proches sont parfois discutés dès le tout début du Cénozoïque." style="--row: 10; --x: 89.83%; --w: 10.17%; --item-color: #6f6aa8;"><span class="fossil-label">Primates</span><span class="fossil-bar"></span></button>
+
+            <button class="fossil-row-item fossil-character" data-kind="caractère" data-name="Colonne vertébrale" data-start="525" data-end="0" data-period="Depuis le Cambrien" data-status="conservé dans plusieurs lignées" data-desc="La colonne vertébrale apparaît avec les premiers vertébrés. Elle est ensuite héritée par de nombreuses lignées : poissons, amphibiens, reptiles, oiseaux et mammifères." style="--row: 1; --x: 2.96%; --w: 97.04%; --item-color: #2f6f73;"><span class="fossil-label">Colonne vertébrale</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item fossil-character" data-kind="caractère" data-name="Membres avec doigts" data-start="375" data-end="0" data-period="Depuis le Dévonien" data-status="hérité par les tétrapodes" data-desc="Les membres avec doigts apparaissent chez les premiers tétrapodes. Avant cette période, on trouve des nageoires, pas encore des membres terrestres complets." style="--row: 2; --x: 30.68%; --w: 69.32%; --item-color: #657f4b;"><span class="fossil-label">Membres avec doigts</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item fossil-character" data-kind="caractère" data-name="Oeuf amniotique" data-start="320" data-end="0" data-period="Depuis le Carbonifère" data-status="hérité par reptiles, oiseaux et mammifères" data-desc="L'oeuf amniotique permet une reproduction moins dépendante de l'eau. Il apparaît après les premiers amphibiens et caractérise les amniotes." style="--row: 3; --x: 40.85%; --w: 59.15%; --item-color: #8b7047;"><span class="fossil-label">Oeuf amniotique</span><span class="fossil-bar"></span></button>
+            <button class="fossil-row-item fossil-character" data-kind="caractère" data-name="Poils et allaitement" data-start="225" data-end="0" data-period="Depuis le Trias" data-status="caractères des mammifères" data-desc="Les poils et l'allaitement sont associés aux mammifères. Ils n'existent pas dans les premières périodes de la frise : ils apparaissent dans une histoire déjà longue." style="--row: 4; --x: 58.41%; --w: 41.59%; --item-color: #7b5f47;"><span class="fossil-label">Poils et allaitement</span><span class="fossil-bar"></span></button>
+          </div>
+        </div>
+
+        <aside class="fossil-register-info" aria-live="polite">
+          <p class="fossil-info-kicker">Élément sélectionné</p>
+          <h3 id="fossil-info-title">Trilobites</h3>
+          <p class="fossil-info-period" id="fossil-info-period">Cambrien à Permien</p>
+          <p id="fossil-info-desc">Ils apparaissent au Cambrien et disparaissent à la fin du Permien. On ne les trouve donc ni avant le Cambrien, ni dans les couches récentes.</p>
+          <div class="fossil-info-rule"></div>
+          <p class="fossil-info-note" id="fossil-info-note">Avant leur apparition, la zone de gauche est grisée. Après leur disparition, la zone récente est aussi grisée.</p>
+        </aside>
+      </div>
+
+      <div class="banner warning">
+        Aucun mammifère dans le Cambrien. Aucun lapin avec les trilobites : le registre fossile est ordonné dans le temps.
+      </div>
+    </div>
+  </section>
+
   <section class="slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
-<section style="margin-top:4rem;">
-  <iframe
-    src="frise-fossiles.html"
-    style="
-      width:100%;
-      height:1450px;
-      border:none;
-      border-radius:24px;
-      overflow:hidden;
-      background:transparent;
-    "
-    loading="lazy"
-    title="Frise interactive du registre fossile">
-  </iframe>
-</section>
       <h2>Tiktaalik</h2>
 
       <p class="subtitle">
@@ -207,5 +261,6 @@
 </main>
 
 <script src="../scripts/site.js" defer></script>
+<script src="../scripts/fossiles.js" defer></script>
 </body>
 </html>
