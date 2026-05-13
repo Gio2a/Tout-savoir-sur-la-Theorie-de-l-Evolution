@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Évolution humaine — L'Évolution</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/evolution-humaine.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-title">L'<em>Évolution</em> — évolution humaine</div>
+
+  <div class="topbar-controls">
+    <a class="icon-btn" href="../index.html" aria-label="Retour à l'accueil" title="Retour à l'accueil">←</a>
+    <button class="icon-btn" id="theme-toggle" aria-label="Changer le thème" title="Thème clair / sombre">◐</button>
+  </div>
+</header>
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<main class="slides">
+
+  <section class="slide cover" id="intro">
+    <div class="slide-inner">
+      <div class="cover-eyebrow">Une histoire ramifiée</div>
+
+      <h1>
+        L'évolution<br />
+        <span class="accent">humaine</span>
+      </h1>
+
+      <p class="cover-tagline">
+        L'histoire humaine n'est pas une marche droite vers nous : c'est un buisson de lignées apparentées.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Ce qu'il faut garder en tête</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Pas une seule ligne</h3>
+          <p>Plusieurs espèces humaines ou proches de l'humain ont existé, parfois en même temps.</p>
+        </div>
+
+        <div class="card">
+          <h3>Des cousins, pas des étapes</h3>
+          <p>Les fossiles ne sont pas forcément nos ancêtres directs : beaucoup sont des branches cousines.</p>
+        </div>
+
+        <div class="card">
+          <h3>Une mosaïque de caractères</h3>
+          <p>Bipédie, cerveau, outils, langage et culture n'apparaissent pas tous d'un seul coup.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        L'évolution humaine prolonge l'idée précédente : une espèce actuelle est l'extrémité d'une branche, pas le sommet d'une échelle.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide human-bush-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Le vrai buisson humain</h2>
+
+      <p class="subtitle">
+        Plusieurs espèces humaines ou proches de nous ont vécu avant nous, et certaines ont même coexisté avec Homo sapiens.
+      </p>
+
+      <div class="human-bush-controls" aria-label="Filtres du buisson humain">
+        <button class="human-filter active" data-human-filter="all">Tout voir</button>
+        <button class="human-filter" data-human-filter="homo">Genre Homo</button>
+        <button class="human-filter" data-human-filter="australo">Australopithèques</button>
+        <button class="human-filter" data-human-filter="paranthropus">Paranthropes</button>
+        <button class="human-filter" data-human-filter="coexist">Coexistence avec sapiens</button>
+        <button class="human-filter" data-human-filter="cousin">Cousins actuels</button>
+      </div>
+
+      <div class="human-bush-layout">
+        <div class="human-bush-chart" aria-label="Frise interactive des espèces humaines">
+          <div class="human-timeline-canvas">
+            <div class="human-axis">
+              <span>-7 Ma</span>
+              <span>-6</span>
+              <span>-5</span>
+              <span>-4</span>
+              <span>-3</span>
+              <span>-2</span>
+              <span>-1</span>
+              <span>0</span>
+            </div>
+
+          <button class="human-species early" data-group="early" data-name="Sahelanthropus tchadensis" data-period="Environ 7 à 6 millions d'années" data-fossils="12" data-skull="../images/evolution-humaine/crane-Sahelanthropus-tchadensis.png" data-desc="Toumaï, découvert au Tchad, montre une face courte, de petites canines et un trou occipital avancé : autant d'indices discutés d'une bipédie très ancienne." style="--x: 0%; --y: 18%; --w: 14%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Sahelanthropus-tchadensis.png');"></span><span>S. tchadensis</span>
+          </button>
+
+          <button class="human-species early" data-group="early" data-name="Orrorin tugenensis" data-period="Environ 6,1 à 5,7 millions d'années" data-fossils="12" data-desc="Découvert au Kenya, Orrorin associe un fémur compatible avec une bipédie fréquente et des phalanges courbes indiquant encore une vie arboricole." style="--x: 13%; --y: 33%; --w: 6%;">
+            <span class="skull-thumb"></span><span>O. tugenensis</span>
+          </button>
+
+          <button class="human-species early" data-group="early" data-name="Ardipithecus kadabba" data-period="Environ 5,8 à 5,2 millions d'années" data-fossils="17" data-desc="Connu par des dents et quelques os, il est surtout intéressant pour ses caractères très anciens ; sa bipédie reste moins solidement documentée que chez les formes plus récentes." style="--x: 17%; --y: 49%; --w: 9%;">
+            <span class="skull-thumb"></span><span>A. kadabba</span>
+          </button>
+
+          <button class="human-species early" data-group="early" data-name="Ardipithecus ramidus" data-period="Environ 4,4 millions d'années" data-fossils="123" data-skull="../images/evolution-humaine/crane-Ardipithecus-ramidus.png" data-desc="Ardi montre une mosaïque : bipédie possible au sol, aptitude à grimper et gros orteil opposable. Il vivait plutôt dans des milieux boisés que dans une savane ouverte." style="--x: 37%; --y: 49%; --w: 3%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Ardipithecus-ramidus.png');"></span><span>A. ramidus</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus anamensis" data-period="Environ 4,2 à 3,9 millions d'années" data-fossils="141" data-skull="../images/evolution-humaine/crane-Australopithecus-anamensis.png" data-desc="Le plus ancien australopithèque bien identifié : bipède, mais encore grimpeur, avec de fortes mâchoires adaptées à une alimentation végétale parfois dure." style="--x: 40%; --y: 16%; --w: 5%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Australopithecus-anamensis.png');"></span><span>A. anamensis</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus afarensis" data-period="Environ 3,9 à 2,9 millions d'années" data-fossils="328" data-skull="../images/evolution-humaine/crane-Australopithecus-afarensis.png" data-desc="L'espèce de Lucy : bipédie bien attestée, notamment par le bassin, le fémur et les traces de Laetoli, mais avec des capacités arboricoles encore nettes." style="--x: 44%; --y: 23%; --w: 14%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Australopithecus-afarensis.png');"></span><span>A. afarensis</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus bahrelghazali" data-period="Environ 3,6 à 3 millions d'années" data-desc="Surnommé Abel, il est connu au Tchad par une mâchoire : sa présence à l'ouest du Rift a bousculé l'idée d'une origine strictement est-africaine." style="--x: 49%; --y: 7%; --w: 8%;">
+            <span class="skull-thumb"></span><span>A. bahrelghazali</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus africanus" data-period="Environ 3,5 à 2,5 millions d'années" data-fossils="136" data-skull="../images/evolution-humaine/crane-Australopithecus-africanus.png" data-desc="Connu en Afrique du Sud, notamment par l'enfant de Taung et Mrs Ples, il combine bipédie, cerveau modeste et traits arboricoles persistants." style="--x: 50%; --y: 37%; --w: 14%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Australopithecus-africanus.png');"></span><span>A. africanus</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Kenyanthropus platyops" data-period="Environ 3,5 millions d'années" data-fossils="36" data-skull="../images/evolution-humaine/crane-Kenyanthropus-platyops.png" data-desc="Une forme kenyane à face plus plate, encore discutée, qui rappelle que plusieurs morphologies d'hominines coexistaient déjà à l'époque de Lucy." style="--x: 50%; --y: 47%; --w: 3%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Kenyanthropus-platyops.png');"></span><span>K. platyops</span>
+          </button>
+
+          <button class="human-species paranthropus" data-group="paranthropus" data-name="Paranthropus aethiopicus" data-period="Environ 2,7 à 2,3 millions d'années" data-fossils="60" data-skull="../images/evolution-humaine/crane-Paranthropus-aethiopicus.png" data-desc="Le Black Skull illustre une branche robuste : petit cerveau, crête sagittale marquée et puissantes mâchoires probablement adaptées à des aliments coriaces." style="--x: 61%; --y: 70%; --w: 6%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Paranthropus-aethiopicus.png');"></span><span>P. aethiopicus</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus garhi" data-period="Environ 2,5 millions d'années" data-fossils="9" data-skull="../images/evolution-humaine/crane-Australopithecus-garhi.png" data-desc="Découvert en Ethiopie, il intrigue par ses grandes dents et sa proximité chronologique avec les premiers outils et les débuts du genre Homo." style="--x: 64%; --y: 52%; --w: 3%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Australopithecus-garhi.png');"></span><span>A. garhi</span>
+          </button>
+
+          <button class="human-species australo" data-group="australo" data-name="Australopithecus sediba" data-period="Environ 1,98 million d'années" data-fossils="6 fossiles, possiblement 3 individus" data-skull="../images/evolution-humaine/crane-Australopithecus-sediba.png" data-desc="Une espèce sud-africaine connue par très peu de restes, montrant une mosaïque de caractères australopithèques et de traits plus proches du genre Homo." style="--x: 72%; --y: 47%; --w: 2%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Australopithecus-sediba.png');"></span><span>A. sediba</span>
+          </button>
+
+          <button class="human-species paranthropus" data-group="paranthropus" data-name="Paranthropus boisei" data-period="Environ 2,4 à 1,2 million d'années" data-fossils="138" data-skull="../images/evolution-humaine/crane-Paranthropus-boisei.png" data-desc="Surnommé autrefois casse-noisette, il avait d'énormes molaires et une forte mâchoire ; les études récentes nuancent son régime, probablement riche en végétaux coriaces." style="--x: 67%; --y: 58%; --w: 16%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Paranthropus-boisei.png');"></span><span>P. boisei</span>
+          </button>
+
+          <button class="human-species paranthropus" data-group="paranthropus" data-name="Paranthropus robustus" data-period="Environ 2 à 1,2 million d'années" data-fossils="385" data-skull="../images/evolution-humaine/crane-Paranthropus-robustus.png" data-desc="Un paranthrope sud-africain à crête sagittale et mastication puissante, mais probablement capable d'un régime plus varié que son apparence ne le suggère." style="--x: 71%; --y: 67%; --w: 12%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Paranthropus-robustus.png');"></span><span>P. robustus</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo habilis s.l." data-period="Environ 2,4 à 1,6 million d'années" data-fossils="170" data-skull="../images/evolution-humaine/crane-Homo-habilis.png" data-desc="Un des premiers représentants du genre Homo : cerveau plus volumineux que chez les australopithèques et association fréquente avec les premiers outils taillés." style="--x: 66%; --y: 14%; --w: 11.5%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-habilis.png');"></span><span>H. habilis</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo rudolfensis" data-period="Environ 2,4 à 1,8 million d'années" data-skull="../images/evolution-humaine/crane-Homo-rudolfensis.png" data-desc="Connu notamment au Kenya, il se distingue d'Homo habilis par une face plus large et un volume crânien important, même si son statut reste discuté." style="--x: 66%; --y: 4%; --w: 9%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-rudolfensis.png');"></span><span>H. rudolfensis</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo ergaster" data-period="Environ 2 à 1 million d'années" data-skull="../images/evolution-humaine/crane-Homo-ergaster.png" data-desc="Forme africaine proche d'Homo erectus, avec un corps aux proportions très humaines ; le garçon de Turkana en est l'un des fossiles les plus célèbres." style="--x: 71%; --y: 19%; --w: 14%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-ergaster.png');"></span><span>H. ergaster</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo georgicus" data-period="Environ 1,8 million d'années" data-skull="../images/evolution-humaine/crane-Homo-georgicus.png" data-desc="Les fossiles de Dmanisi, en Géorgie, comptent parmi les plus anciens Homo hors d'Afrique et montrent une forte variabilité au sein d'une même population." style="--x: 74%; --y: 38%; --w: 3%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-georgicus.png');"></span><span>H. georgicus</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo erectus" data-period="Environ 1,9 million à 200 000 ans" data-skull="../images/evolution-humaine/crane-Homo-erectus.png" data-desc="Une espèce très durable et très mobile, présente en Afrique et en Eurasie, associée à une marche efficace, à des outils élaborés et parfois à la maîtrise du feu." style="--x: 73%; --y: 29%; --w: 24%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-erectus.png');"></span><span>H. erectus</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-name="Homo heidelbergensis" data-period="Environ 700 000 à 200 000 ans" data-skull="../images/evolution-humaine/crane-Homo-heidelbergensis.png" data-desc="Un humain robuste du Pléistocène moyen, souvent placé près des origines de Néandertal, de Denisova et parfois de certaines populations menant à sapiens." style="--x: 90%; --y: 50%; --w: 7%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-heidelbergensis.png');"></span><span>H. heidelbergensis</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-coexist="true" data-name="Homo naledi" data-period="Environ 335 000 à 236 000 ans" data-skull="../images/evolution-humaine/crane-Homo-naledi.png" data-desc="Découvert en Afrique du Sud, il est très récent malgré un petit cerveau et des traits archaïques ; il montre qu'il n'existait pas une seule forme humaine à la fois." style="--x: 95%; --y: 59%; --w: 1.5%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-naledi.png');"></span><span>H. naledi</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-coexist="true" data-name="Homo neanderthalensis" data-period="Environ 400 000 à 30 000 ans" data-skull="../images/evolution-humaine/crane-Homo-neanderthalensis.png" data-desc="Adapté aux climats froids, Néandertal avait un corps robuste, un grand cerveau, des outils variés et des comportements symboliques ; il a coexisté et échangé des gènes avec sapiens." style="--x: 94%; --y: 9%; --w: 5.3%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-neanderthalensis.png');"></span><span>H. neanderthalensis</span>
+          </button>
+
+          <button class="human-species homo" data-group="homo" data-coexist="true" data-name="Homme de Denisova" data-period="Connu surtout par l'ADN ancien, au Pléistocène récent" data-skull="../images/evolution-humaine/crane-Homme-Denisova.png" data-desc="Identifié d'abord par l'ADN dans la grotte de Denisova, ce groupe humain cousin de Néandertal a laissé des traces génétiques chez plusieurs populations actuelles." style="--x: 95%; --y: 43%; --w: 4%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homme-Denisova.png');"></span><span>H. denisova</span>
+          </button>
+
+          <button class="human-species homo sapiens extant active" data-group="homo" data-coexist="true" data-name="Homo sapiens" data-period="Environ 300 000 ans à aujourd'hui" data-skull="../images/evolution-humaine/crane-Homo-sapiens.png" data-desc="Notre espèce, apparue en Afrique, se caractérise notamment par un crâne globulaire, un menton marqué et des cultures techniques et symboliques très diversifiées." style="--x: 96%; --y: 25%; --w: 4%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-sapiens.png');"></span><span>H. sapiens</span>
+          </button>
+
+          <button class="human-species homo short-range" data-group="homo" data-coexist="true" data-name="Homo floresiensis" data-period="Environ 100 000 à 50 000 ans pour les fossiles connus" data-skull="../images/evolution-humaine/crane-Homo-floresiensis.png" data-desc="Découvert sur l'île de Flores, il était de petite taille, avec un petit cerveau mais des outils en pierre : un exemple frappant d'évolution insulaire chez les humains." style="--x: 97.3%; --y: 70%; --w: 1%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Homo-floresiensis.png');"></span><span>H. floresiensis</span>
+          </button>
+
+          <button class="human-species homo short-range" data-group="homo" data-coexist="true" data-name="Homo luzonensis" data-period="Fossiles connus autour de 67 000 ans" data-desc="Découvert dans la grotte de Callao, aux Philippines, il n'est connu que par quelques dents et os, mélangeant caractères archaïques et plus récents." style="--x: 98%; --y: 64%; --w: 1%;">
+            <span class="skull-thumb"></span><span>H. luzonensis</span>
+          </button>
+
+          <button class="human-species cousin extant" data-group="cousin" data-name="Gorilla gorilla" data-period="Lignée actuelle, encore vivante aujourd'hui" data-skull="../images/evolution-humaine/crane-Gorilla-gorilla.png" data-desc="Le gorille est un grand singe actuel, cousin et non ancêtre de l'humain ; sa barre rappelle que certaines branches du buisson existent encore." style="--x: 55%; --y: 90%; --w: 45%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Gorilla-gorilla.png');"></span><span>G. gorilla</span>
+          </button>
+
+          <button class="human-species cousin extant" data-group="cousin" data-name="Pan troglodytes" data-period="Lignée actuelle, encore vivante aujourd'hui" data-skull="../images/evolution-humaine/crane-Pan-troglodytes.png" data-desc="Le chimpanzé partage avec nous un ancêtre commun récent, mais il a poursuivi sa propre évolution : ce n'est pas un humain resté inchangé." style="--x: 70%; --y: 84%; --w: 30%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Pan-troglodytes.png');"></span><span>P. troglodytes</span>
+          </button>
+
+          <button class="human-species cousin extant" data-group="cousin" data-name="Pan paniscus" data-period="Lignée actuelle, encore vivante aujourd'hui" data-skull="../images/evolution-humaine/crane-Pan-paniscus.png" data-desc="Le bonobo, proche parent du chimpanzé, est une branche actuelle du groupe des grands singes ; sa présence évite de réduire l'histoire humaine à une ligne isolée." style="--x: 68%; --y: 78%; --w: 32%;">
+            <span class="skull-thumb" style="--skull: url('../images/evolution-humaine/crane-Pan-paniscus.png');"></span><span>P. paniscus</span>
+          </button>
+          </div>
+        </div>
+
+        <div class="human-bush-info" id="human-bush-info">
+          <div class="info-kicker">Espèce sélectionnée</div>
+          <h3>Homo sapiens</h3>
+          <figure class="info-skull">
+            <img src="../images/evolution-humaine/crane-Homo-sapiens.png" alt="Crâne fossile : Homo sapiens" />
+          </figure>
+          <p class="info-period">Environ 300 000 ans à aujourd'hui</p>
+          <p class="info-fossils"><strong>Spécimens fossiles catalogués :</strong> non renseigné ici</p>
+          <p>Notre espèce, apparue en Afrique, se caractérise notamment par un crâne globulaire, un menton marqué et des cultures techniques et symboliques très diversifiées.</p>
+          <div class="human-bush-note">
+            Clique sur une espèce pour voir ce qu'elle montre dans le buisson humain.
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        Le point important : Homo sapiens n'est pas l'aboutissement d'une file indienne. C'est une branche survivante parmi beaucoup d'autres.
+      </div>
+
+      <div class="chapter-actions">
+        <a class="action-link" href="humain-singes.html">← Chapitre précédent</a>
+        <a class="action-link" href="../index.html">Retour au sommaire</a>
+        <a class="action-link" href="retrovirus.html">Chapitre suivant →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../scripts/site.js" defer></script>
+<script src="../scripts/evolution-humaine.js" defer></script>
+</body>
+</html>

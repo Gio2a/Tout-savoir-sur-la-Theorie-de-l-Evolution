@@ -1,0 +1,314 @@
+.human-bush-slide {
+  max-width: min(1500px, 100%);
+}
+
+.human-bush-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0 0 1rem;
+}
+
+.human-filter {
+  border: 1px solid rgba(184, 137, 58, 0.32);
+  background: rgba(255, 250, 240, 0.82);
+  color: #1f3447;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.human-filter:hover,
+.human-filter:focus-visible,
+.human-filter.active {
+  background: #1f3447;
+  color: #fffaf0;
+  transform: translateY(-1px);
+}
+
+.human-bush-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.human-bush-chart {
+  position: relative;
+  min-height: 720px;
+  overflow-x: auto;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+    #202323;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+  border: 1px solid rgba(184, 137, 58, 0.18);
+}
+
+.human-timeline-canvas {
+  position: relative;
+  width: 1560px;
+  min-height: 720px;
+}
+
+.human-timeline-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 2rem 0 1.5rem;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,0.24) 0,
+      rgba(255,255,255,0.24) 0.08%,
+      transparent 0.1%,
+      transparent 14.2%,
+      rgba(255,255,255,0.24) 14.285%,
+      transparent 14.37%,
+      transparent 28.48%,
+      rgba(255,255,255,0.24) 28.571%,
+      transparent 28.66%,
+      transparent 42.77%,
+      rgba(255,255,255,0.24) 42.857%,
+      transparent 42.95%,
+      transparent 57.05%,
+      rgba(255,255,255,0.24) 57.143%,
+      transparent 57.23%,
+      transparent 71.34%,
+      rgba(255,255,255,0.24) 71.429%,
+      transparent 71.52%,
+      transparent 85.62%,
+      rgba(255,255,255,0.24) 85.714%,
+      transparent 85.8%,
+      transparent 99.9%,
+      rgba(255,255,255,0.24) 100%);
+  pointer-events: none;
+}
+
+.human-axis {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0.75rem;
+  color: #fffaf0;
+  background: rgba(0, 0, 0, 0.48);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.human-axis span {
+  text-align: center;
+}
+
+.human-axis span:first-child {
+  text-align: left;
+}
+
+.human-axis span:last-child {
+  text-align: right;
+}
+
+.human-species {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  min-width: 0;
+  max-width: none;
+  min-height: 58px;
+  border: 0;
+  background: transparent;
+  color: #fffaf0;
+  cursor: pointer;
+  text-align: left;
+  z-index: 2;
+  opacity: 0.88;
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.human-species::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  right: 0;
+  top: 50%;
+  height: 0.74rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b8893a, rgba(184, 137, 58, 0));
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.human-species.homo::before {
+  background: linear-gradient(90deg, #e06f24, rgba(224, 111, 36, 0));
+}
+
+.human-species.sapiens::before {
+  background: linear-gradient(90deg, #d9c064, rgba(217, 192, 100, 0));
+}
+
+.human-species.paranthropus::before {
+  background: linear-gradient(90deg, #e2c756, rgba(226, 199, 86, 0));
+}
+
+.human-species.cousin::before {
+  background: linear-gradient(90deg, #6e9e3f, rgba(110, 158, 63, 0.9));
+}
+
+.human-species.extant::before {
+  right: -1rem;
+}
+
+.human-species.sapiens.extant::before {
+  background: #d9c064;
+}
+
+.human-species.cousin.extant::before {
+  background: #6e9e3f;
+}
+
+.human-species.short-range::before {
+  right: auto;
+  width: 1.8rem;
+  background: linear-gradient(90deg, #e06f24, rgba(224, 111, 36, 0));
+}
+
+.human-species.short-range span:last-child {
+  width: 7.5rem;
+  margin-left: -7.85rem;
+  padding-right: 0.35rem;
+  text-align: right;
+}
+
+.human-species:hover,
+.human-species:focus-visible,
+.human-species.active {
+  opacity: 1;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 12px 22px rgba(0,0,0,0.35));
+}
+
+.human-species.dimmed {
+  opacity: 0.18;
+}
+
+.human-species span:last-child {
+  display: inline-block;
+  margin-left: 1.75rem;
+  max-width: 12rem;
+  color: #fffaf0;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.65);
+  vertical-align: middle;
+}
+
+.skull-thumb {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.25rem;
+  height: 1.55rem;
+  border-radius: 45% 48% 42% 46%;
+  background:
+    radial-gradient(circle at 40% 36%, rgba(255,255,255,0.7) 0 9%, transparent 10%),
+    radial-gradient(circle at 62% 38%, rgba(255,255,255,0.5) 0 7%, transparent 8%),
+    radial-gradient(circle at 52% 64%, rgba(0,0,0,0.22) 0 10%, transparent 11%),
+    linear-gradient(145deg, #d3b58a, #796755);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(255, 250, 240, 0.4);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  opacity: 0.9;
+  transform: translateY(-50%) rotate(-4deg);
+}
+
+.skull-thumb[style*="--skull"] {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: #1f211f var(--skull) center / cover no-repeat;
+}
+
+.human-bush-info {
+  border-left: 4px solid #b8893a;
+  background: rgba(255, 250, 240, 0.9);
+  padding: 1.2rem;
+  box-shadow: inset 0 0 0 1px rgba(184, 137, 58, 0.14), 0 18px 36px rgba(31, 52, 71, 0.08);
+}
+
+.info-kicker {
+  color: #b8893a;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.human-bush-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.info-skull {
+  margin: 0.6rem 0 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-skull img {
+  display: block;
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.info-period {
+  color: #4f5f6b;
+  font-weight: 850;
+}
+
+.info-fossils {
+  margin: 0.45rem 0 0.85rem;
+  color: #1f3447;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.info-fossils strong {
+  color: #b8893a;
+}
+
+.human-bush-note {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(184, 137, 58, 0.22);
+  color: #4f5f6b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+  .human-bush-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .human-bush-info {
+    order: -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .human-bush-chart {
+    min-height: 650px;
+  }
+
+  .human-species {
+    width: 150px;
+  }
+}

@@ -31,8 +31,8 @@
         type: "images",
         question: "Possédez-vous un pouce opposable ou est-il aligné comme les autres doigts ?",
         options: [
-          { label: "Pouce opposable", image: "../images/humain-singes/pouce-opposable.png", correct: true },
-          { label: "Pouce aligné", image: "../images/humain-singes/pouce-aligne.png", correct: false }
+          { label: "Pouce aligné", image: "../images/humain-singes/pouce-aligne.png", correct: false },
+          { label: "Pouce opposable", image: "../images/humain-singes/pouce-opposable.png", correct: true }
         ]
       },
       {
@@ -128,14 +128,24 @@
       }
     }
 
+    function getDisplayOptions(question) {
+      const options = question.options.map((option, index) => ({ ...option, originalIndex: index }));
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+      return options;
+    }
+
     function renderImageQuestion(question, progress) {
+      const displayOptions = getDisplayOptions(question);
       quizRoot.innerHTML = `
         <div class="quiz-counter">Question ${currentQuestion + 1} / ${questions.length}</div>
         <div class="quiz-progress-track"><div class="quiz-progress-fill" style="width: ${progress}%"></div></div>
         <h3 class="trait-question">${question.question}</h3>
         <div class="trait-options">
-          ${question.options.map((option, index) => `
-            <button class="trait-option" data-option-index="${index}">
+          ${displayOptions.map(option => `
+            <button class="trait-option" data-option-index="${option.originalIndex}">
               <img src="${option.image}" alt="${option.label}">
               <span class="option-label">${option.label}</span>
             </button>
@@ -148,6 +158,7 @@
     }
 
     function renderYesNoQuestion(question, progress) {
+      const displayOptions = getDisplayOptions(question);
       quizRoot.innerHTML = `
         <div class="quiz-counter">Question ${currentQuestion + 1} / ${questions.length}</div>
         <div class="quiz-progress-track"><div class="quiz-progress-fill" style="width: ${progress}%"></div></div>
@@ -155,8 +166,8 @@
         <div class="yesno-layout">
           <img class="yesno-image" src="${question.image}" alt="Question">
           <div class="yesno-buttons">
-            ${question.options.map((option, index) => `
-              <button class="yesno-button" data-option-index="${index}">${option.label}</button>
+            ${displayOptions.map(option => `
+              <button class="yesno-button" data-option-index="${option.originalIndex}">${option.label}</button>
             `).join("")}
           </div>
         </div>
@@ -187,6 +198,12 @@
     }
 
     function renderResult() {
+      const perfectScore = score === questions.length;
+      const resultTitle = perfectScore ? "Félicitations !" : "Presque !";
+      const resultMessage = perfectScore
+        ? "Tu as retrouvé tous les caractères : l'humain est bien un singe, comme les 300 autres espèces qui partagent ces caractères."
+        : `Tu as obtenu ${score} / ${questions.length}. Voici les caractères qui correspondent à l'humain : ils montrent pourquoi l'humain appartient au groupe des singes.`;
+
       const traitsHTML = questions.map(question => {
         const correctOption = question.options.find(opt => opt.correct);
         if (!correctOption) return "";
@@ -204,9 +221,9 @@
 
       quizRoot.innerHTML = `
         <div class="quiz-result">
-          <h3>Félicitations !</h3>
-          <img class="quiz-result-image" src="../images/humain-singes/felicitations-singe.png" alt="Félicitations">
-          <p class="quiz-result-highlight">Tu es un singe, comme les 300 autres espèces avec lesquelles tu partages ces caractères.</p>
+          <h3>${resultTitle}</h3>
+          <img class="quiz-result-image" src="../images/humain-singes/felicitations-singe.png" alt="">
+          <p class="quiz-result-highlight">${resultMessage}</p>
           <div class="classification-chain">
              ${traitsHTML}
           </div>
