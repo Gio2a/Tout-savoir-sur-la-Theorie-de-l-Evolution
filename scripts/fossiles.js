@@ -10,13 +10,31 @@
   const items = Array.from(register.querySelectorAll(".fossil-row-item"));
   const periods = Array.from(register.querySelectorAll(".fossil-period"));
   const viewButtons = Array.from(register.querySelectorAll(".fossil-view-button"));
+  const rangeButton = register.querySelector("[data-fossil-range]");
+  const deepMarkers = Array.from(register.querySelectorAll(".deep-marker"));
+  const timeTicks = Array.from(register.querySelectorAll(".fossil-time-ticks span"));
   const title = document.getElementById("fossil-info-title");
   const periodText = document.getElementById("fossil-info-period");
   const desc = document.getElementById("fossil-info-desc");
   const note = document.getElementById("fossil-info-note");
   let activeView = "groupe";
+  let timelineStart = 635;
+  const NORMAL_TIMELINE_START = 635;
+  const EARTH_TIMELINE_START = 4540;
+  const EMPTY_PANEL = {
+    title: "Sélectionne un élément",
+    period: "Groupes ou caractères",
+    desc:
+      "Clique sur une barre de la frise pour voir sa période, son statut et la manière dont elle se lit dans le registre fossile.",
+    note:
+      "<strong>Lecture :</strong> les barres montrent des apparitions, des persistances et parfois des disparitions. Les zones grisées apparaissent seulement après une sélection."
+  };
 
   const PERIODS = [
+    { id: "hadean", start: 4540, end: 4000, deep: true },
+    { id: "archean", start: 4000, end: 2500, deep: true },
+    { id: "proterozoic", start: 2500, end: 635, deep: true },
+    { id: "ediacaran", start: 635, end: 541 },
     { id: "cambrian", start: 541, end: 485 },
     { id: "ordovician", start: 485, end: 444 },
     { id: "silurian", start: 444, end: 419 },
@@ -33,6 +51,76 @@
     return start > period.end && end < period.start;
   }
 
+  function getPosition(start, end) {
+    const x = ((timelineStart - start) / timelineStart) * 100;
+    const width = ((start - end) / timelineStart) * 100;
+
+    return {
+      x: Math.max(0, Math.min(100, x)),
+      width: Math.max(0.16, Math.min(100, width))
+    };
+  }
+
+  function applyTimelineScale(start) {
+    timelineStart = start;
+    register.dataset.timeline = start === EARTH_TIMELINE_START ? "earth" : "normal";
+
+    periods.forEach(function (periodButton) {
+      const period = PERIODS.find(function (entry) {
+        return entry.id === periodButton.dataset.period;
+      });
+
+      if (!period) {
+        return;
+      }
+
+      const hiddenInNormal = period.deep && start === NORMAL_TIMELINE_START;
+      periodButton.hidden = hiddenInNormal;
+
+      if (!hiddenInNormal) {
+        const position = getPosition(period.start, period.end);
+        periodButton.style.setProperty("--x", position.x.toFixed(2) + "%");
+        periodButton.style.setProperty("--w", position.width.toFixed(2) + "%");
+      }
+    });
+
+    items.forEach(function (item) {
+      const startValue = Number(item.dataset.start);
+      const endValue = Number(item.dataset.end);
+      const position = getPosition(startValue, endValue);
+
+      item.style.setProperty("--x", position.x.toFixed(2) + "%");
+      item.style.setProperty("--w", position.width.toFixed(2) + "%");
+    });
+
+    deepMarkers.forEach(function (marker) {
+      const age = Number(marker.dataset.age);
+      const position = getPosition(age, age);
+      marker.style.setProperty("--x", position.x.toFixed(2) + "%");
+    });
+
+    timeTicks.forEach(function (tick) {
+      const age = Number(tick.dataset.age);
+      const isDeepTick = tick.hasAttribute("data-deep-tick");
+      const hiddenInNormal = isDeepTick && start === NORMAL_TIMELINE_START;
+      const hiddenOutsideRange = age > start;
+      const position = getPosition(age, age);
+
+      tick.hidden = hiddenInNormal || hiddenOutsideRange;
+      tick.style.setProperty("--x", position.x.toFixed(2) + "%");
+    });
+
+    const selected = items.find(function (item) {
+      return item.classList.contains("selected");
+    });
+
+    if (selected) {
+      selectItem(selected);
+    } else {
+      clearSelection();
+    }
+  }
+
   function setPeriodState(item) {
     const start = Number(item.dataset.start);
     const end = Number(item.dataset.end);
@@ -46,48 +134,42 @@
         return;
       }
 
-      const isInside = overlaps(period, start, end);
+      const isInside = !periodButton.hidden && overlaps(period, start, end);
       periodButton.classList.toggle("inside-selected", isInside);
-      periodButton.classList.toggle("outside-selected", !isInside);
+      periodButton.classList.toggle("outside-selected", !periodButton.hidden && !isInside);
     });
   }
 
   function buildNote(kind, status, end) {
     const subject = kind === "caractère" ? "ce caractère" : "ce groupe";
-    const during =
-      kind === "caractère"
-        ? "présent chez les lignées qui l'ont hérité."
-        : "présent dans les couches correspondant à cette période.";
     const after =
       end === 0
-        ? "encore représenté aujourd'hui."
-        : "disparu dans les couches plus récentes.";
+        ? "la barre continue jusqu'au présent : " + subject + " existe encore aujourd'hui."
+        : "la barre s'arrête avant le présent : " + subject + " a disparu.";
     const statusText = status ? " Statut : " + status + "." : "";
 
     return (
-      "<span><strong>Avant :</strong> absent dans les couches plus anciennes ; " +
+      "<strong>Lecture de la frise :</strong> avant son apparition, " +
       subject +
-      " n'existait pas encore.</span>" +
-      "<span><strong>Pendant :</strong> " +
-      during +
-      "</span>" +
-      "<span><strong>Après :</strong> " +
+      " est absent des couches plus anciennes ; " +
       after +
-      statusText +
-      "</span>"
+      statusText
     );
   }
 
   function selectItem(item) {
     const start = Number(item.dataset.start);
     const end = Number(item.dataset.end);
-    const x = ((541 - start) / 541) * 100;
-    const endPercent = ((541 - end) / 541) * 100;
+    const x = getPosition(start, start).x;
+    const endPercent = getPosition(end, end).x;
     const kind = item.dataset.kind || "élément";
     const status = item.dataset.status || "";
 
     items.forEach(function (otherItem) {
       otherItem.classList.toggle("selected", otherItem === item);
+    });
+    deepMarkers.forEach(function (marker) {
+      marker.classList.remove("selected");
     });
 
     register.classList.add("has-selection");
@@ -113,15 +195,64 @@
     setPeriodState(item);
   }
 
+  function selectMarker(marker) {
+    items.forEach(function (item) {
+      item.classList.remove("selected");
+    });
+    deepMarkers.forEach(function (otherMarker) {
+      otherMarker.classList.toggle("selected", otherMarker === marker);
+    });
+    periods.forEach(function (periodButton) {
+      periodButton.classList.remove("inside-selected", "outside-selected");
+    });
+
+    register.classList.remove("has-selection");
+
+    if (title) {
+      title.textContent = marker.dataset.name || "";
+    }
+
+    if (periodText) {
+      periodText.textContent = marker.dataset.period || "";
+    }
+
+    if (desc) {
+      desc.textContent = marker.dataset.desc || "";
+    }
+
+    if (note) {
+      note.innerHTML = marker.dataset.note || "";
+    }
+  }
+
   function clearSelection() {
     items.forEach(function (item) {
       item.classList.remove("selected");
+    });
+    deepMarkers.forEach(function (marker) {
+      marker.classList.remove("selected");
     });
 
     register.classList.remove("has-selection");
     periods.forEach(function (periodButton) {
       periodButton.classList.remove("inside-selected", "outside-selected");
     });
+
+    if (title) {
+      title.textContent = EMPTY_PANEL.title;
+    }
+
+    if (periodText) {
+      periodText.textContent = EMPTY_PANEL.period;
+    }
+
+    if (desc) {
+      desc.textContent = EMPTY_PANEL.desc;
+    }
+
+    if (note) {
+      note.innerHTML = EMPTY_PANEL.note;
+    }
   }
 
   function setView(view, options) {
@@ -171,11 +302,37 @@
     });
   });
 
+  deepMarkers.forEach(function (marker) {
+    marker.addEventListener("click", function () {
+      if (marker.classList.contains("selected")) {
+        clearSelection();
+        return;
+      }
+
+      selectMarker(marker);
+    });
+  });
+
   viewButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       setView(button.dataset.fossilView);
     });
   });
 
+  if (rangeButton) {
+    rangeButton.addEventListener("click", function () {
+      const nextStart =
+        timelineStart === EARTH_TIMELINE_START
+          ? NORMAL_TIMELINE_START
+          : EARTH_TIMELINE_START;
+
+      rangeButton.classList.toggle("active", nextStart === EARTH_TIMELINE_START);
+      rangeButton.textContent =
+        nextStart === EARTH_TIMELINE_START ? "Depuis l'Édiacarien" : "Depuis la Terre";
+      applyTimelineScale(nextStart);
+    });
+  }
+
+  applyTimelineScale(NORMAL_TIMELINE_START);
   setView("groupe");
 })();

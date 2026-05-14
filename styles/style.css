@@ -776,6 +776,8 @@ a.card {
 }
 
 .fossil-register-main {
+  grid-column: 1;
+  grid-row: 3;
   min-width: 0;
 }
 
@@ -805,25 +807,126 @@ a.card {
 }
 
 .fossil-view-button:hover,
-.fossil-view-button:focus-visible {
+.fossil-view-button:focus-visible,
+.fossil-range-button:hover,
+.fossil-range-button:focus-visible {
   color: var(--ink);
 }
 
-.fossil-view-button.active {
+.fossil-view-button.active,
+.fossil-range-button.active {
   background: #1f3447;
   color: #fffaf0;
   transform: none;
 }
 
+.fossil-range-button {
+  border: 0;
+  border-left: 1px solid rgba(31, 52, 71, 0.12);
+  border-radius: 6px;
+  margin-left: 0.2rem;
+  padding: 0.52rem 0.85rem;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
 .fossil-periods,
 .fossil-grid {
-  min-width: 1160px;
+  min-width: 1580px;
+}
+
+.fossil-register[data-timeline="earth"] .fossil-periods,
+.fossil-register[data-timeline="earth"] .fossil-grid {
+  min-width: 7200px;
 }
 
 .fossil-register-main {
   overflow-x: auto;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.95rem;
   scrollbar-color: rgba(31, 52, 71, 0.35) rgba(31, 52, 71, 0.08);
+}
+
+.fossil-register-main::-webkit-scrollbar {
+  height: 10px;
+}
+
+.fossil-register-main::-webkit-scrollbar-track {
+  background: rgba(31, 52, 71, 0.08);
+  border-radius: 999px;
+}
+
+.fossil-register-main::-webkit-scrollbar-thumb {
+  background: rgba(31, 52, 71, 0.32);
+  border-radius: 999px;
+}
+
+.fossil-register-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 52, 71, 0.48);
+}
+
+.fossil-legend {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  align-items: center;
+  margin: 1rem 0 0.85rem;
+  color: rgba(31, 52, 71, 0.72);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.fossil-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  white-space: nowrap;
+}
+
+.fossil-legend i {
+  flex: 0 0 auto;
+  font-style: normal;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2f6f73;
+  box-shadow: 0 0 0 4px rgba(47, 111, 115, 0.12);
+}
+
+.legend-bar {
+  width: 28px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2f6f73, rgba(47, 111, 115, 0.22));
+}
+
+.legend-cross {
+  color: #1f3447;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.legend-shade {
+  width: 22px;
+  height: 12px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(31, 52, 71, 0.18),
+    rgba(31, 52, 71, 0.18) 4px,
+    rgba(31, 52, 71, 0.04) 4px,
+    rgba(31, 52, 71, 0.04) 8px
+  );
 }
 
 .fossil-periods {
@@ -859,16 +962,24 @@ a.card {
   transition: opacity 0.25s ease, background 0.25s ease;
 }
 
-.fossil-period:nth-child(1) { box-shadow: inset 0 3px 0 #7890aa; }
-.fossil-period:nth-child(2) { box-shadow: inset 0 3px 0 #4f99a4; }
-.fossil-period:nth-child(3) { box-shadow: inset 0 3px 0 #5a9a84; }
-.fossil-period:nth-child(4) { box-shadow: inset 0 3px 0 #7d9a62; }
-.fossil-period:nth-child(5) { box-shadow: inset 0 3px 0 #b5a360; }
-.fossil-period:nth-child(6) { box-shadow: inset 0 3px 0 #b6865a; }
-.fossil-period:nth-child(7) { box-shadow: inset 0 3px 0 #b77461; }
-.fossil-period:nth-child(8) { box-shadow: inset 0 3px 0 #a87967; }
-.fossil-period:nth-child(9) { box-shadow: inset 0 3px 0 #a17185; }
-.fossil-period:nth-child(10) { box-shadow: inset 0 3px 0 #77899e; }
+.fossil-period[hidden] {
+  display: none;
+}
+
+.fossil-period:nth-child(1) { box-shadow: inset 0 3px 0 #7f7a92; }
+.fossil-period:nth-child(2) { box-shadow: inset 0 3px 0 #72889d; }
+.fossil-period:nth-child(3) { box-shadow: inset 0 3px 0 #8b83a8; }
+.fossil-period:nth-child(4) { box-shadow: inset 0 3px 0 #7890aa; }
+.fossil-period:nth-child(5) { box-shadow: inset 0 3px 0 #4f99a4; }
+.fossil-period:nth-child(6) { box-shadow: inset 0 3px 0 #5a9a84; }
+.fossil-period:nth-child(7) { box-shadow: inset 0 3px 0 #7d9a62; }
+.fossil-period:nth-child(8) { box-shadow: inset 0 3px 0 #b5a360; }
+.fossil-period:nth-child(9) { box-shadow: inset 0 3px 0 #b6865a; }
+.fossil-period:nth-child(10) { box-shadow: inset 0 3px 0 #b77461; }
+.fossil-period:nth-child(11) { box-shadow: inset 0 3px 0 #a87967; }
+.fossil-period:nth-child(12) { box-shadow: inset 0 3px 0 #a17185; }
+.fossil-period:nth-child(13) { box-shadow: inset 0 3px 0 #77899e; }
+.fossil-period:nth-child(14) { box-shadow: inset 0 3px 0 #6f7f90; }
 
 .fossil-period span {
   display: block;
@@ -897,7 +1008,7 @@ a.card {
 
 .fossil-grid {
   position: relative;
-  height: 465px;
+  height: 505px;
   border: 1px solid rgba(31, 52, 71, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -931,6 +1042,128 @@ a.card {
   background-image: linear-gradient(90deg, rgba(31, 52, 71, 0.12) 1px, transparent 1px);
   background-size: 10% 100%;
   pointer-events: none;
+}
+
+.fossil-time-ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2.2rem;
+  z-index: 4;
+  color: rgba(31, 52, 71, 0.46);
+  font-size: 0.66rem;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.fossil-time-ticks span {
+  position: absolute;
+  left: var(--x, 0%);
+  transform: translateX(-50%);
+  padding-top: 0.42rem;
+  white-space: nowrap;
+}
+
+.fossil-time-ticks span::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 5px;
+  background: rgba(31, 52, 71, 0.28);
+  transform: translateX(-50%);
+}
+
+.fossil-time-ticks span[hidden] {
+  display: none;
+}
+
+.fossil-time-ticks span[data-age="0"] {
+  transform: translateX(-100%);
+}
+
+.deep-marker {
+  position: absolute;
+  left: var(--x, 18.5%);
+  top: 3.1rem;
+  bottom: 0;
+  z-index: 2;
+  display: none;
+  width: 0;
+  border: 0;
+  background: transparent;
+  color: #1f3447;
+  font: inherit;
+  cursor: pointer;
+}
+
+.fossil-register[data-timeline="earth"] .deep-marker {
+  display: block;
+}
+
+.deep-marker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(31, 52, 71, 0.2);
+}
+
+.deep-marker span {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #3f8f74;
+  border: 2px solid color-mix(in srgb, var(--bg) 88%, white);
+  transform: translate(-50%, 0);
+  box-shadow: 0 0 0 5px rgba(63, 143, 116, 0.14);
+}
+
+.earth-marker span {
+  background: #b8893a;
+  box-shadow: 0 0 0 5px rgba(184, 137, 58, 0.14);
+}
+
+.deep-marker strong,
+.deep-marker small {
+  position: absolute;
+  left: 0.85rem;
+  white-space: nowrap;
+}
+
+.deep-marker strong {
+  top: 0;
+  padding: 0.08rem 0.38rem 0.1rem;
+  border: 1px solid rgba(31, 52, 71, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 0.82rem;
+  font-weight: 900;
+  box-shadow: 0 6px 18px rgba(31, 52, 71, 0.06);
+}
+
+.deep-marker small {
+  top: 1.7rem;
+  color: var(--ink-soft);
+  font-weight: 800;
+}
+
+.deep-marker:hover strong,
+.deep-marker:focus-visible strong,
+.deep-marker.selected strong {
+  background: #1f3447;
+  color: #fffaf0;
+}
+
+.deep-marker.selected span {
+  box-shadow:
+    0 0 0 5px rgba(31, 52, 71, 0.12),
+    0 10px 24px rgba(31, 52, 71, 0.18);
 }
 
 .fossil-absence {
@@ -1040,6 +1273,10 @@ a.card {
   text-shadow: none;
 }
 
+.fossil-row-item.label-left .fossil-label {
+  transform: translate(calc(-100% - 0.55rem), -0.38rem);
+}
+
 .fossil-row-item[data-end]:not([data-end="0"]) .fossil-bar::after {
   content: "×";
   position: absolute;
@@ -1114,6 +1351,8 @@ a.card {
 }
 
 .fossil-register-info {
+  grid-column: 2;
+  grid-row: 2 / span 2;
   background: rgba(255, 255, 255, 0.74);
   border: 1px solid rgba(31, 52, 71, 0.1);
   border-left: 4px solid #b8893a;
@@ -1158,14 +1397,9 @@ a.card {
 
 .fossil-info-note {
   margin: 0;
-  display: grid;
-  gap: 0.5rem;
   font-size: 0.82rem;
-}
-
-.fossil-info-note span {
-  display: block;
-  padding: 0.58rem 0.65rem;
+  line-height: 1.55;
+  padding: 0.7rem 0.8rem;
   border: 1px solid rgba(31, 52, 71, 0.08);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.58);
@@ -1179,6 +1413,13 @@ a.card {
 @media (max-width: 980px) {
   .fossil-register {
     grid-template-columns: 1fr;
+  }
+
+  .fossil-legend,
+  .fossil-register-main,
+  .fossil-register-info {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .fossil-register-info {
