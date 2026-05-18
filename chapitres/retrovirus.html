@@ -90,36 +90,121 @@
       <h2>Le mécanisme</h2>
 
       <p class="subtitle">
-        Clique sur chaque étape pour afficher l'explication.
+        Change d'étape pour suivre le trajet d'un rétrovirus, de son insertion dans l'ADN jusqu'à son héritage.
       </p>
 
-      <div class="erv-schema">
-        <button class="erv-step" data-erv-step="infection">
-          <span class="erv-step-number">1</span>
-          <span class="erv-step-title">Infection</span>
-          <span class="erv-step-icon">🦠</span>
-        </button>
+      <div class="erv-viewer" aria-label="Animation expliquant l'insertion d'un rétrovirus">
+        <div class="erv-tabs" role="tablist" aria-label="Étapes du mécanisme">
+          <button class="erv-tab active" type="button" role="tab" aria-selected="true" data-erv-panel="infection">Étape 1</button>
+          <button class="erv-tab" type="button" role="tab" aria-selected="false" data-erv-panel="cellule">Étape 2</button>
+          <button class="erv-tab" type="button" role="tab" aria-selected="false" data-erv-panel="adn">Étape 3</button>
+          <button class="erv-tab" type="button" role="tab" aria-selected="false" data-erv-panel="descendance">Étape 4</button>
+          <button class="erv-tab" type="button" role="tab" aria-selected="false" data-erv-panel="ancetre">Étape 5</button>
+        </div>
 
-        <div class="erv-arrow">→</div>
+        <div class="erv-window">
+          <article class="erv-panel active" data-erv-panel-id="infection" role="tabpanel">
+            <div class="erv-panel-copy">
+              <span class="erv-step-number">1</span>
+              <h3>Le virus infecte un organisme</h3>
+              <p>
+                Un rétrovirus peut infecter un animal. L'image de l'organisme pourra être remplacée par celle que tu ajouteras ensuite.
+              </p>
+            </div>
 
-        <button class="erv-step" data-erv-step="insertion">
-          <span class="erv-step-number">2</span>
-          <span class="erv-step-title">Insertion</span>
-          <span class="erv-step-icon">🧬</span>
-        </button>
+            <div class="erv-stage erv-stage-organism" aria-hidden="true">
+              <img class="erv-infection-image" src="../images/retrovirus/singe-infection-retrovirus.png" alt="Un singe exposé à un rétrovirus" />
+            </div>
+          </article>
 
-        <div class="erv-arrow">→</div>
+          <article class="erv-panel" data-erv-panel-id="cellule" role="tabpanel" hidden>
+            <div class="erv-panel-copy">
+              <span class="erv-step-number">2</span>
+              <h3>Le rétrovirus entre dans une cellule</h3>
+              <p>
+                Le virus rencontre une cellule et traverse sa membrane. Une fois entré, il pourra ensuite libérer son information génétique.
+              </p>
+              <button class="erv-play-button" type="button" data-cell-animation>Faire entrer le virus</button>
+            </div>
 
-        <button class="erv-step" data-erv-step="heritage">
-          <span class="erv-step-number">3</span>
-          <span class="erv-step-title">Héritage</span>
-          <span class="erv-step-icon">👪</span>
-        </button>
+            <div class="erv-stage erv-stage-cell" aria-hidden="true">
+              <img class="erv-cell-image cell-main" src="../images/retrovirus/cellule-animale.png" alt="" />
+              <img class="erv-cell-image cell-left" src="../images/retrovirus/cellule-animale.png" alt="" />
+              <img class="erv-cell-image cell-right" src="../images/retrovirus/cellule-animale.png" alt="" />
+              <img class="erv-cell-image cell-back" src="../images/retrovirus/cellule-animale.png" alt="" />
+              <img class="erv-virus-image erv-virus-cell" src="../images/retrovirus/retrovirus.png" alt="" />
+            </div>
+          </article>
+
+          <article class="erv-panel" data-erv-panel-id="adn" role="tabpanel" hidden>
+            <div class="erv-panel-copy">
+              <span class="erv-step-number">3</span>
+              <h3>Des milliers d'emplacements possibles</h3>
+              <p>
+                Le fragment viral peut s'insérer à beaucoup d'endroits du génome. Ce qui devient frappant, c'est de retrouver la même insertion au même emplacement chez deux espèces.
+              </p>
+              <div class="erv-dna-controls">
+                <button class="erv-play-button" type="button" data-dna-insert>Insérer le virus</button>
+                <button class="erv-play-button erv-play-button-secondary" type="button" data-dna-scroll>Faire défiler l'ADN</button>
+              </div>
+            </div>
+
+            <div class="erv-stage erv-stage-dna" aria-hidden="true" data-dna-demo>
+              <div class="dna-counter" data-dna-counter>
+                <span>site 18 420</span>
+                <span>site 18 421</span>
+                <span>site 18 422</span>
+                <span>site 18 423</span>
+                <span>site 18 424</span>
+              </div>
+
+              <div class="dna-viewport" data-dna-viewport>
+                <div class="dna-track" data-dna-track></div>
+                <div class="dna-site-layer" data-dna-sites></div>
+                <img class="dna-virus-probe" src="../images/retrovirus/retrovirus.png" alt="" data-dna-virus />
+                <i class="dna-insertion" data-dna-insertion></i>
+              </div>
+
+              <div class="dna-scale-note">
+                <strong data-dna-range>Sites 18 420 à 18 424</strong>
+                <span data-dna-message>Une portion minuscule est affichée ici ; le génome continue très loin avant et après.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="erv-panel" data-erv-panel-id="descendance" role="tabpanel" hidden>
+            <div class="erv-panel-copy">
+              <span class="erv-step-number">4</span>
+              <h3>L'insertion peut être transmise</h3>
+              <p>
+                Si le fragment viral est intégré dans une cellule reproductrice, il peut être hérité par la descendance. Il devient alors une trace stable dans la lignée.
+              </p>
+            </div>
+
+            <div class="erv-stage erv-stage-diagram" aria-hidden="true">
+              <img class="erv-diagram-image" src="../images/retrovirus/transmission-retrovirus-descendance.png" alt="" />
+            </div>
+          </article>
+
+          <article class="erv-panel" data-erv-panel-id="ancetre" role="tabpanel" hidden>
+            <div class="erv-panel-copy">
+              <span class="erv-step-number">5</span>
+              <h3>Des insertions partagées</h3>
+              <p>
+                Quand l'humain et le chimpanzé ont les mêmes rétrovirus aux mêmes emplacements, l'explication la plus simple est un héritage depuis un ancêtre commun.
+              </p>
+            </div>
+
+            <div class="erv-stage erv-stage-diagram" aria-hidden="true">
+              <img class="erv-diagram-image" src="../images/retrovirus/retrovirus-ancetre-commun-humain-chimpanze.png" alt="" />
+            </div>
+          </article>
+        </div>
       </div>
 
       <div class="schema-info" id="erv-info">
-        <strong>👆 Clique sur une étape</strong><br />
-        Le schéma montre comment un ancien virus peut devenir une trace héritée dans l'ADN.
+        <strong>À retenir</strong><br />
+        Si cette insertion touche une cellule reproductrice, elle peut être transmise aux descendants et devenir une trace héritée.
       </div>
     </div>
   </section>
