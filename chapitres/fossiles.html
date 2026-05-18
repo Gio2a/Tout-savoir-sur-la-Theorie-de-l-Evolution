@@ -90,6 +90,7 @@
         <div class="fossil-view-controls" aria-label="Choisir les éléments affichés">
           <button class="fossil-view-button active" type="button" data-fossil-view="groupe">Groupes</button>
           <button class="fossil-view-button" type="button" data-fossil-view="caractère">Caractères</button>
+          <button class="fossil-crisis-button" type="button" data-fossil-crises>Crises</button>
           <button class="fossil-range-button" type="button" data-fossil-range="earth">Depuis la Terre</button>
         </div>
 
@@ -97,7 +98,8 @@
           <span><i class="legend-dot"></i>apparition</span>
           <span><i class="legend-bar"></i>présence</span>
           <span><i class="legend-cross">×</i>disparition</span>
-          <span><i class="legend-shade"></i>absence après sélection</span>
+          <span><i class="legend-shade"></i>absence</span>
+          <span><i class="legend-crisis"></i>crise biologique</span>
         </div>
 
         <div class="fossil-register-main">
@@ -132,6 +134,11 @@
             </div>
             <div class="fossil-absence fossil-absence-before" aria-hidden="true"></div>
             <div class="fossil-absence fossil-absence-after" aria-hidden="true"></div>
+            <button class="extinction-marker" type="button" data-extinction="ordovician-silurian" aria-label="Extinction Ordovicien-Silurien vers 444 Ma"><span>O-S</span></button>
+            <button class="extinction-marker" type="button" data-extinction="late-devonian" aria-label="Extinction du Dévonien tardif entre 372 et 359 Ma"><span>Dév.</span></button>
+            <button class="extinction-marker" type="button" data-extinction="permian-triassic" aria-label="Extinction Permien-Trias vers 252 Ma"><span>P-T</span></button>
+            <button class="extinction-marker" type="button" data-extinction="triassic-jurassic" aria-label="Extinction Trias-Jurassique vers 201 Ma"><span>T-J</span></button>
+            <button class="extinction-marker" type="button" data-extinction="cretaceous-paleogene" aria-label="Extinction Crétacé-Paléogène vers 66 Ma"><span>K-Pg</span></button>
             <button class="deep-marker earth-marker" type="button" data-age="4540" data-name="Formation de la Terre" data-period="Environ 4,54 milliards d'années" data-desc="L'âge de la Terre est estimé grâce à la datation radiométrique. Les plus vieux minéraux terrestres donnent un âge minimal ; les météorites et les roches lunaires indiquent l'âge du début du Système solaire." data-note="<strong>Comment le sait-on ?</strong> Les scientifiques comparent des isotopes radioactifs et leurs produits de désintégration, notamment avec la méthode uranium-plomb. Plusieurs mesures convergent vers environ 4,54 milliards d'années." aria-label="Formation de la Terre vers 4,54 milliards d'années">
               <span></span>
               <strong>Formation de la Terre</strong>
@@ -182,34 +189,123 @@
     </div>
   </section>
 
-  <section class="slide">
+  <section class="slide transition-fossils-slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
-      <h2>Tiktaalik</h2>
+      <p class="transition-eyebrow">Un exemple de transition documentée par les fossiles</p>
+      <h2>L'apparition des tétrapodes</h2>
 
       <p class="subtitle">
-        Tiktaalik est souvent présenté comme un exemple de fossile transitionnel entre poissons et premiers tétrapodes.
+        Entre certains poissons à nageoires charnues et les premiers vertébrés à membres, les fossiles montrent une transition progressive.
       </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Caractères de poisson</h3>
-          <p>Il possède des nageoires et des caractères liés à la vie aquatique.</p>
+      <div class="transition-reading">
+        <strong>Comment lire ces fossiles ?</strong>
+        <span>Pas une chaîne directe prouvée.</span>
+        <span>Une succession datée dans les roches.</span>
+        <span>Des caractères qui apparaissent dans un ordre cohérent.</span>
+      </div>
+
+      <div class="transition-explorer" id="tetrapod-transition">
+        <div class="transition-stage" aria-live="polite">
+          <div class="transition-stage-top">
+            <p class="transition-kicker">Étape <span id="transition-step-current">1</span> / 5</p>
+            <div class="transition-time">
+              <span id="transition-time-label">~385 Ma</span>
+              <i id="transition-time-fill"></i>
+            </div>
+          </div>
+
+          <div class="transition-stage-main" id="transition-stage-main">
+            <div class="transition-stage-media" id="transition-detail-media"></div>
+            <div class="transition-stage-copy">
+              <span class="transition-keynote" id="transition-keynote">nageoires charnues</span>
+              <h3 id="transition-title">Eusthenopteron</h3>
+              <p class="transition-meta" id="transition-meta">~385 Ma · aquatique</p>
+              <p id="transition-desc"></p>
+              <div class="finger-highlight" id="transition-finger"></div>
+            </div>
+          </div>
+
+          <div class="transition-compare in-stage" id="transition-compare" hidden>
+            <p class="transition-kicker">Synthèse</p>
+            <h3>Vers les premiers tétrapodes</h3>
+            <div class="transition-compare-grid" id="transition-compare-grid"></div>
+          </div>
+
+          <div class="transition-traits" id="transition-traits" aria-label="Caractères observés"></div>
+
+          <div class="transition-controls">
+            <button type="button" class="transition-nav-button" data-transition-prev>Précédent</button>
+            <div class="transition-dots" id="transition-dots" aria-label="Étapes de la transition"></div>
+            <button type="button" class="transition-nav-button primary" data-transition-next>Suivant</button>
+          </div>
+
+          <div class="transition-proof" id="transition-proof"></div>
         </div>
 
-        <div class="card">
-          <h3>Caractères proches des tétrapodes</h3>
-          <p>Il présente aussi des structures qui annoncent des membres capables de supporter le corps.</p>
-        </div>
-
-        <div class="card">
-          <h3>Intérêt scientifique</h3>
-          <p>Il aide à comprendre le passage progressif de certains vertébrés vers la vie terrestre.</p>
-        </div>
       </div>
 
       <div class="banner">
-        Un fossile transitionnel n'est pas un “monstre moitié-moitié” : c'est une forme qui possède un mélange cohérent de caractères.
+        Ces fossiles ne sont pas présentés comme une chaîne directe ancêtre-descendant : ils documentent une succession cohérente de caractères dans le bon ordre géologique.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide eye-evolution-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+      <p class="transition-eyebrow">Réponse à une objection classique</p>
+      <h2>Des yeux simples aux yeux complexes</h2>
+
+      <p class="subtitle">
+        L'oeil complexe ne surgit pas d'un coup : on observe aujourd'hui des formes plus simples, déjà fonctionnelles.
+      </p>
+
+      <div class="eye-evolution" id="eye-evolution">
+        <div class="eye-lab-meta">
+          <div class="eye-counter">Étape <span id="eye-step-current">1</span> / <span id="eye-step-total">6</span></div>
+          <div class="eye-progress-track" aria-hidden="true"><span></span></div>
+        </div>
+
+        <div class="eye-stage">
+          <nav class="eye-step-rail" aria-label="Étapes de l'évolution de l'oeil">
+            <p>Progression visuelle</p>
+            <div class="eye-function-line" id="eye-function-line"></div>
+          </nav>
+
+          <div class="eye-workbench">
+            <div class="eye-comparison-board">
+              <div class="eye-board-panel">
+                <p class="eye-panel-label">Structure anatomique</p>
+                <div class="eye-visual" id="eye-visual" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <aside class="eye-info">
+              <div>
+                <p class="transition-kicker">Forme d'oeil</p>
+                <h3 id="eye-title">Tache photosensible</h3>
+                <p class="eye-example" id="eye-example">Exemple actuel : patelle / animaux à photorécepteurs simples</p>
+              </div>
+              <p id="eye-desc"></p>
+              <div class="eye-new" id="eye-new"></div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="eye-controls">
+          <button type="button" class="transition-nav-button" data-eye-prev>Précédent</button>
+          <div class="transition-dots" id="eye-dots" aria-label="Étapes de l'évolution de l'oeil"></div>
+          <button type="button" class="transition-nav-button primary" data-eye-next>Suivant</button>
+        </div>
+
+        <div class="eye-objection">
+          <strong>Réponse à l'objection</strong>
+          <span>On ne retire pas des pièces à un oeil moderne.</span>
+          <span>On modifie des structures simples qui fonctionnent déjà.</span>
+          <span>Moins performant ne veut pas dire inutile.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -221,37 +317,18 @@
       <h2>“Il manque des chaînons”</h2>
 
       <p class="subtitle">
-        Cette objection vient souvent d'une mauvaise image de l'évolution.
+        Cette objection est traitée avec un schéma interactif dans la page sur les humains et les autres singes.
       </p>
 
-      <div class="row-list">
-        <div class="row">
-          <div class="row-num">1</div>
-          <div class="row-content">
-            <h4>L'évolution n'est pas une chaîne droite</h4>
-            <p>Elle ressemble plutôt à un arbre avec des branches, dont beaucoup ont disparu.</p>
-          </div>
+      <div class="cross-reference-card">
+        <div>
+          <p class="transition-kicker">À voir ailleurs</p>
+          <h3>Le faux problème du “chaînon manquant”</h3>
+          <p>
+            Plutôt que de répéter le même schéma ici, cette page renvoie vers l'animation qui montre pourquoi on peut toujours réclamer un nouvel intermédiaire.
+          </p>
         </div>
-
-        <div class="row">
-          <div class="row-num">2</div>
-          <div class="row-content">
-            <h4>La fossilisation est rare</h4>
-            <p>La plupart des êtres vivants ne deviennent jamais des fossiles.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="row-num">3</div>
-          <div class="row-content">
-            <h4>On trouve pourtant beaucoup de formes intermédiaires</h4>
-            <p>Les fossiles disponibles montrent de nombreuses transitions cohérentes avec l'évolution.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout">
-        Chaque nouveau fossile peut combler un espace, mais crée aussi deux nouveaux intervalles plus petits. Ce n'est pas un problème : c'est normal dans une histoire ramifiée.
+        <a class="cross-reference-link" href="humain-singes.html#chainon-manquant">Voir le schéma interactif</a>
       </div>
     </div>
   </section>
