@@ -237,5 +237,77 @@
     });
   });
 
+  /* =========================
+     PAGE "THÉORIE"
+     ========================= */
+
+  const theoryDetails = {
+    observation: {
+      label: "Niveau 1",
+      title: "Observation",
+      text:
+        "On constate un fait mesurable. Une observation seule ne dit pas encore pourquoi ce fait existe.",
+      example:
+        "Exemple : on observe que certaines bactéries survivent à un antibiotique."
+    },
+    hypothese: {
+      label: "Niveau 2",
+      title: "Hypothèse",
+      text:
+        "On propose une explication possible. Elle doit pouvoir être testée par des observations ou des expériences.",
+      example:
+        "Exemple : ces bactéries possèdent peut-être une mutation qui les rend résistantes."
+    },
+    prediction: {
+      label: "Niveau 3",
+      title: "Prédictions",
+      text:
+        "Si l'explication est correcte, elle doit permettre d'anticiper ce qu'on devrait retrouver.",
+      example:
+        "Exemple : les descendantes de ces bactéries devraient aussi être plus souvent résistantes."
+    },
+    theorie: {
+      label: "Niveau 4",
+      title: "Théorie scientifique",
+      text:
+        "Quand un cadre explique beaucoup de faits, produit des prédictions et résiste aux tests, il devient une théorie scientifique.",
+      example:
+        "Exemple : la théorie de l'évolution explique mutations, sélection, parentés, fossiles et ADN dans un même cadre."
+    }
+  };
+
+  document.querySelectorAll("[data-theory-ladder]").forEach(function (ladder) {
+    const buttons = Array.from(ladder.querySelectorAll("[data-theory-step]"));
+    const label = ladder.querySelector("[data-theory-label]");
+    const title = ladder.querySelector("[data-theory-title]");
+    const text = ladder.querySelector("[data-theory-text]");
+    const example = ladder.querySelector("[data-theory-example]");
+
+    function setTheoryStep(stepName) {
+      const detail = theoryDetails[stepName];
+
+      if (!detail) {
+        return;
+      }
+
+      buttons.forEach(function (button) {
+        const isActive = button.dataset.theoryStep === stepName;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+
+      if (label) label.textContent = detail.label;
+      if (title) title.textContent = detail.title;
+      if (text) text.textContent = detail.text;
+      if (example) example.textContent = detail.example;
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        setTheoryStep(button.dataset.theoryStep);
+      });
+    });
+  });
+
   console.log("Site Evolution chargé.");
 })();
