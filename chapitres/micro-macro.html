@@ -43,31 +43,72 @@
     </div>
   </section>
 
-  <section class="slide">
+  <section class="slide micro-macro-lab-slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
 
-      <h2>Microévolution</h2>
+      <h2>Micro / macro : où est la frontière ?</h2>
 
       <p class="subtitle">
-        La microévolution correspond aux changements observables à l'intérieur d'une population ou d'une espèce.
+        Le schéma ci-dessous sert à tester une objection fréquente, pas à présenter deux mécanismes biologiques séparés.
       </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Exemple</h3>
-          <p>Une population de bactéries devient plus résistante à un antibiotique.</p>
-        </div>
+      <div class="micro-boundary-premise">
+        Certains contradicteurs avancent : “on observe des microévolutions, mais on n'a jamais observé de macroévolution”. Voici pourquoi cette phrase ne tient pas biologiquement.
+      </div>
 
-        <div class="card">
-          <h3>Exemple</h3>
-          <p>Une population d'insectes devient plus résistante à un insecticide.</p>
-        </div>
+      <div class="micro-macro-lab micro-boundary-lab" data-micro-macro-lab>
+        <section class="micro-boundary-board">
+          <div class="micro-boundary-intro">
+            <span>À toi de placer le seuil</span>
+            <strong>Déplace la frontière : à quel moment les petits changements cesseraient-ils d'être acceptables ?</strong>
+          </div>
 
-        <div class="card">
-          <h3>Idée centrale</h3>
-          <p>Les fréquences de certains caractères changent au fil des générations.</p>
-        </div>
+          <div class="micro-boundary-scale" data-micro-boundary-scale>
+            <div class="micro-boundary-steps" data-micro-boundary-steps aria-hidden="true"></div>
+            <div class="micro-boundary-cursor" data-micro-boundary-cursor style="--boundary: 38%">
+              <span>ta frontière</span>
+            </div>
+          </div>
+
+          <input
+            class="micro-boundary-slider"
+            type="range"
+            min="1"
+            max="29"
+            value="11"
+            data-micro-boundary-slider
+            aria-label="Placer la frontière supposée entre microévolution et macroévolution"
+          >
+
+          <div class="micro-boundary-labels">
+            <span>1 petit changement</span>
+            <span>accumulation continue</span>
+            <span>beaucoup de changements</span>
+          </div>
+        </section>
+
+        <aside class="micro-macro-explain">
+          <span data-micro-kicker>Frontière placée après 11 changements</span>
+          <h3 data-micro-title>Pourquoi ici plutôt qu'un cran avant ?</h3>
+          <p data-micro-text>
+            Si 11 petits changements sont encore acceptables, pourquoi le 12e deviendrait-il soudain un autre phénomène biologique ?
+          </p>
+
+          <div class="micro-macro-verdict">
+            <strong data-micro-verdict-title>Le seuil doit être justifié</strong>
+            <p data-micro-verdict-text>
+              Sans nombre précis, sans mécanisme nouveau et sans critère mesurable, la frontière micro/macro reste une coupure verbale.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="micro-boundary-explanation">
+        <span>Ce que montre le schéma</span>
+        <p>
+          Si aucune frontière ne peut être placée sans arbitraire, l'opposition “micro oui, macro non” ne tient pas. “Microévolution” et “macroévolution” désignent le même phénomène regardé à deux échelles de temps : à court terme, on mesure des variations héréditaires qui changent de fréquence ; à long terme, leur accumulation avec l'isolement et la spéciation produit de grandes divergences.
+        </p>
       </div>
     </div>
   </section>
@@ -76,77 +117,195 @@
     <div class="slide-inner">
       <span class="section-marker"></span>
 
-      <h2>Macroévolution</h2>
+      <h2>Ce qui change vraiment : l'échelle</h2>
 
       <p class="subtitle">
-        La macroévolution désigne les grands changements observés sur de longues durées : apparition de nouvelles espèces, grands groupes, formes nouvelles.
+        Les mots peuvent rester utiles, à condition de comprendre qu'ils décrivent le niveau de zoom.
       </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Accumulation</h3>
-          <p>De petits changements peuvent s'accumuler sur de très nombreuses générations.</p>
-        </div>
+      <div class="micro-macro-compare">
+        <article>
+          <span>Temps court</span>
+          <h3>Microévolution</h3>
+          <p>On suit des changements de fréquence dans une population : résistances, couleur, taille moyenne, variants génétiques.</p>
+        </article>
 
-        <div class="card">
-          <h3>Séparation</h3>
-          <p>Deux populations séparées peuvent évoluer différemment.</p>
-        </div>
+        <article>
+          <span>Temps long</span>
+          <h3>Macroévolution</h3>
+          <p>On regarde le résultat sur de longues durées : spéciations, extinctions, lignées séparées, grands groupes.</p>
+        </article>
 
-        <div class="card">
-          <h3>Spéciation</h3>
-          <p>Avec le temps, elles peuvent devenir incapables de se reproduire entre elles : une nouvelle espèce apparaît.</p>
-        </div>
-      </div>
-
-      <div class="callout">
-        La macroévolution n'est pas un mécanisme magique différent : elle correspond à des changements accumulés, triés et transmis sur de longues périodes.
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <div class="slide-inner">
-      <span class="section-marker"></span>
-
-      <h2>Des cas de spéciation observés</h2>
-
-      <div class="row-list">
-        <div class="row">
-          <div class="row-num">1</div>
-          <div class="row-content">
-            <h4>Tragopogon</h4>
-            <p>Des plantes chez lesquelles de nouvelles espèces sont apparues par hybridation et duplication chromosomique.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="row-num">2</div>
-          <div class="row-content">
-            <h4>Cichlidés</h4>
-            <p>Des poissons qui se sont diversifiés rapidement en de nombreuses formes dans les lacs africains.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="row-num">3</div>
-          <div class="row-content">
-            <h4>Moustiques du métro de Londres</h4>
-            <p>Un exemple souvent cité de population isolée ayant évolué différemment.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="row-num">4</div>
-          <div class="row-content">
-            <h4>Rhagoletis</h4>
-            <p>Des mouches associées à des plantes différentes, montrant un début de séparation entre populations.</p>
-          </div>
-        </div>
+        <article>
+          <span>Même moteur</span>
+          <h3>Pas de saut magique</h3>
+          <p>Les mécanismes restent variation, hérédité, sélection, dérive, migrations, isolement et accumulation.</p>
+        </article>
       </div>
 
       <div class="banner">
-        L'idée importante : les limites entre espèces ne sont pas toujours instantanées. Elles se construisent progressivement.
+        Le changement de mot ne marque pas un changement de moteur : il marque surtout le passage d'une observation proche à une lecture sur de longues durées.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Des cas de spéciation documentés</h2>
+
+      <p class="subtitle">
+        “On n'a jamais vu de macroévolution” mélange souvent deux choses : une nouvelle espèce peut apparaître, mais la frontière exacte dépend de la définition d'espèce utilisée.
+      </p>
+
+      <div class="speciation-evidence-grid">
+        <article class="speciation-evidence-card strong">
+          <span>Espèces apparues récemment</span>
+          <h3>Tragopogon mirus / miscellus</h3>
+          <p>Deux plantes formées en Amérique du Nord par hybridation puis doublement des chromosomes. C'est un exemple classique de spéciation rapide par polyploïdie.</p>
+        </article>
+
+        <article class="speciation-evidence-card strong">
+          <span>Espèce hybride récente</span>
+          <h3>Spartina anglica</h3>
+          <p>Une graminée de marais salés, aujourd'hui aussi classée <em>Sporobolus anglicus</em>, issue d'une hybridation suivie d'une polyploïdie.</p>
+        </article>
+
+        <article class="speciation-evidence-card strong">
+          <span>Hybride reproductivement isolé</span>
+          <h3>Senecio eboracensis</h3>
+          <p>Une espèce hybride décrite à York, avec des travaux sur son isolement reproductif. Elle montre que la spéciation peut être récente et documentable.</p>
+        </article>
+
+        <article class="speciation-evidence-card ongoing">
+          <span>Spéciation en cours</span>
+          <h3>Rhagoletis pomonella</h3>
+          <p>Des mouches associées à l'aubépine et au pommier montrent une divergence écologique et reproductive. C'est plutôt un début de séparation qu'une espèce nouvelle déjà tranchée.</p>
+        </article>
+
+        <article class="speciation-evidence-card ongoing">
+          <span>Expérience en laboratoire</span>
+          <h3>Drosophila pseudoobscura</h3>
+          <p>Des populations élevées dans des milieux différents ont développé un isolement reproductif partiel. Ce n'est pas une nouvelle espèce nommée, mais une étape mesurable vers la spéciation.</p>
+        </article>
+
+        <article class="speciation-evidence-card caution">
+          <span>À éviter comme preuve</span>
+          <h3>Moustique du métro de Londres</h3>
+          <p>Il existe bien une forme souterraine adaptée, mais ce n'est pas un bon exemple d'espèce apparue dans le métro : son origine semble plus ancienne et sa classification reste discutée.</p>
+        </article>
+      </div>
+
+      <div class="banner">
+        Les cas les plus nets viennent souvent des plantes polyploïdes, parce qu'un changement de nombre de chromosomes peut créer rapidement un isolement reproductif.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Mais au fait, c'est quoi une espèce ?</h2>
+
+      <p class="subtitle">
+        Une espèce n'est pas une boîte parfaite posée dans la nature. C'est une catégorie utile, mais les frontières du vivant peuvent être floues.
+      </p>
+
+      <div class="species-concept-intro">
+        Le mot “espèce” existe bien en biologie, mais il n'a pas une seule définition universelle. Selon les organismes étudiés, les biologistes utilisent des critères différents, et aucun ne fonctionne dans 100 % des cas.
+      </div>
+
+      <div class="species-concept-grid">
+        <article>
+          <span>Concept biologique</span>
+          <h3>Se reproduire entre eux</h3>
+          <p>Des individus appartiennent à la même espèce s'ils peuvent se reproduire naturellement et produire une descendance fertile.</p>
+          <small>Limite : fonctionne mal pour les fossiles, les bactéries, les organismes asexués et les espèces qui s'hybrident.</small>
+        </article>
+
+        <article>
+          <span>Concept morphologique</span>
+          <h3>Se ressembler</h3>
+          <p>On regroupe les organismes selon leur forme, leur anatomie ou des caractères visibles.</p>
+          <small>Limite : des espèces différentes peuvent se ressembler, et une même espèce peut être très variable.</small>
+        </article>
+
+        <article>
+          <span>Concept phylogénétique</span>
+          <h3>Former une lignée</h3>
+          <p>Une espèce est une lignée reconnaissable dans un arbre de parenté, avec des caractères hérités propres.</p>
+          <small>Limite : selon les données utilisées, on peut découper trop finement ou obtenir des arbres différents.</small>
+        </article>
+
+        <article>
+          <span>Concept écologique</span>
+          <h3>Occuper une niche</h3>
+          <p>On distingue les espèces par leur rôle écologique, leur milieu, leurs ressources ou leur mode de vie.</p>
+          <small>Limite : des niches peuvent se chevaucher, changer, ou ne pas suffire à séparer clairement deux lignées.</small>
+        </article>
+
+        <article>
+          <span>Concept génétique</span>
+          <h3>Former un groupe génétique</h3>
+          <p>On compare les génomes et les flux de gènes pour repérer des groupes plus ou moins séparés.</p>
+          <small>Limite : le seuil de différence est souvent arbitraire, surtout quand il y a hybridation ou transfert de gènes.</small>
+        </article>
+
+        <article>
+          <span>Concept évolutif</span>
+          <h3>Avoir sa propre trajectoire</h3>
+          <p>Une espèce est une lignée qui évolue avec sa propre histoire, même si ses frontières ne sont pas toujours nettes.</p>
+          <small>Limite : très utile en théorie, mais parfois difficile à appliquer concrètement sur le terrain.</small>
+        </article>
+      </div>
+
+      <div class="banner">
+        Point clé : si le mot “espèce” lui-même a des frontières parfois floues, il est normal que la spéciation soit souvent progressive plutôt qu'instantanée.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Sources et références</h2>
+
+      <p class="subtitle">
+        Références utilisées pour les exemples de spéciation, le cas du moustique du métro et les définitions du mot “espèce”.
+      </p>
+
+      <div class="references-grid">
+        <article>
+          <span>Spéciation documentée</span>
+          <ul>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/16648586/" target="_blank" rel="noopener">Tate et al. (2006)</a> — <em>Tragopogon miscellus</em>, allopolyploïdie récente.</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/29885228/" target="_blank" rel="noopener">Spoelhof et al. (2017)</a> — <em>Tragopogon mirus</em> et <em>T. miscellus</em>, néo-allopolyploïdes.</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/11472537/" target="_blank" rel="noopener">Baumel, Ainouche & Levasseur (2001)</a> — <em>Spartina anglica</em>, spéciation allopolyploïde.</li>
+            <li><a href="https://www.nature.com/articles/6800432" target="_blank" rel="noopener">Lowe & Abbott (2004)</a> — isolement reproductif de <em>Senecio eboracensis</em>.</li>
+          </ul>
+        </article>
+
+        <article>
+          <span>Spéciation en cours / cas discutés</span>
+          <ul>
+            <li><a href="https://www.pnas.org/doi/10.1073/pnas.0505499102" target="_blank" rel="noopener">Feder et al. (2005)</a> — <em>Rhagoletis pomonella</em>, divergence écologique.</li>
+            <li><a href="https://doi.org/10.1017/S0016672300028371" target="_blank" rel="noopener">Dodd (1989)</a> — isolement reproductif expérimental chez <em>Drosophila pseudoobscura</em>.</li>
+            <li><a href="https://www.nature.com/articles/6884120" target="_blank" rel="noopener">Byrne & Nichols (1999)</a> — moustiques du métro, différenciation de populations.</li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11838412/" target="_blank" rel="noopener">Gomes et al. (2025)</a> — origine ancienne du moustique souterrain urbain.</li>
+          </ul>
+        </article>
+
+        <article>
+          <span>Définir une espèce</span>
+          <ul>
+            <li><a href="https://repository.si.edu/handle/10088/7670" target="_blank" rel="noopener">de Queiroz (2007)</a> — concepts d'espèce et délimitation des espèces.</li>
+            <li><a href="https://cir.nii.ac.jp/crid/1570572700764004480" target="_blank" rel="noopener">Mayden (1997)</a> — panorama des nombreux concepts d'espèce en biologie.</li>
+            <li><a href="https://openlibrary.org/books/OL8127112M/Speciation" target="_blank" rel="noopener">Coyne & Orr (2004)</a> — <em>Speciation</em>, isolement reproductif et formation des espèces.</li>
+          </ul>
+        </article>
       </div>
 
       <div class="chapter-actions">

@@ -43,36 +43,90 @@
     </div>
   </section>
 
-  <section class="slide">
+  <section class="slide convergence-map-slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
 
       <h2>Plusieurs domaines, même conclusion</h2>
 
       <p class="subtitle">
-        La force de l'évolution vient du fait que des domaines différents racontent la même histoire.
+        La force de la théorie synthétique de l'évolution vient du fait que des disciplines indépendantes racontent la même histoire.
       </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Génétique</h3>
-          <p>ADN, mutations, rétrovirus endogènes, parentés mesurables entre espèces.</p>
-        </div>
+      <div class="convergence-map" data-convergence-map>
+        <section class="convergence-orbit" aria-label="Disciplines scientifiques qui convergent vers la théorie synthétique de l'évolution">
+          <svg class="convergence-lines" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <line x1="50" y1="50" x2="50" y2="11"></line>
+            <line x1="50" y1="50" x2="76" y2="20"></line>
+            <line x1="50" y1="50" x2="84" y2="50"></line>
+            <line x1="50" y1="50" x2="76" y2="80"></line>
+            <line x1="50" y1="50" x2="50" y2="89"></line>
+            <line x1="50" y1="50" x2="24" y2="80"></line>
+            <line x1="50" y1="50" x2="16" y2="50"></line>
+            <line x1="50" y1="50" x2="24" y2="20"></line>
+          </svg>
 
-        <div class="card">
-          <h3>Fossiles</h3>
-          <p>Espèces disparues, formes transitionnelles, ordre chronologique dans les couches géologiques.</p>
-        </div>
+          <div class="convergence-hub">
+            <span>Conclusion commune</span>
+            <strong>Théorie synthétique de l'évolution</strong>
+            <p>Les populations changent par variation héréditaire, sélection, dérive, migrations et diversification des lignées.</p>
+          </div>
 
-        <div class="card">
-          <h3>Anatomie comparée</h3>
-          <p>Structures similaires chez différentes espèces, parfois avec des fonctions différentes.</p>
-        </div>
+          <button class="convergence-node active" type="button" data-convergence-discipline="genetique" style="--x: 50%; --y: 11%;" aria-pressed="true">
+            <span>ADN</span>
+            Génétique
+          </button>
 
-        <div class="card">
-          <h3>Biogéographie</h3>
-          <p>Répartition des espèces cohérente avec l'histoire des continents et des lignées.</p>
-        </div>
+          <button class="convergence-node" type="button" data-convergence-discipline="paleontologie" style="--x: 76%; --y: 20%;" aria-pressed="false">
+            <span>Fossiles</span>
+            Paléontologie
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="anatomie" style="--x: 84%; --y: 50%;" aria-pressed="false">
+            <span>Structures</span>
+            Anatomie comparée
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="embryologie" style="--x: 76%; --y: 80%;" aria-pressed="false">
+            <span>Développement</span>
+            Embryologie
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="biogeographie" style="--x: 50%; --y: 89%;" aria-pressed="false">
+            <span>Répartition</span>
+            Biogéographie
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="phylogenie" style="--x: 24%; --y: 80%;" aria-pressed="false">
+            <span>Arbres</span>
+            Systématique
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="populations" style="--x: 16%; --y: 50%;" aria-pressed="false">
+            <span>Populations</span>
+            Génétique des populations
+          </button>
+
+          <button class="convergence-node" type="button" data-convergence-discipline="geologie" style="--x: 24%; --y: 20%;" aria-pressed="false">
+            <span>Temps</span>
+            Géologie &amp; datation
+          </button>
+        </section>
+
+        <aside class="convergence-info" aria-live="polite">
+          <span class="convergence-info-kicker" data-convergence-kicker>ADN et génomes</span>
+          <h3 data-convergence-title>Génétique</h3>
+          <p data-convergence-text>
+            Les génomes gardent des traces héritées : mutations partagées, ressemblances de séquences, pseudogènes et rétrovirus endogènes aux mêmes emplacements.
+          </p>
+
+          <div class="convergence-info-proof">
+            <strong>Ce que ça apporte</strong>
+            <p data-convergence-proof>
+              Des parentés mesurables entre espèces. Les arbres construits avec l'ADN rejoignent largement ceux obtenus avec l'anatomie et les fossiles.
+            </p>
+          </div>
+        </aside>
       </div>
 
       <div class="banner">

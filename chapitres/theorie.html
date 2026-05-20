@@ -190,6 +190,196 @@
     <div class="slide-inner">
       <span class="section-marker"></span>
 
+      <h2>Concrètement, quels mécanismes ?</h2>
+
+      <p class="subtitle">
+        La théorie de l'évolution explique comment des populations changent : elle relie la génétique, la reproduction et le milieu.
+      </p>
+
+      <div class="theory-mechanism-intro">
+        <span>Idée centrale</span>
+        <p>
+          Des variations héréditaires apparaissent, notamment par <strong>mutations génétiques</strong>. Ensuite, ces variations peuvent devenir plus ou moins fréquentes dans la population selon plusieurs mécanismes.
+        </p>
+      </div>
+
+      <div class="theory-mechanism-grid">
+        <article>
+          <span>1</span>
+          <h3>Mutations</h3>
+          <p>Des erreurs ou modifications de l'ADN créent de nouveaux variants génétiques. Elles ne répondent pas à un besoin précis.</p>
+        </article>
+
+        <article>
+          <span>2</span>
+          <h3>Sélection naturelle</h3>
+          <p>Dans un milieu donné, certains variants aident davantage à survivre ou à se reproduire. Ils deviennent alors plus fréquents.</p>
+        </article>
+
+        <article>
+          <span>3</span>
+          <h3>Dérive génétique</h3>
+          <p>Le hasard peut modifier la fréquence des variants, surtout dans les petites populations.</p>
+        </article>
+
+        <article>
+          <span>4</span>
+          <h3>Migrations</h3>
+          <p>Des individus arrivent ou partent, apportant ou retirant des variants génétiques dans une population.</p>
+        </article>
+
+        <article>
+          <span>5</span>
+          <h3>Isolement</h3>
+          <p>Quand des populations ne se reproduisent plus entre elles, elles peuvent accumuler des différences au fil du temps.</p>
+        </article>
+      </div>
+
+      <div class="theory-plain-answer">
+        En résumé : les mutations fournissent de la variation, puis sélection, hasard, migrations et isolement changent la fréquence de ces variations génération après génération.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide mutation-slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Zoom : une mutation génétique</h2>
+
+      <p class="subtitle">
+        Une mutation est une modification de la séquence d'ADN. Elle peut être minuscule, mais parfois modifier une protéine ou un caractère.
+      </p>
+
+      <div class="mutation-reading-guide" aria-label="Comment lire le schéma de mutation">
+        <div>
+          <span>ADN</span>
+          <strong>un texte à 4 lettres</strong>
+          <p>A, T, C et G sont les lettres du message génétique.</p>
+        </div>
+        <i aria-hidden="true"></i>
+        <div>
+          <span>Codon</span>
+          <strong>un mot de 3 lettres</strong>
+          <p>La cellule lit le message par petits groupes.</p>
+        </div>
+        <i aria-hidden="true"></i>
+        <div>
+          <span>Protéine</span>
+          <strong>une suite de briques</strong>
+          <p>Chaque mot peut ajouter une brique à la protéine.</p>
+        </div>
+      </div>
+
+      <div class="mutation-lab" data-genetic-mutation>
+        <aside class="mutation-controls" aria-label="Choisir un type de mutation">
+          <div class="mutation-control-group">
+            <span>Type de mutation</span>
+            <button class="active" type="button" data-mutation-type="substitution" aria-pressed="true">
+              Substitution
+            </button>
+            <button type="button" data-mutation-type="insertion" aria-pressed="false">
+              Insertion
+            </button>
+            <button type="button" data-mutation-type="deletion" aria-pressed="false">
+              Délétion
+            </button>
+            <button type="button" data-mutation-type="silent" aria-pressed="false">
+              Silencieuse
+            </button>
+          </div>
+
+          <div class="mutation-control-group">
+            <span>Lecture</span>
+            <button class="active" type="button" data-mutation-stage="dna" aria-pressed="true">
+              1. ADN
+            </button>
+            <button type="button" data-mutation-stage="codon" aria-pressed="false">
+              2. Codons
+            </button>
+            <button type="button" data-mutation-stage="protein" aria-pressed="false">
+              3. Protéine
+            </button>
+            <button type="button" data-mutation-stage="effect" aria-pressed="false">
+              4. Effet possible
+            </button>
+          </div>
+        </aside>
+
+        <section class="mutation-visual">
+          <div class="mutation-dna-card">
+            <div class="mutation-row-label">
+              <span>Avant</span>
+              <strong>séquence copiée</strong>
+            </div>
+            <div class="mutation-sequence" data-mutation-before aria-label="Séquence ADN avant mutation"></div>
+
+            <div class="mutation-row-label">
+              <span>Après</span>
+              <strong data-mutation-kind>base remplacée</strong>
+            </div>
+            <div class="mutation-sequence" data-mutation-after aria-label="Séquence ADN après mutation"></div>
+          </div>
+
+          <div class="mutation-translation">
+            <article>
+              <span>Codons lus par groupes de trois</span>
+              <div class="mutation-codons" data-mutation-codons></div>
+            </article>
+
+            <article>
+              <span>Chaîne d'acides aminés</span>
+              <div class="mutation-protein" data-mutation-protein></div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="mutation-explain">
+          <span class="mutation-panel-kicker" data-mutation-stage-label>Étape 1 / 4</span>
+          <h3 data-mutation-title>Une lettre d'ADN change</h3>
+          <p data-mutation-text>
+            Pendant la copie de l'ADN, une base peut être remplacée par une autre. La cellule possède des systèmes de réparation, mais certaines modifications restent.
+          </p>
+
+          <div class="mutation-effect-card">
+            <strong data-mutation-effect-title>Effet possible</strong>
+            <p data-mutation-effect-text>
+              Une mutation peut être neutre, défavorable ou avantageuse selon ce qu'elle modifie et selon le milieu.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="mutation-real-examples" aria-label="Exemples réels de mutations génétiques">
+        <article>
+          <span>Le plus fréquent</span>
+          <strong>Aucun effet visible</strong>
+          <p>La lettre change, mais la protéine ou le caractère ne change pas forcément.</p>
+        </article>
+
+        <article>
+          <span>Microbes</span>
+          <strong>Résistance à un antibiotique</strong>
+          <p>Une mutation peut aider une bactérie à survivre à un antibiotique.</p>
+        </article>
+
+        <article>
+          <span>Humains</span>
+          <strong>Digérer le lait adulte</strong>
+          <p>Une mutation de régulation peut garder la lactase active après l'enfance.</p>
+        </article>
+      </div>
+
+      <div class="theory-plain-answer">
+        À retenir : une mutation ne donne pas forcément un “mutant” spectaculaire. Elle compte pour l'évolution seulement si elle est transmissible et change de fréquence dans une population.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
       <h2>Comment une idée devient solide ?</h2>
 
       <p class="subtitle">
@@ -368,7 +558,7 @@
           <p>
             Elle formule ce qu'on observe, souvent de façon courte ou mathématique.
           </p>
-          <strong>Exemple : la loi de la gravitation décrit une attraction entre masses.</strong>
+          <strong>Exemple : la loi de la gravitation universelle décrit mathématiquement l'attraction entre deux masses.</strong>
         </article>
 
         <article class="theory-law-card theory-law-card-model">

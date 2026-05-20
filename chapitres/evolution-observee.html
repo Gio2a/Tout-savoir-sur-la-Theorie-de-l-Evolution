@@ -47,44 +47,269 @@
     <div class="slide-inner">
       <span class="section-marker"></span>
 
-      <h2>Des exemples actuels</h2>
+      <h2>Définition en biologie évolutive</h2>
 
       <p class="subtitle">
-        Certaines évolutions peuvent être observées sur des temps courts, surtout chez les organismes qui se reproduisent vite.
+        Le mot “évolution” ne désigne pas n'importe quel changement : il a un sens précis.
       </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Bactéries résistantes</h3>
+      <div class="observed-definition-board">
+        <article class="observed-definition-main">
+          <span>Définition</span>
           <p>
-            Sous l'effet des antibiotiques, les bactéries sensibles disparaissent plus facilement, tandis que les bactéries résistantes survivent davantage.
+            Une <strong>évolution biologique</strong>, c'est un changement de la fréquence de caractères héréditaires au sein d'une population, au fil des générations.
           </p>
+        </article>
+
+        <article class="observed-genetic-note">
+          <span>Version génétique</span>
+          <p>
+            En génétique des populations, on la mesure souvent comme un changement de fréquence des variants génétiques, appelés allèles. Ces variants peuvent apparaître par mutation, puis devenir plus ou moins fréquents au fil des générations.
+          </p>
+        </article>
+      </div>
+
+      <div class="observed-example-heading">
+        <span>Exemple concret</span>
+        <strong>La résistance aux antibiotiques</strong>
+      </div>
+
+      <div class="observed-generation-strip" aria-label="Exemple de changement de fréquence dans une population">
+        <div>
+          <span>Génération 1</span>
+          <strong>5 % résistantes</strong>
+          <div class="observed-bacteria-visual" aria-label="Population avec une minorité de bactéries résistantes">
+            <b></b><b></b><b></b><b></b><b></b><b></b>
+            <b></b><b></b><b></b><b></b><b></b><b class="resistant"></b>
+            <b></b><b></b><b></b><b></b><b></b><b></b>
+          </div>
+          <p>La résistance existe déjà chez quelques bactéries.</p>
         </div>
 
-        <div class="card">
-          <h3>Variants du Covid</h3>
-          <p>
-            Les virus se répliquent rapidement. Des mutations apparaissent, et certaines variantes peuvent se diffuser davantage.
-          </p>
+        <i aria-hidden="true"></i>
+
+        <div>
+          <span>Pression du milieu</span>
+          <strong>Antibiotique</strong>
+          <div class="observed-bacteria-visual antibiotic" aria-label="L'antibiotique élimine surtout les bactéries sensibles">
+            <b class="dead"></b><b class="dead"></b><b class="dead"></b><b></b><b class="dead"></b><b></b>
+            <b class="dead"></b><b class="dead"></b><b></b><b class="dead"></b><b class="dead"></b><b class="resistant"></b>
+            <b class="dead"></b><b></b><b class="dead"></b><b class="dead"></b><b></b><b class="dead"></b>
+          </div>
+          <p>Les sensibles meurent davantage, mais pas forcément toutes.</p>
         </div>
 
-        <div class="card">
-          <h3>Insectes résistants</h3>
-          <p>
-            L'utilisation répétée d'insecticides peut favoriser les individus déjà capables d'y résister.
-          </p>
-        </div>
+        <i aria-hidden="true"></i>
 
-        <div class="card">
-          <h3>Sélection artificielle</h3>
-          <p>
-            Les humains sélectionnent certains caractères chez les plantes ou les animaux : chiens, pigeons, choux, maïs.
-          </p>
+        <div>
+          <span>Générations suivantes</span>
+          <strong>≈ 65 % résistantes</strong>
+          <div class="observed-bacteria-visual after" aria-label="Population finale avec davantage de bactéries résistantes">
+            <b class="resistant"></b><b></b><b class="resistant"></b><b class="resistant"></b><b></b><b class="resistant"></b>
+            <b class="resistant"></b><b class="resistant"></b><b></b><b class="resistant"></b><b class="resistant"></b><b></b>
+            <b class="resistant"></b><b></b><b class="resistant"></b><b class="resistant"></b><b class="resistant"></b><b></b>
+          </div>
+          <p>Les sensibles existent encore, mais leur fréquence a diminué.</p>
         </div>
       </div>
 
+      <div class="observed-bacteria-legend" aria-label="Légende de l'exemple visuel">
+        <span><b class="sensitive"></b> bactérie sensible</span>
+        <span><b class="resistant"></b> bactérie résistante</span>
+        <span><b class="dead"></b> bactérie éliminée</span>
+      </div>
+
+      <div class="callout">
+        Point clé : une évolution biologique ne signifie pas forcément qu'un caractère remplace tous les autres. Ici, la résistance devient plus fréquente dans la population : c'est cela, l'évolution observée.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Concrètement, qu'est-ce qui compte ?</h2>
+
+      <p class="subtitle">
+        Pour parler d'évolution biologique, il faut un changement de fréquence de caractères transmissibles entre générations.
+      </p>
+
+      <div class="observed-example-board">
+        <section class="observed-counts">
+          <span>Oui : évolution biologique</span>
+
+          <article>
+            <h3>Bactéries résistantes</h3>
+            <p>Les variants résistants deviennent plus fréquents après plusieurs générations sous antibiotique.</p>
+          </article>
+
+          <article>
+            <h3>Insectes résistants</h3>
+            <p>Dans une population exposée à un insecticide, les individus porteurs d'une résistance laissent plus de descendants.</p>
+          </article>
+
+          <article>
+            <h3>Becs de pinsons</h3>
+            <p>Après certaines sécheresses, la taille moyenne des becs peut changer parce que certains individus se reproduisent davantage.</p>
+          </article>
+
+          <article>
+            <h3>Persistance de la lactase</h3>
+            <p>Chez certaines populations humaines, des variants permettant de digérer le lactose à l'âge adulte sont devenus fréquents.</p>
+          </article>
+        </section>
+
+        <section class="observed-not-counts">
+          <span>Non : changement individuel</span>
+
+          <article>
+            <h3>Bronzer au soleil</h3>
+            <p>La peau change pendant la vie, mais ce bronzage n'est pas transmis génétiquement aux enfants.</p>
+          </article>
+
+          <article>
+            <h3>Se muscler</h3>
+            <p>L'entraînement modifie le corps d'un individu, pas les caractères héréditaires d'une population.</p>
+          </article>
+
+          <article>
+            <h3>Apprendre un comportement</h3>
+            <p>Une habitude peut se transmettre culturellement, mais ce n'est pas forcément une évolution biologique.</p>
+          </article>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Des exemples actuels</h2>
+
+      <p class="subtitle">
+        Certaines évolutions se voient sur des temps courts, surtout chez les organismes qui se reproduisent vite.
+      </p>
+
+      <div class="observed-case-list">
+        <article class="observed-case">
+          <div class="observed-case-number">01</div>
+          <div class="observed-case-body">
+            <span>Milieu médical</span>
+            <h3>Bactéries résistantes</h3>
+            <p>
+              Sous l'effet des antibiotiques, les bactéries sensibles disparaissent plus facilement, tandis que les bactéries résistantes survivent davantage et laissent plus de descendantes.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui augmente</strong>
+            <p>résistance à l'antibiotique</p>
+            <div class="observed-frequency-bars" aria-label="La résistance passe de rare à fréquente">
+              <span>avant<i class="low"></i></span>
+              <span>après<i class="high"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="observed-case">
+          <div class="observed-case-number">02</div>
+          <div class="observed-case-body">
+            <span>Virus</span>
+            <h3>Variants du SARS-CoV-2</h3>
+            <p>
+              Les virus se répliquent rapidement. Des mutations apparaissent, et certains variants peuvent devenir plus fréquents s'ils se transmettent mieux dans une population.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui augmente</strong>
+            <p>meilleure transmission</p>
+            <div class="observed-frequency-bars" aria-label="Un variant mieux transmis devient plus fréquent">
+              <span>avant<i class="medium"></i></span>
+              <span>après<i class="high"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="observed-case">
+          <div class="observed-case-number">03</div>
+          <div class="observed-case-body">
+            <span>Agriculture</span>
+            <h3>Insectes résistants</h3>
+            <p>
+              L'utilisation répétée d'insecticides peut favoriser les individus déjà capables d'y résister. Après plusieurs générations, la résistance devient plus fréquente.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui augmente</strong>
+            <p>résistance à l'insecticide</p>
+            <div class="observed-frequency-bars" aria-label="La résistance à l'insecticide augmente">
+              <span>avant<i class="low"></i></span>
+              <span>après<i class="high"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="observed-case">
+          <div class="observed-case-number">04</div>
+          <div class="observed-case-body">
+            <span>Prédation et camouflage</span>
+            <h3>Phalène du bouleau</h3>
+            <p>
+              Chez ce papillon, les formes claires ou sombres ne survivent pas avec la même probabilité selon la couleur des troncs. Quand l'environnement change, la fréquence des formes change aussi.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui varie</strong>
+            <p>couleur claire ou sombre</p>
+            <div class="observed-frequency-bars" aria-label="La forme la mieux camouflée devient plus fréquente">
+              <span>avant<i class="medium"></i></span>
+              <span>après<i class="high"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="observed-case">
+          <div class="observed-case-number">05</div>
+          <div class="observed-case-body">
+            <span>Climat et nourriture</span>
+            <h3>Pinsons des Galápagos</h3>
+            <p>
+              Après certaines sécheresses, les graines disponibles changent. Les pinsons dont le bec permet de mieux exploiter ces graines survivent et se reproduisent davantage.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui varie</strong>
+            <p>taille et forme du bec</p>
+            <div class="observed-frequency-bars" aria-label="Une forme de bec devient plus fréquente après une sécheresse">
+              <span>avant<i class="medium"></i></span>
+              <span>après<i class="high"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="observed-case">
+          <div class="observed-case-number">06</div>
+          <div class="observed-case-body">
+            <span>Sélection artificielle</span>
+            <h3>Maïs, choux, chiens</h3>
+            <p>
+              Les humains choisissent quels individus se reproduisent. Au fil des générations, les caractères sélectionnés deviennent plus fréquents dans la population.
+            </p>
+          </div>
+          <div class="observed-case-frequency">
+            <strong>Caractère qui augmente</strong>
+            <p>caractère choisi par sélection</p>
+            <div class="observed-frequency-bars" aria-label="Un caractère choisi devient plus fréquent">
+              <span>avant<i class="medium"></i></span>
+              <span>après<i class="full"></i></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
       <div class="banner">
-        Dans tous ces cas, la population change au fil des générations.
+        Dans tous ces cas, des caractères héréditaires deviennent plus ou moins fréquents au sein de la population.
       </div>
     </div>
   </section>
@@ -122,7 +347,7 @@
       </div>
 
       <div class="callout">
-        L'évolution, ce n'est pas un individu qui se transforme pendant sa vie. C'est une population qui change au fil des générations.
+        L'évolution, ce n'est pas un individu qui se transforme pendant sa vie. C'est la fréquence de caractères héréditaires qui change dans une population, au fil des générations.
       </div>
 
       <div class="chapter-actions">

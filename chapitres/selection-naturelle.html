@@ -43,52 +43,159 @@
     </div>
   </section>
 
-  <section class="slide">
+  <section class="slide natural-principle-slide">
     <div class="slide-inner">
       <span class="section-marker"></span>
 
-      <h2>Comment ça marche ?</h2>
+      <h2>Le principe</h2>
 
       <p class="subtitle">
-        La sélection naturelle repose sur une idée simple : certains caractères aident davantage à survivre ou à se reproduire dans un environnement donné.
+        La sélection naturelle n'est pas une décision de la nature : c'est un changement statistique dans une population.
       </p>
 
-      <div class="row-list">
-        <div class="row">
-          <div class="row-num">1</div>
-          <div class="row-content">
-            <h4>Variation</h4>
-            <p>Dans une population, les individus ne sont pas tous identiques.</p>
-          </div>
-        </div>
+      <div class="natural-definition">
+        <span>Définition</span>
+        <p>
+          Dans un milieu donné, les individus qui possèdent certains caractères héréditaires survivent ou se reproduisent en moyenne davantage. Ces caractères deviennent alors plus fréquents au fil des générations.
+        </p>
+      </div>
 
-        <div class="row">
-          <div class="row-num">2</div>
-          <div class="row-content">
-            <h4>Pression du milieu</h4>
-            <p>Le climat, les prédateurs, les maladies ou la nourriture rendent certains caractères plus avantageux.</p>
-          </div>
-        </div>
+      <div class="natural-conditions">
+        <article>
+          <span>1</span>
+          <h3>Variation</h3>
+          <p>Les individus d'une population ne sont pas tous identiques, notamment à cause de mutations génétiques.</p>
+        </article>
 
-        <div class="row">
-          <div class="row-num">3</div>
-          <div class="row-content">
-            <h4>Reproduction différentielle</h4>
-            <p>Les individus les mieux adaptés ont en moyenne plus de descendants.</p>
-          </div>
-        </div>
+        <article>
+          <span>2</span>
+          <h3>Hérédité</h3>
+          <p>Une partie de ces différences peut être transmise aux descendants.</p>
+        </article>
 
-        <div class="row">
-          <div class="row-num">4</div>
-          <div class="row-content">
-            <h4>Changement de la population</h4>
-            <p>Au fil des générations, les caractères avantageux deviennent plus fréquents.</p>
-          </div>
-        </div>
+        <article>
+          <span>3</span>
+          <h3>Pression du milieu</h3>
+          <p>Le milieu rend certains caractères plus ou moins avantageux.</p>
+        </article>
+
+        <article>
+          <span>4</span>
+          <h3>Reproduction différentielle</h3>
+          <p>Les caractères avantageux sont transmis plus souvent.</p>
+        </article>
       </div>
 
       <div class="callout">
-        La sélection naturelle n'est pas du hasard pur : les mutations apparaissent sans objectif, mais la sélection favorise certains résultats selon le milieu.
+        La sélection naturelle ne crée pas les mutations : elle agit sur des variations héréditaires déjà présentes dans la population.
+      </div>
+    </div>
+  </section>
+
+  <section class="slide natural-lab-slide" id="schema-selection">
+    <div class="slide-inner">
+      <span class="section-marker"></span>
+
+      <h2>Schéma interactif</h2>
+
+      <p class="subtitle">
+        Exemple avec une population de phalènes du bouleau : selon le décor, la forme la mieux camouflée change.
+      </p>
+
+      <div class="natural-lab" data-natural-selection>
+        <aside class="natural-controls" aria-label="Contrôles du schéma de sélection naturelle">
+          <div class="natural-control-group">
+            <span>Milieu</span>
+            <button class="active" type="button" data-natural-environment="light" aria-pressed="true">
+              Troncs clairs
+            </button>
+            <button type="button" data-natural-environment="dark" aria-pressed="false">
+              Troncs sombres
+            </button>
+          </div>
+
+          <div class="natural-control-group">
+            <span>Étapes</span>
+            <button class="active" type="button" data-natural-step="variation" aria-pressed="true">
+              1. Variation
+            </button>
+            <button type="button" data-natural-step="pressure" aria-pressed="false">
+              2. Pression
+            </button>
+            <button type="button" data-natural-step="survival" aria-pressed="false">
+              3. Survie
+            </button>
+            <button type="button" data-natural-step="reproduction" aria-pressed="false">
+              4. Reproduction
+            </button>
+            <button type="button" data-natural-step="next" aria-pressed="false">
+              5. Génération suivante
+            </button>
+          </div>
+        </aside>
+
+        <section class="natural-visual-panel">
+          <div class="natural-scene light" data-natural-scene>
+            <div class="natural-trunk" aria-hidden="true"></div>
+            <div class="natural-predator" data-natural-predator aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="natural-moth-field" data-natural-moths aria-label="Population de phalènes"></div>
+          </div>
+
+          <div class="natural-visual-legend" aria-label="Légende du schéma">
+            <span><i class="natural-mini-moth light"></i> forme claire</span>
+            <span><i class="natural-mini-moth dark"></i> forme sombre</span>
+            <span><i class="natural-mini-moth risk"></i> plus visible</span>
+            <span><i class="natural-mini-moth dead"></i> éliminée</span>
+          </div>
+
+          <div class="natural-stage-caption">
+            <span data-natural-stage-label>Étape 1 / 5</span>
+            <h3 data-natural-stage-title>Variation initiale</h3>
+            <p data-natural-stage-text>
+              La population contient déjà des formes claires et des formes sombres. La sélection naturelle ne crée pas le caractère au moment du besoin.
+            </p>
+          </div>
+        </section>
+
+        <aside class="natural-explain-panel">
+          <span class="natural-panel-kicker" data-natural-panel-kicker>Milieu clair</span>
+          <h3 data-natural-panel-title>Les formes claires sont mieux camouflées</h3>
+          <p data-natural-panel-text>
+            Sur des troncs clairs, les phalènes claires sont moins visibles. Les phalènes sombres sont davantage repérées par les prédateurs.
+          </p>
+
+          <div class="natural-frequency-card">
+            <span>Fréquence dans la population</span>
+            <div class="natural-frequency-row">
+              <strong>Formes claires</strong>
+              <i data-natural-light-bar style="--value: 50%"></i>
+              <b data-natural-light-value>50 %</b>
+            </div>
+            <div class="natural-frequency-row">
+              <strong>Formes sombres</strong>
+              <i data-natural-dark-bar style="--value: 50%"></i>
+              <b data-natural-dark-value>50 %</b>
+            </div>
+          </div>
+
+          <div class="natural-key-idea">
+            <strong>Idée clé</strong>
+            <p data-natural-key-text>
+              Le milieu ne transforme pas les individus. Il modifie les chances de survie et de reproduction.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="natural-equation">
+        <span>variation héréditaire</span>
+        <i></i>
+        <span>pression du milieu</span>
+        <i></i>
+        <span>reproduction différentielle</span>
+        <strong>= changement de fréquence</strong>
       </div>
     </div>
   </section>
@@ -97,27 +204,40 @@
     <div class="slide-inner">
       <span class="section-marker"></span>
 
-      <h2>Un exemple simple</h2>
+      <h2>Ce que le schéma montre vraiment</h2>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Avant</h3>
-          <p>Une population contient des individus clairs et foncés.</p>
-        </div>
+      <p class="subtitle">
+        La sélection naturelle est souvent mal comprise. Voici les pièges à éviter.
+      </p>
 
-        <div class="card">
-          <h3>Milieu</h3>
-          <p>Si le décor devient plus sombre, les individus foncés peuvent être moins visibles pour les prédateurs.</p>
-        </div>
+      <div class="natural-misconceptions">
+        <article>
+          <span>Non</span>
+          <h3>Un individu ne décide pas de changer</h3>
+          <p>La phalène sombre ne devient pas claire parce qu'elle en aurait besoin.</p>
+        </article>
 
-        <div class="card">
-          <h3>Après</h3>
-          <p>Ils survivent mieux, se reproduisent davantage, et deviennent plus fréquents dans la population.</p>
-        </div>
+        <article>
+          <span>Oui</span>
+          <h3>Le caractère existe déjà dans la population</h3>
+          <p>La variation est présente avant la pression du milieu.</p>
+        </article>
+
+        <article>
+          <span>Non</span>
+          <h3>Le milieu ne vise pas un progrès</h3>
+          <p>Un caractère avantageux dans un décor peut devenir désavantageux dans un autre.</p>
+        </article>
+
+        <article>
+          <span>Oui</span>
+          <h3>La population change</h3>
+          <p>Ce qui évolue, c'est la fréquence des caractères au fil des générations.</p>
+        </article>
       </div>
 
       <div class="banner">
-        Ce n'est pas l'individu qui décide de s'adapter : c'est la population qui change parce que certains individus transmettent plus souvent leurs caractères.
+        La sélection naturelle trie des variations héréditaires déjà présentes : elle ne fabrique pas directement l'individu idéal.
       </div>
 
       <div class="chapter-actions">
