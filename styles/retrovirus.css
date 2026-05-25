@@ -634,17 +634,7 @@
   white-space: nowrap;
 }
 
-[data-theme="dark"] .dna-counter,
-[data-theme="dark"] .dna-viewport,
-[data-theme="dark"] .dna-scale-note,
-[data-theme="dark"] .dna-site span {
-  background-color: rgba(19, 28, 37, 0.72);
-  border-color: rgba(212, 168, 90, 0.22);
-}
 
-[data-theme="dark"] .dna-site span {
-  color: var(--ink);
-}
 
 .schema-info {
   margin-top: 1.5rem;

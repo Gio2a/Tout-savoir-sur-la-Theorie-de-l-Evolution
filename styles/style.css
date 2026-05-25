@@ -19,20 +19,6 @@
   --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-[data-theme="dark"] {
-  --bg: #131c25;
-  --bg-soft: #1c2734;
-  --ink: #ede4d0;
-  --ink-soft: #b8b0a0;
-  --gold: #d4a85a;
-  --gold-soft: #e8c082;
-  --accent-red: #c45661;
-  --accent-green: #6fa67e;
-  --line: #2c3a48;
-  --shadow: rgba(0, 0, 0, 0.3);
-  --shadow-strong: rgba(0, 0, 0, 0.5);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -62,11 +48,6 @@ body::before {
   opacity: 0.4;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   mix-blend-mode: multiply;
-}
-
-[data-theme="dark"] body::before {
-  mix-blend-mode: screen;
-  opacity: 0.25;
 }
 
 h1,
@@ -182,6 +163,144 @@ em {
 .icon-btn svg {
   width: 14px;
   height: 14px;
+}
+
+body.search-open {
+  overflow: hidden;
+}
+
+.schema-search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  display: grid;
+  place-items: start center;
+  padding: clamp(4.5rem, 10vh, 7rem) 1rem 1rem;
+  background: rgba(31, 52, 71, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.schema-search-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.schema-search-panel {
+  width: min(760px, 100%);
+  max-height: min(78vh, 720px);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: color-mix(in srgb, var(--bg) 96%, white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 26px 70px var(--shadow-strong);
+}
+
+.schema-search-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.schema-search-head span,
+.schema-search-result span {
+  display: block;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.schema-search-head h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-top: 0.2rem;
+}
+
+.schema-search-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.schema-search-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-green);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 0.95rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  outline: none;
+}
+
+.schema-search-input:focus {
+  border-color: color-mix(in srgb, var(--accent-green) 70%, var(--line));
+  box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.14);
+}
+
+.schema-search-results {
+  display: grid;
+  gap: 0.7rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+}
+
+.schema-search-result {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  background: color-mix(in srgb, white 82%, var(--bg-soft));
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.schema-search-result:hover,
+.schema-search-result:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--gold) 70%, var(--line));
+  box-shadow: 0 10px 30px var(--shadow);
+  outline: none;
+}
+
+.schema-search-result strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.schema-search-result p,
+.schema-search-empty {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.schema-search-empty {
+  padding: 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .progress-bar {
@@ -394,10 +513,6 @@ em {
   background: rgba(255, 250, 240, 0.7);
 }
 
-[data-theme="dark"] .cover-key-equation {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
 .cover-key-equation strong {
   color: var(--ink);
@@ -1131,25 +1246,8 @@ a.card {
   font-size: 1rem;
 }
 
-[data-theme="dark"] .origin-evolution-board,
-[data-theme="dark"] .origin-question-strip article,
-[data-theme="dark"] .origin-domain-card,
-[data-theme="dark"] .origin-threshold,
-[data-theme="dark"] .origin-sequence div,
-[data-theme="dark"] .origin-key-answer {
-  background-color: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .origin-chip-group b {
-  background: rgba(19, 28, 37, 0.68);
-  border-color: rgba(237, 228, 208, 0.13);
-}
 
-[data-theme="dark"] .origin-field-tag {
-  background: rgba(19, 28, 37, 0.68);
-  border-color: rgba(237, 228, 208, 0.13);
-}
 
 @media (max-width: 940px) {
   .origin-question-strip,
@@ -1388,16 +1486,6 @@ a.card {
   font-size: 1rem;
 }
 
-[data-theme="dark"] .synthesis-board,
-[data-theme="dark"] .synthesis-start,
-[data-theme="dark"] .synthesis-question,
-[data-theme="dark"] .synthesis-answer,
-[data-theme="dark"] .synthesis-observations div,
-[data-theme="dark"] .synthesis-flow div,
-[data-theme="dark"] .synthesis-bottom-line {
-  background-color: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
 @media (max-width: 940px) {
   .synthesis-observations,
@@ -2013,35 +2101,8 @@ a.card {
   line-height: 1.45;
 }
 
-[data-theme="dark"] .natural-definition,
-[data-theme="dark"] .natural-conditions article,
-[data-theme="dark"] .natural-lab,
-[data-theme="dark"] .natural-control-group,
-[data-theme="dark"] .natural-control-group button,
-[data-theme="dark"] .natural-stage-caption,
-[data-theme="dark"] .natural-explain-panel,
-[data-theme="dark"] .natural-frequency-card,
-[data-theme="dark"] .natural-key-idea,
-[data-theme="dark"] .natural-equation,
-[data-theme="dark"] .natural-equation span,
-[data-theme="dark"] .natural-misconceptions article,
-[data-theme="dark"] .natural-visual-legend {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .natural-control-group button.active,
-[data-theme="dark"] .natural-equation strong {
-  background: #2f6f73;
-  border-color: #2f6f73;
-  color: #fffaf0;
-}
 
-[data-theme="dark"] .natural-key-idea {
-  background:
-    linear-gradient(90deg, rgba(47, 111, 115, 0.2), transparent),
-    rgba(28, 39, 52, 0.82);
-}
 
 @media (max-width: 1180px) {
   .natural-conditions,
@@ -2566,18 +2627,6 @@ a.card {
   --value: 92%;
 }
 
-[data-theme="dark"] .observed-definition-main,
-[data-theme="dark"] .observed-genetic-note,
-[data-theme="dark"] .observed-generation-strip,
-[data-theme="dark"] .observed-generation-strip > div,
-[data-theme="dark"] .observed-example-board section,
-[data-theme="dark"] .observed-example-board article,
-[data-theme="dark"] .observed-case,
-[data-theme="dark"] .observed-case-frequency,
-[data-theme="dark"] .observed-bacteria-legend span {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
 @media (max-width: 760px) {
   .observed-definition-board,
@@ -4642,25 +4691,8 @@ a.card {
   line-height: 1.45;
 }
 
-[data-theme="dark"] .convergence-orbit,
-[data-theme="dark"] .convergence-info,
-[data-theme="dark"] .convergence-hub,
-[data-theme="dark"] .convergence-node,
-[data-theme="dark"] .convergence-info-proof {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .convergence-hub,
-[data-theme="dark"] .convergence-node:hover,
-[data-theme="dark"] .convergence-node:focus-visible,
-[data-theme="dark"] .convergence-node.active {
-  background: rgba(19, 28, 37, 0.94);
-}
 
-[data-theme="dark"] .convergence-lines line {
-  stroke: rgba(111, 166, 126, 0.38);
-}
 
 @media (max-width: 1120px) {
   .convergence-map {
@@ -5745,32 +5777,6 @@ a.card {
   }
 }
 
-[data-theme="dark"] .micro-macro-controls,
-[data-theme="dark"] .micro-macro-controls button,
-[data-theme="dark"] .micro-macro-visual,
-[data-theme="dark"] .micro-boundary-premise,
-[data-theme="dark"] .micro-boundary-board,
-[data-theme="dark"] .micro-boundary-scale,
-[data-theme="dark"] .micro-boundary-explanation,
-[data-theme="dark"] .micro-macro-explain,
-[data-theme="dark"] .micro-macro-verdict,
-[data-theme="dark"] .micro-continuum-strip,
-[data-theme="dark"] .micro-continuum-strip div,
-[data-theme="dark"] .micro-macro-objection article,
-[data-theme="dark"] .micro-macro-compare article,
-[data-theme="dark"] .speciation-evidence-card,
-[data-theme="dark"] .species-concept-grid article,
-[data-theme="dark"] .species-concept-intro,
-[data-theme="dark"] .references-grid article,
-[data-theme="dark"] .micro-population-stage,
-[data-theme="dark"] .micro-organisms,
-[data-theme="dark"] .micro-branch-label,
-[data-theme="dark"] .micro-accumulation-zone,
-[data-theme="dark"] .micro-threshold-question,
-[data-theme="dark"] .micro-process-row span {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
 @media (max-width: 1120px) {
   .micro-macro-lab {
@@ -7265,69 +7271,11 @@ a.card {
   justify-content: center;
 }
 
-[data-theme="dark"] .theory-definition-card,
-[data-theme="dark"] .theory-definition-points div,
-[data-theme="dark"] .theory-flow,
-[data-theme="dark"] .theory-flow div,
-[data-theme="dark"] .theory-fact-card,
-[data-theme="dark"] .theory-fact-conclusion,
-[data-theme="dark"] .theory-mechanism-intro,
-[data-theme="dark"] .theory-mechanism-grid article,
-[data-theme="dark"] .mutation-lab,
-[data-theme="dark"] .mutation-reading-guide div,
-[data-theme="dark"] .mutation-real-examples article,
-[data-theme="dark"] .mutation-control-group,
-[data-theme="dark"] .mutation-control-group button,
-[data-theme="dark"] .mutation-dna-card,
-[data-theme="dark"] .mutation-translation article,
-[data-theme="dark"] .mutation-explain,
-[data-theme="dark"] .mutation-effect-card,
-[data-theme="dark"] .theory-law-card,
-[data-theme="dark"] .theory-history,
-[data-theme="dark"] .theory-history-note,
-[data-theme="dark"] .theory-meaning-card,
-[data-theme="dark"] .theory-ladder,
-[data-theme="dark"] .theory-ladder-panel,
-[data-theme="dark"] .theory-proof-panel,
-[data-theme="dark"] .theory-criteria-panel,
-[data-theme="dark"] .theory-criteria-list div,
-[data-theme="dark"] .theory-predictions,
-[data-theme="dark"] .theory-prediction-card,
-[data-theme="dark"] .theory-evidence-card,
-[data-theme="dark"] .theory-example-domain,
-[data-theme="dark"] .theory-example-card,
-[data-theme="dark"] .theory-punchline,
-[data-theme="dark"] .theory-final-message {
-  background: rgba(28, 39, 52, 0.82);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .theory-ladder-steps {
-  background:
-    linear-gradient(90deg, rgba(111, 166, 126, 0.12), transparent 14%),
-    rgba(19, 28, 37, 0.45);
-}
 
-[data-theme="dark"] .theory-step {
-  background: rgba(19, 28, 37, 0.78);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .theory-step.active {
-  background: rgba(237, 228, 208, 0.08);
-}
 
-[data-theme="dark"] .mutation-sequence,
-[data-theme="dark"] .mutation-base,
-[data-theme="dark"] .mutation-codon,
-[data-theme="dark"] .mutation-acid {
-  background-color: rgba(19, 28, 37, 0.58);
-  border-color: rgba(237, 228, 208, 0.12);
-}
 
-[data-theme="dark"] .mutation-control-group button.active {
-  background: rgba(47, 111, 115, 0.28);
-}
 
 @media (max-width: 920px) {
   .theory-definition-points,

@@ -2,33 +2,242 @@
   "use strict";
 
   /* =========================
-     THEME CLAIR / SOMBRE
+     RECHERCHE DE SCHÉMAS
      ========================= */
 
-  const THEME_KEY = "evolution-theme";
-  const themeBtn = document.getElementById("theme-toggle");
+  document.documentElement.removeAttribute("data-theme");
 
-  function applyTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-
-    if (themeBtn) {
-      themeBtn.setAttribute(
-        "aria-label",
-        theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"
-      );
-    }
+  try {
+    localStorage.removeItem("evolution-theme");
+  } catch (error) {
+    // Le site doit rester lisible même si le navigateur bloque localStorage.
   }
 
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const searchBtn = document.getElementById("schema-search-toggle");
+  const schemaSearchItems = [
+    {
+      title: "Théorie synthétique de l'évolution",
+      tag: "Avant tout",
+      description: "Le résumé clair : diversité, variations transmises, sélection, dérive, migrations et temps long.",
+      href: "chapitres/avant-tout.html#theorie-synthetique-evolution",
+      keywords: "tse theorie synthetique evolution definition darwin genetique populations"
+    },
+    {
+      title: "Origine du vivant ≠ évolution du vivant",
+      tag: "Avant tout",
+      description: "Distinguer abiogenèse et évolution biologique sans mélanger deux questions scientifiques.",
+      href: "chapitres/avant-tout.html#origine-evolution",
+      keywords: "abiogenese origine vie vivant chimie biologie apparition evolution"
+    },
+    {
+      title: "Mutation génétique",
+      tag: "Théorie scientifique",
+      description: "Visualiser une modification de l'ADN et ses effets possibles sur une protéine.",
+      href: "chapitres/theorie.html#mutation-genetique",
+      keywords: "mutation adn codon proteine substitution insertion deletion silencieuse"
+    },
+    {
+      title: "Sélection naturelle",
+      tag: "Mécanisme",
+      description: "Comprendre variation, hérédité, pression du milieu et reproduction différentielle.",
+      href: "chapitres/selection-naturelle.html#schema-selection",
+      keywords: "selection naturelle variation heredite milieu reproduction differentielle phalene"
+    },
+    {
+      title: "Micro / macroévolution : où est la frontière ?",
+      tag: "Objection fréquente",
+      description: "Tester l'argument “micro oui, macro non” et montrer qu'il n'y a pas de seuil naturel net.",
+      href: "chapitres/micro-macro.html#frontiere-micro-macro",
+      keywords: "microevolution macroevolution frontiere seuil accumulation temps long speciation"
+    },
+    {
+      title: "Cas de spéciation documentés",
+      tag: "Exemples",
+      description: "Des exemples vérifiés de spéciation ou de divergence reproductrice, avec leurs limites.",
+      href: "chapitres/micro-macro.html#speciations-documentees",
+      keywords: "speciation espece polyploidie tragopogon spartina senecio rhagoletis drosophila"
+    },
+    {
+      title: "Définir le mot espèce",
+      tag: "Concept",
+      description: "Pourquoi le mot espèce dépend de plusieurs définitions biologiques, jamais parfaites.",
+      href: "chapitres/micro-macro.html#definitions-espece",
+      keywords: "espece definition biologique morphologique phylogenetique ecologique concept"
+    },
+    {
+      title: "Convergence des preuves",
+      tag: "Preuves",
+      description: "Voir comment fossiles, génétique, anatomie, embryologie et biogéographie convergent.",
+      href: "chapitres/convergence.html#schema-convergence",
+      keywords: "convergence preuves fossiles genetique anatomie embryologie biogeographie phylogenie"
+    },
+    {
+      title: "Évolution observée",
+      tag: "Cas actuels",
+      description: "Résistances, variants, pinsons, lactase et sélection artificielle : des changements mesurables.",
+      href: "chapitres/evolution-observee.html#intro",
+      keywords: "evolution observee resistance bacteries variants covid pinsons lactase selection artificielle"
+    },
+    {
+      title: "Humain et singes",
+      tag: "Parentés",
+      description: "Clarifier ancêtre commun, classification, marche du progrès et chaînon manquant.",
+      href: "chapitres/humain-singes.html#intro",
+      keywords: "humain singes ancetre commun classification simiiformes chaine manquant"
+    },
+    {
+      title: "Évolution humaine",
+      tag: "Buisson humain",
+      description: "Australopithèques, genre Homo, coexistences, cousins disparus et mosaïque de caractères.",
+      href: "chapitres/evolution-humaine.html#intro",
+      keywords: "evolution humaine australopitheques homo sapiens neandertal migrations"
+    },
+    {
+      title: "Rétrovirus endogènes",
+      tag: "Génétique",
+      description: "Des insertions virales partagées aux mêmes emplacements comme indice de parenté commune.",
+      href: "chapitres/retrovirus.html#intro",
+      keywords: "retrovirus endogenes erv adn virus insertion genomique ancetre commun"
+    },
+    {
+      title: "Fossiles et datation",
+      tag: "Paléontologie",
+      description: "Registre fossile, fossiles transitionnels, évolution de l'œil et datation radiométrique.",
+      href: "chapitres/fossiles.html#intro",
+      keywords: "fossiles datation tiktaalik oeil transition registre radiometrique paleontologie"
+    }
+  ];
 
-  applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+  function normalizeSearchText(value) {
+    return value
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
 
-  if (themeBtn) {
-    themeBtn.addEventListener("click", function () {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      applyTheme(currentTheme === "dark" ? "light" : "dark");
+  function resolveSchemaHref(href) {
+    const inChapter = window.location.pathname.includes("/chapitres/");
+
+    if (href.startsWith("chapitres/")) {
+      return inChapter ? "../" + href : href;
+    }
+
+    return href;
+  }
+
+  function createSearchOverlay() {
+    const overlay = document.createElement("div");
+    overlay.className = "schema-search-overlay";
+    overlay.id = "schema-search-overlay";
+    overlay.innerHTML = [
+      '<div class="schema-search-panel" role="dialog" aria-modal="true" aria-labelledby="schema-search-title">',
+      '  <div class="schema-search-head">',
+      '    <div>',
+      '      <span>Recherche</span>',
+      '      <h2 id="schema-search-title">Trouver un schéma</h2>',
+      '    </div>',
+      '    <button class="schema-search-close" type="button" aria-label="Fermer la recherche">×</button>',
+      '  </div>',
+      '  <input id="schema-search-input" class="schema-search-input" type="search" placeholder="Mutation, micro/macro, fossiles, sélection..." autocomplete="off" />',
+      '  <div class="schema-search-results" id="schema-search-results" aria-live="polite"></div>',
+      '</div>'
+    ].join("");
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  const searchOverlay = searchBtn ? createSearchOverlay() : null;
+  const searchInput = searchOverlay ? searchOverlay.querySelector("#schema-search-input") : null;
+  const searchResults = searchOverlay ? searchOverlay.querySelector("#schema-search-results") : null;
+  const searchClose = searchOverlay ? searchOverlay.querySelector(".schema-search-close") : null;
+
+  function renderSearchResults(query) {
+    if (!searchResults) return;
+
+    const normalizedQuery = normalizeSearchText(query.trim());
+    const matches = schemaSearchItems.filter(function (item) {
+      if (!normalizedQuery) return true;
+
+      return normalizeSearchText(
+        [item.title, item.tag, item.description, item.keywords].join(" ")
+      ).includes(normalizedQuery);
+    });
+
+    if (!matches.length) {
+      searchResults.innerHTML =
+        '<p class="schema-search-empty">Aucun schéma trouvé. Essaie un mot plus général, par exemple “génétique” ou “preuves”.</p>';
+      return;
+    }
+
+    searchResults.innerHTML = matches
+      .map(function (item) {
+        return [
+          '<a class="schema-search-result" href="' + resolveSchemaHref(item.href) + '">',
+          '  <span>' + item.tag + '</span>',
+          '  <strong>' + item.title + '</strong>',
+          '  <p>' + item.description + '</p>',
+          '</a>'
+        ].join("");
+      })
+      .join("");
+  }
+
+  function openSearch() {
+    if (!searchOverlay || !searchInput) return;
+
+    renderSearchResults(searchInput.value);
+    searchOverlay.classList.add("open");
+    document.body.classList.add("search-open");
+    window.setTimeout(function () {
+      searchInput.focus();
+      searchInput.select();
+    }, 40);
+  }
+
+  function closeSearch() {
+    if (!searchOverlay) return;
+
+    searchOverlay.classList.remove("open");
+    document.body.classList.remove("search-open");
+  }
+
+  if (searchBtn) {
+    searchBtn.addEventListener("click", openSearch);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      renderSearchResults(searchInput.value);
+    });
+  }
+
+  if (searchResults) {
+    searchResults.addEventListener("click", function (event) {
+      if (!(event.target instanceof Element)) return;
+
+      const result = event.target.closest(".schema-search-result");
+
+      if (result) {
+        closeSearch();
+      }
+    });
+  }
+
+  if (searchClose) {
+    searchClose.addEventListener("click", closeSearch);
+  }
+
+  if (searchOverlay) {
+    searchOverlay.addEventListener("click", function (event) {
+      if (event.target === searchOverlay) {
+        closeSearch();
+      }
+    });
+
+    searchOverlay.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeSearch();
+      }
     });
   }
 
@@ -183,10 +392,9 @@
       }
     }
 
-    if (event.key === "t" || event.key === "T") {
-      if (themeBtn) {
-        themeBtn.click();
-      }
+    if (event.key === "s" || event.key === "S" || event.key === "/") {
+      event.preventDefault();
+      openSearch();
     }
   });
 
